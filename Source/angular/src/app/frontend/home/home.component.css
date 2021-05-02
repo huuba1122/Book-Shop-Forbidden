@@ -1,0 +1,6 @@
+.btn .btn-default .add-to-cart::hove{
+    background-color: #FE980F !important;
+}
+.btn-default:hover, .btn-default:active, .btn-default.hover{
+    background-color: #FE980F !important;
+}

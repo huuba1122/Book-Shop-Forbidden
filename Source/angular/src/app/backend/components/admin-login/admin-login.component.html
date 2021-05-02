@@ -1,0 +1,9 @@
+
+        <form class="form-login" [formGroup]="loginForm"  (ngSubmit) = "checkLoginAdmin()">
+            <h1>Login</h1>
+            <div *ngIf = "message" class="danger text-danger">{{message}}</div>
+            <input formControlName = "email" type = "email" placeholder="Email">
+            <input formControlName = "password" type="password" placeholder="Password">
+
+            <button type="submit">login</button>
+        </form>

@@ -1,0 +1,13 @@
+.sidebar-form input{
+    background-color: #fff;
+}
+.sidebar-form .btn {
+    background-color: #fff;
+}
+.skin-black .sidebar-form .btn:hover{
+    color: rgb(0, 0, 0) !important;
+    font-size: 18px;
+}
+p , table, a, li{
+    font-size: 16px;
+}
