@@ -24,6 +24,6 @@ Route::prefix('admin')->group(function () {
     Route::post('/login', [\App\Http\Controllers\UserController::class, 'login']);
     Route::group(['middleware' => ['jwt.verify']], function () {
         Route::get('/user', [\App\Http\Controllers\UserController::class, 'getUser']);
-        Route::get('/logout', [\App\Http\Controllers\UserController::class, 'logout']);
+        Route::post('/logout', [\App\Http\Controllers\UserController::class, 'logout']);
     });
 });

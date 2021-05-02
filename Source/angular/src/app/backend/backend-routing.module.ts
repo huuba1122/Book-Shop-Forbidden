@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../guards/auth.guard';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { AuthorAddComponent } from './components/authors/author-add/author-add.component';
 import { AuthorDetailComponent } from './components/authors/author-detail/author-detail.component';
@@ -38,7 +39,8 @@ const routes: Routes = [
       {path: 'author-add', component: AuthorAddComponent},
       {path: 'author-edit/:id', component: AuthorEditComponent},
       {path: 'author-detail', component: AuthorDetailComponent}
-    ]
+    ],
+    canActivate: [AuthGuard],
   },
   {
     path: 'login',

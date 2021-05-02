@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,7 +11,13 @@ export class MenuComponent implements OnInit {
 
   isDropSidebar = false;
   isDropBookList = false;
-  constructor() { }
+  user_name = '';
+  constructor(
+    private router: Router,
+    private authService : AuthService
+  ) {
+    this.user_name = sessionStorage.getItem('user_name')!;
+   }
 
   ngOnInit(): void {
   }
@@ -20,5 +28,20 @@ export class MenuComponent implements OnInit {
 
   dropBookList(){
     this.isDropBookList = !this.isDropBookList
+  }
+
+  adminLogout(){
+    if( confirm('Are you sure want to logout?') ){
+      this.authService.adminLogout().subscribe(
+        (res) => {
+          console.log(res);
+          if(res.status === 'success'){
+            sessionStorage.clear();
+            alert(res.message);
+            this.router.navigate(['/admin/login']);
+          }
+        }
+      )
+    }
   }
 }

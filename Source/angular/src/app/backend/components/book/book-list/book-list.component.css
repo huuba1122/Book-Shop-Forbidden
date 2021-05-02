@@ -4,10 +4,15 @@
 .sidebar-form .btn {
     background-color: #fff;
 }
-.skin-black .sidebar-form .btn:hover{
+/* .skin-black .sidebar-form .btn:hover{
     color: rgb(0, 0, 0) !important;
     font-size: 18px;
-}
+} */
 p , table, a, li{
     font-size: 16px;
+}
+.input-group-btn>.btn:hover, .input-group-btn>.btn:active{
+    color: rgb(0, 0, 0) !important;
+    background-color: #999;
+    font-size: 18px;
 }
