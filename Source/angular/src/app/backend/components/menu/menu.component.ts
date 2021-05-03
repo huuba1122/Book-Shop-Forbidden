@@ -32,6 +32,7 @@ export class MenuComponent implements OnInit {
 
   adminLogout(){
     if( confirm('Are you sure want to logout?') ){
+      // console.log(sessionStorage.getItem('token_admin'));
       this.authService.adminLogout().subscribe(
         (res) => {
           console.log(res);

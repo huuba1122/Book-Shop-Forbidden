@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
     let user_token = sessionStorage.getItem('token_admin')!;
-    console.log(user_token);
+    // console.log(user_token);
     if(user_token){
       return true;
     }else{

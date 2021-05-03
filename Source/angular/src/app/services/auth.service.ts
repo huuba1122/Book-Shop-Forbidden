@@ -10,9 +10,9 @@ let headers_ob = new HttpHeaders({
   'Authorization': "Bearer " + sessionStorage.getItem('token_admin')
 });
 
-const httpOptions = {
-  headers: headers_ob
-}
+// const httpOptions = {
+//   headers: headers_ob
+// }
 
 
 @Injectable({
@@ -20,6 +20,9 @@ const httpOptions = {
 })
 export class AuthService {
 
+  httpOptions = {
+    headers: headers_ob
+  }
   base_url = environment.base_url;
   constructor(private http:HttpClient) { }
 
@@ -29,7 +32,7 @@ export class AuthService {
 
   adminLogout(): Observable<any> {
     console.log("Bearer " + sessionStorage.getItem('token_admin'));
-
-    return this.http.post(this.base_url + '/admin/logout', '', httpOptions);
+  
+    return this.http.post(this.base_url + '/admin/logout', '',this.httpOptions);
   }
 }

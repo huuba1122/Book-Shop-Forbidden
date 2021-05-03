@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,9 +23,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
         // jwt
 
 Route::prefix('admin')->group(function () {
-    Route::post('/login', [\App\Http\Controllers\UserController::class, 'login']);
+    Route::post('/login', [UserController::class, 'login']);
     Route::group(['middleware' => ['jwt.verify']], function () {
-        Route::get('/user', [\App\Http\Controllers\UserController::class, 'getUser']);
-        Route::post('/logout', [\App\Http\Controllers\UserController::class, 'logout']);
+        Route::get('/user', [UserController::class, 'getUser']);
+        Route::post('/logout', [UserController::class, 'logout']);
+
+        Route::prefix('category')->group(function () {
+            Route::get('list',[CategoryController::class, 'getAll']);
+            Route::post('store',[CategoryController::class, 'store']);
+            Route::get('/{id}',[CategoryController::class, 'findById']);
+            Route::post('/{id}/update',[CategoryController::class, 'update']);
+            Route::get('/{id}/delete',[CategoryController::class, 'delete']);
+        });
     });
 });

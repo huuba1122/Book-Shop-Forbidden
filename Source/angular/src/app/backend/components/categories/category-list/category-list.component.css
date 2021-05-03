@@ -8,11 +8,20 @@
     color: rgb(0, 0, 0) !important;
     font-size: 18px;
 } */
-p , table, a, li{
+p , table, a, li, form{
     font-size: 16px;
 }
 .input-group-btn>.btn:hover, .input-group-btn>.btn:active{
     color: rgb(0, 0, 0) !important;
     background-color: #999;
     font-size: 18px;
+}
+.btn-sm{
+    font-size: 16px !important;
+    padding: 5px 10px !important;
+}
+
+.btn-xs{
+    font-size: 14px !important;
+    cursor: pointer !important;
 }
