@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::prefix('admin')->group(function () {
     Route::post('/login', [UserController::class, 'login']);
-    Route::group(['middleware' => ['jwt.verify']], function () {
+//    Route::group(['middleware' => ['jwt.verify']], function () {
         Route::get('/user', [UserController::class, 'getUser']);
         Route::post('/logout', [UserController::class, 'logout']);
 
@@ -36,9 +37,13 @@ Route::prefix('admin')->group(function () {
             Route::get('/{id}/delete',[CategoryController::class, 'delete']);
         });
         Route::prefix('author')->group(function () {
-            Route::post('store',[CategoryController::class, 'store']);
+            Route::get('/list', [AuthorController::class, 'getAll']);
+            Route::get('/delete/{id}', [AuthorController::class, 'delete'])->name('author.delete');
+            Route::post('/create', [AuthorController::class, 'store'])->name('author.store');
+            Route::post('/edit', [AuthorController::class, 'update'])->name('author.update');
+            Route::get('/search/{name}', [AuthorController::class, 'search']);
         });
-    });
+//    });
 });
 
 
