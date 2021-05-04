@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-author-list',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthorListComponent implements OnInit {
 
-  constructor() { }
+  authors: any;
+  constructor(
+    private router: Router,
+
+  ) { }
 
   ngOnInit(): void {
   }

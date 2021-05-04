@@ -1,1 +1,47 @@
-<p>category-edit works!</p>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Update category
+    </h1>
+    <!-- <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Tables</a></li>
+        <li class="active">Data tables</li>
+    </ol> -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <!-- form edit -->
+        <div class="col-xs-4">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">category info</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" [formGroup]="editCategoryForm" (ngSubmit)="editCategory()">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Name</label>
+                            <input formControlName="name" type="text" class="form-control" id="exampleInputEmail1">
+                        </div>
+                        <div class="alert alert-danger"
+                            *ngIf="editCategoryForm.controls.name?.errors?.required && editCategoryForm.controls.name?.touched">
+                            this field is required !
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button style="font-weight: 600; font-size: 14px;" type="submit"
+                            class="btn-sm btn-success" [disabled]="!editCategoryForm.valid">update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->

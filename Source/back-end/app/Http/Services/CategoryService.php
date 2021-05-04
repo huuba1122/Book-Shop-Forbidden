@@ -46,4 +46,10 @@ class CategoryService
         $category = $this->categoryRepo->findById($id);
         $this->categoryRepo->delete($category);
     }
+
+    function search($search)
+    {
+//        print_r($search['name']);
+        return $this->categoryRepo->search($search['name']);
+    }
 }

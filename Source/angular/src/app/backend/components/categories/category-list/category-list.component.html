@@ -19,15 +19,15 @@
             <div class="box">
                 <div class="box-header col-md-4">
                     <!-- search form -->
-                    <form action="#" method="get" class="sidebar-form">
+                    <div class="sidebar-form">
                         <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Search..." />
-                            <span class="input-group-btn">
+                            <input type="text" name="q" class="form-control" placeholder="Search..." (change) = "searchCategory($event)"/>
+                            <!-- <span class="input-group-btn">
                                 <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i
                                         class="fa fa-search"></i></button>
-                            </span>
+                            </span> -->
                         </div>
-                    </form>
+                    </div>
                     <!-- /.search form -->
                 </div>
                 <!-- <div class="box-header col-md-9">
@@ -57,10 +57,10 @@
                                 <td>
                                     <div style="display: inline-flex;width:100%; justify-content: space-around;">
                                         <div>
-                                            <a class="btn-xs btn-success ">edit</a>
+                                            <a class="btn-xs btn-success" routerLink= "../category-edit/{{item['id']}}">edit</a>
                                         </div>
                                         <div>
-                                            <a class="btn-xs btn-danger ">delete</a>
+                                            <a class="btn-xs btn-danger" (click) = "deleteCategory(item['id'],item['name'])">delete</a>
                                         </div>
                                     </div>
                                 </td>

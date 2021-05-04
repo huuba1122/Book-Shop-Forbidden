@@ -32,8 +32,9 @@ Route::prefix('admin')->group(function () {
             Route::get('list',[CategoryController::class, 'getAll']);
             Route::post('store',[CategoryController::class, 'store']);
             Route::get('/{id}',[CategoryController::class, 'findById']);
-            Route::post('/{id}/update',[CategoryController::class, 'update']);
-            Route::get('/{id}/delete',[CategoryController::class, 'delete']);
+            Route::put('/{id}/update',[CategoryController::class, 'update']);
+            Route::delete('/{id}/delete',[CategoryController::class, 'delete']);
+            Route::post('/search',[CategoryController::class, 'search']);
         });
     });
 });

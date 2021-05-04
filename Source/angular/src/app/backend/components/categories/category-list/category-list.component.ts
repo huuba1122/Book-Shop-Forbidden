@@ -47,6 +47,7 @@ export class CategoryListComponent implements OnInit {
 
   createCategory(){
     let data = this.createCategoryForm.value;
+    console.log(data);
     let isUnique = this.checkUniqueCategory(data.name);
     console.log(isUnique.length);
     if(isUnique.length == 0){
@@ -55,6 +56,7 @@ export class CategoryListComponent implements OnInit {
             if(res.status == 'success'){
               this.getAllCategory();
               alert("create category successfully");
+              this.createCategoryForm.reset();
             }
           }
         )
@@ -75,4 +77,35 @@ export class CategoryListComponent implements OnInit {
     // console.log(e);
   }
 
+  searchCategory(e: any)
+  {
+    let data = {
+      "name": e.target.value
+    }
+    if(data.name){
+      this.categoryService.adminSearchCategory(data).subscribe(
+        (res) => {
+          this.categories = res;
+        }
+      )
+    }else{
+      this.getAllCategory();
+    }
+    
+  }
+
+  deleteCategory(id:number, name:string)
+  {
+    console.log(id, name);
+    if(confirm('Are you sure category name: ' + name)){
+      this.categoryService.adminDeleteCategory(id).subscribe(
+        (res) => {
+          if(res.status === 'success'){
+            alert('delete category successfully!')
+            this.getAllCategory();
+          }
+        }
+      )
+    }
+  }
 }
