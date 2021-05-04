@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -35,6 +37,24 @@ Route::prefix('admin')->group(function () {
             Route::put('/{id}/update',[CategoryController::class, 'update']);
             Route::delete('/{id}/delete',[CategoryController::class, 'delete']);
             Route::post('/search',[CategoryController::class, 'search']);
+        });
+
+        Route::prefix('book')->group(function () {
+            Route::get('list',[BookController::class, 'getAll']);
+            Route::post('store',[BookController::class, 'store']);
+            Route::get('/{id}',[BookController::class, 'findById']);
+            Route::put('/{id}/update',[BookController::class, 'update']);
+            Route::delete('/{id}/delete',[BookController::class, 'delete']);
+        });
+
+
+
+        Route::prefix('author')->group(function () {
+            Route::get('list',[AuthorController::class, 'getAll']);
+            Route::post('store',[AuthorController::class, 'store']);
+            Route::get('/{id}',[AuthorController::class, 'findById']);
+            Route::put('/{id}/update',[AuthorController::class, 'update']);
+            Route::delete('/{id}/delete',[AuthorController::class, 'delete']);
         });
     });
 });
