@@ -35,5 +35,10 @@ Route::prefix('admin')->group(function () {
             Route::post('/{id}/update',[CategoryController::class, 'update']);
             Route::get('/{id}/delete',[CategoryController::class, 'delete']);
         });
+        Route::prefix('author')->group(function () {
+            Route::post('store',[CategoryController::class, 'store']);
+        });
     });
 });
+
+
