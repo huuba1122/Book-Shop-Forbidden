@@ -38,7 +38,7 @@ export class MenuComponent implements OnInit {
           console.log(res);
           if(res.status === 'success'){
             sessionStorage.clear();
-            alert(res.message);
+            // alert(res.message);
             this.router.navigate(['/admin/login']);
           }
         }

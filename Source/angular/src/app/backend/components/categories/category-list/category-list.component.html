@@ -19,15 +19,15 @@
             <div class="box">
                 <div class="box-header col-md-4">
                     <!-- search form -->
-                    <div class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Search..." (change) = "searchCategory($event)"/>
-                            <!-- <span class="input-group-btn">
-                                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i
-                                        class="fa fa-search"></i></button>
-                            </span> -->
-                        </div>
-                    </div>
+                    <nav class="navbar navbar-light bg-light">
+                        <form class="form-inline">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                            </div>
+                            <input type="text" name="p" class="form-control" placeholder="Search..." aria-label="search" (change) = "searchCategory($event)" aria-describedby="basic-addon1">
+                          </div>
+                        </form>
+                      </nav>
                     <!-- /.search form -->
                 </div>
                 <!-- <div class="box-header col-md-9">
@@ -39,9 +39,9 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>name</th>
-                                <th>quantity</th>
-                                <th>action</th>
+                                <th>Ten the loai</th>
+                                <th>So luong</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -69,9 +69,9 @@
                         <tfoot>
                             <tr>
                                 <th>#</th>
-                                <th>name</th>
-                                <th>quantity</th>
-                                <th>action</th>
+                                <th>Ten the loai</th>
+                                <th>So luong</th>
+                                <th></th>
                             </tr>
                         </tfoot>
                     </table>
