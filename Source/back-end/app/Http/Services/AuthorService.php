@@ -14,26 +14,35 @@ class AuthorService
      {
          $this->authorRepo = $authorRepo;
      }
+
      function getAll()
      {
          return $this->authorRepo->getAll();
      }
+
      function findById($id)
      {
          return $this->authorRepo->findById($id);
      }
+
      function store($request)
      {
+         
          $author = new Author();
          $author->fill($request);
+         
+         $path = $request['fileSource']->store('author-images', 'public');
+         $author->image = $path;
          $this->authorRepo->store($author);
      }
+
      function update($request, $id)
      {
          $author = $this->authorRepo->findById($id);
          $author->fill($request);
          $this->authorRepo->store($author);
      }
+
      function delete($id)
      {
          $author = $this->authorRepo->findById($id);

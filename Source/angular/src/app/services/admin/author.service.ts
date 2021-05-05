@@ -10,18 +10,21 @@ import { AuthService } from '../auth.service';
 })
 export class AuthorService {
 
-  httpOption:any;
   url:any;
   constructor(
     private http: HttpClient,
     private authService: AuthService
   ) {
-    this.httpOption = this.authService.httpOptions;
     this.url = this.authService.base_url;
    }
 
    adminGetAllAuthor():Observable<any>
    {
-      return this.http.get(this.url + '/admin/author/list', this.httpOption);
+      return this.http.get(this.url + '/admin/author/list', this.authService.getHeader());
+   }
+
+   adminCreateAuthor(data: any):Observable<any>
+   {
+     return this.http.post(this.url + '/admin/author/store', data, this.authService.getHeader());
    }
 }

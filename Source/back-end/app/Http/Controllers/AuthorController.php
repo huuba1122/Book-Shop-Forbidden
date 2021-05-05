@@ -24,7 +24,6 @@ class AuthorController extends Controller
     }
     function store(Request $request): \Illuminate\Http\JsonResponse
     {
-
         try {
             $this->authorService->store($request->all());
         }catch (\Exception $e){

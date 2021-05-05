@@ -1,0 +1,12 @@
+form {
+    font-size: 16px;
+}
+h1{
+    font-weight: 600;
+}
+
+form button{
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
