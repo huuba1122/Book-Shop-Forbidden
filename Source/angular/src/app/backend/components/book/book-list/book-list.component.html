@@ -1,7 +1,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Books Tables
+        Danh mục sách
     </h1>
     <!-- <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -19,19 +19,19 @@
             <div class="box">
                 <div class="box-header col-md-3">
                     <!-- search form -->
-                    <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Search..." />
-                            <span class="input-group-btn">
-                                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i
-                                        class="fa fa-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
+                    <nav class="navbar navbar-light bg-light">
+                        <form class="form-inline">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                            </div>
+                            <input type="text" class="form-control" placeholder="Search..." aria-label="Username" aria-describedby="basic-addon1">
+                          </div>
+                        </form>
+                      </nav>
                     <!-- /.search form -->
                 </div>
                 <div class="box-header col-md-9">
-                    <a class="btn-sm btn-success btn-flat" style="float: right;margin-top: 15px;" [routerLink] = "['../book-add']">Add book</a>
+                    <a class="btn-sm btn-success btn-flat" style="float: right;margin-top: 15px;" [routerLink] = "['../book-add']">Thêm mới</a>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -39,109 +39,44 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>name</th>
-                                <th>category</th>
-                                <th>author</th>
-                                <th>price</th>
-                                <th>image</th>
-                                <th>action</th>
+                                <th>Tên</th>
+                                <th>Ảnh</th>
+                                <th>Thể loại</th>
+                                <th>Tác giả</th>
+                                <th>Năm xuất bản</th>
+                                <th>Nhà xuất bản</th>
+                                <th>Mã isbn</th>
+                                <th>Giấy phép</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Trident</td>
-                                <td><a [routerLink] = "['../book-detail']">Trident</a></td>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 4.0</td>
-                                <td>Win 95+</td>
-                                <td>Win 95+</td>
-                                <td> 4</td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Trident</td>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 5.0</td>
-                                <td>Win 95+</td>
-                                <td>Win 95+</td>
-                                <td>5</td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Trident</td>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 5.5</td>
-                                <td>Win 95+</td>
-                                <td>Win 95+</td>
-                                <td>5.5</td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Trident</td>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 6</td>
-                                <td>Win 98+</td>
-                                <td>Win 98+</td>
-                                <td>6</td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Trident</td>
-                                <td>Trident</td>
-                                <td>Internet Explorer 7</td>
-                                <td>Win XP SP2+</td>
-                                <td>Win XP SP2+</td>
-                                <td>7</td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Trident</td>
-                                <td>Trident</td>
-                                <td>AOL browser (AOL desktop)</td>
-                                <td>Win XP</td>
-                                <td>Win XP</td>
-                                <td>6</td>                            </tr>
-                            <tr>
-                                <td>Gecko</td>
-                                <td>Gecko</td>
-                                <td>Gecko</td>
-                                <td>Firefox 1.0</td>
-                                <td>Win 98+ / OSX.2+</td>
-                                <td>Win 98+ / OSX.2+</td>
-                                <td>1.7</td>
-                            </tr>
-                            <tr>
-                                <td>Gecko</td>
-                                <td>Gecko</td>
-                                <td>Gecko</td>
-                                <td>Firefox 1.5</td>
-                                <td>Win 98+ / OSX.2+</td>
-                                <td>Win 98+ / OSX.2+</td>
-                                <td>1.8</td>
-                            </tr>
-                            <tr>
-                                <td>Gecko</td>
-                                <td>Gecko</td>
-                                <td>Gecko</td>
-                                <td>Firefox 2.0</td>
-                                <td>Win 98+ / OSX.2+</td>
-                                <td>Win 98+ / OSX.2+</td>
-                                <td>1.8</td>
-                            </tr>
+                            <tr *ngFor="let item of books | paginate : {
+                                itemsPerPage: pageSize,
+                                currentPage: page,
+                                totalItems: count
+                            }; index as i
+                            ">
+                            <td>{{i+1}}</td>
+                            <td>{{item['name']}}</td>
+                            <td><img src="{{item['image']}}" alt="" height="32"></td>
+                            <td>{{item['category_id']}}</td>
+                            <td>{{item['author_id']}}</td>
+                            <td>{{item['year_of_publication']}}</td>
+                            <td>{{item['publisher_id']}}</td>
+                            <td>{{item['isbn']}}</td>
+                            <td>{{item['license']}}</td>
+                            
                         </tbody>
                         <tfoot>
-                            <tr>
-                                <th>#</th>
-                                <th>name</th>
-                                <th>category</th>
-                                <th>author</th>
-                                <th>quantity</th>
-                                <th>image</th>
-                                <th>action</th>
+                            <tr> <th>#</th>
+                                <th>Tên</th>
+                                <th>Ảnh</th>
+                                <th>Thể loại</th>
+                                <th>Tác giả</th>
+                                <th>Năm xuất bản</th>
+                                <th>Nhà xuất bản</th>
+                                <th>Mã isbn</th>
+                                <th>Giấy phép</th>
                             </tr>
                         </tfoot>
                     </table>

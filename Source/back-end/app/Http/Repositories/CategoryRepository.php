@@ -37,4 +37,9 @@ class CategoryRepository
     {
         $category->delete();
     }
+
+    function search($search)
+    {
+        return Category::where('name','LIKE',"%$search%")->get();
+    }
 }

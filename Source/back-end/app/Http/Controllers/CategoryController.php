@@ -48,7 +48,7 @@ class CategoryController extends Controller
             return response()->json($e->getMessage());
         }
         return response()->json([
-            'status' => 'update category successfully'
+            'status' => 'success'
         ]);
     }
 
@@ -60,7 +60,14 @@ class CategoryController extends Controller
             return response()->json($e->getMessage(), 404);
         }
         return response()->json([
-           'status' => 'delete category successfully'
+           'status' => 'success'
         ], 200);
+    }
+
+    function search(Request $request): \Illuminate\Http\JsonResponse
+    {
+        
+        $categories = $this->categoryService->search($request->all());
+        return response()->json($categories, 200);
     }
 }

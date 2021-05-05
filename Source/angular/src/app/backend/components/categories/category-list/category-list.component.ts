@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from 'src/app/services/admin/category.service';
 
 @Component({
@@ -11,16 +12,24 @@ import { CategoryService } from 'src/app/services/admin/category.service';
 export class CategoryListComponent implements OnInit {
 
   createCategoryForm: FormGroup;
-  categories:any;
+  updateCategoryForm: FormGroup;
+  categories:any = [];
+  category:any;
   page = 1;
   count = 0;
   pageSize = 3;
+  isUpdateForm = false;
   constructor(
     private categoryService : CategoryService,
     private router : Router,
-    private formbd : FormBuilder
+    private formbd : FormBuilder,
+    private toastr: ToastrService
   ) { 
     this.createCategoryForm = this.formbd.group({
+      name:['', Validators.required]
+    });
+    this.updateCategoryForm = this.formbd.group({
+      id: [''],
       name:['', Validators.required]
     })
   }
@@ -47,20 +56,48 @@ export class CategoryListComponent implements OnInit {
 
   createCategory(){
     let data = this.createCategoryForm.value;
+    // console.log(data);
     let isUnique = this.checkUniqueCategory(data.name);
-    console.log(isUnique.length);
+    // console.log(isUnique.length);
     if(isUnique.length == 0){
         this.categoryService.adminCreateCategory(data).subscribe(
           (res) => {
             if(res.status == 'success'){
               this.getAllCategory();
-              alert("create category successfully");
+             this.toastr.success('Thêm thể loại thành công!', 'Thông báo');
+              this.createCategoryForm.reset();
             }
           }
         )
     }else{
-      alert(data.name + ' had exits!')
+      this.toastr.warning(data.name + ' đã tồn tại ', 'Thông báo');
+      
     }
+  }
+
+  updateCategory(){
+    let data = this.updateCategoryForm.value;
+    this.categoryService.adminUpdateCategory(data, data.id).subscribe(
+      (res) => {
+        data = res;
+        if(data.status === 'success'){
+          this.toastr.success('Cập nhập thể loại thành công!', 'Thông báo');
+          this.isUpdateForm = false;
+          this.getAllCategory();
+        }
+      }
+    )
+  }
+
+  showFormEditCategory(id:number){
+    this.isUpdateForm = true;
+    this.categoryService.adminGetCategory(id).subscribe(
+      (res) => {
+        this.category = res;
+        this.updateCategoryForm.patchValue(this.category);
+      }
+    )
+    
   }
 
   checkUniqueCategory(data:any)
@@ -75,4 +112,36 @@ export class CategoryListComponent implements OnInit {
     // console.log(e);
   }
 
+  searchCategory(e: any)
+  {
+    let data = {
+      "name": e.target.value
+    }
+    if(data.name){
+      this.categoryService.adminSearchCategory(data).subscribe(
+        (res) => {
+          this.categories = res;
+          this.count = this.categories.length;
+        }
+      )
+    }else{
+      this.getAllCategory();
+    }
+    
+  }
+
+  deleteCategory(id:number, name:string)
+  {
+    console.log(id, name);
+    if(confirm('Are you sure category name: ' + name)){
+      this.categoryService.adminDeleteCategory(id).subscribe(
+        (res) => {
+          if(res.status === 'success'){
+            this.toastr.error('Xóa thể loại thành công!', 'Thông báo');
+            this.getAllCategory();
+          }
+        }
+      )
+    }
+  }
 }

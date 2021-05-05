@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthorController;
+
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -21,11 +23,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-        // jwt
 
 Route::prefix('admin')->group(function () {
     Route::post('/login', [UserController::class, 'login']);
-//    Route::group(['middleware' => ['jwt.verify']], function () {
+    Route::group(['middleware' => ['jwt.verify']], function () {
         Route::get('/user', [UserController::class, 'getUser']);
         Route::post('/logout', [UserController::class, 'logout']);
 
@@ -33,17 +34,27 @@ Route::prefix('admin')->group(function () {
             Route::get('list',[CategoryController::class, 'getAll']);
             Route::post('store',[CategoryController::class, 'store']);
             Route::get('/{id}',[CategoryController::class, 'findById']);
-            Route::post('/{id}/update',[CategoryController::class, 'update']);
-            Route::get('/{id}/delete',[CategoryController::class, 'delete']);
+            Route::put('/{id}/update',[CategoryController::class, 'update']);
+            Route::delete('/{id}/delete',[CategoryController::class, 'delete']);
+            Route::post('/search',[CategoryController::class, 'search']);
         });
+
+        Route::prefix('book')->group(function () {
+            Route::get('list',[BookController::class, 'getAll']);
+            Route::post('store',[BookController::class, 'store']);
+            Route::get('/{id}',[BookController::class, 'findById']);
+            Route::put('/{id}/update',[BookController::class, 'update']);
+            Route::delete('/{id}/delete',[BookController::class, 'delete']);
+        });
+
         Route::prefix('author')->group(function () {
-            Route::get('/list', [AuthorController::class, 'getAll']);
-            Route::get('/delete/{id}', [AuthorController::class, 'delete'])->name('author.delete');
-            Route::post('/create', [AuthorController::class, 'store'])->name('author.store');
-            Route::post('/edit', [AuthorController::class, 'update'])->name('author.update');
-            Route::get('/search/{name}', [AuthorController::class, 'search']);
+            Route::get('list',[AuthorController::class, 'getAll']);
+            Route::post('store',[AuthorController::class, 'store']);
+            Route::get('/{id}',[AuthorController::class, 'findById']);
+            Route::put('/{id}/update',[AuthorController::class, 'update']);
+            Route::delete('/{id}/delete',[AuthorController::class, 'delete']);
         });
-//    });
+    });
 });
 
 

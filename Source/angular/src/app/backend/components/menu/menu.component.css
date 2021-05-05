@@ -14,3 +14,6 @@ p , table, a, li{
 .content-wrapper{
     min-height: 490px !important;
 }
+.btn-sm{
+    border-radius: 0 !important;
+}
