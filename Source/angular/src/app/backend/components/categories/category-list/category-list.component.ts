@@ -11,16 +11,23 @@ import { CategoryService } from 'src/app/services/admin/category.service';
 export class CategoryListComponent implements OnInit {
 
   createCategoryForm: FormGroup;
-  categories:any;
+  updateCategoryForm: FormGroup;
+  categories:any = [];
+  category:any;
   page = 1;
   count = 0;
   pageSize = 3;
+  isUpdateForm = false;
   constructor(
     private categoryService : CategoryService,
     private router : Router,
     private formbd : FormBuilder
   ) { 
     this.createCategoryForm = this.formbd.group({
+      name:['', Validators.required]
+    });
+    this.updateCategoryForm = this.formbd.group({
+      id: [''],
       name:['', Validators.required]
     })
   }
@@ -47,9 +54,9 @@ export class CategoryListComponent implements OnInit {
 
   createCategory(){
     let data = this.createCategoryForm.value;
-    console.log(data);
+    // console.log(data);
     let isUnique = this.checkUniqueCategory(data.name);
-    console.log(isUnique.length);
+    // console.log(isUnique.length);
     if(isUnique.length == 0){
         this.categoryService.adminCreateCategory(data).subscribe(
           (res) => {
@@ -63,6 +70,33 @@ export class CategoryListComponent implements OnInit {
     }else{
       alert(data.name + ' had exits!')
     }
+  }
+
+  updateCategory(){
+    let data = this.updateCategoryForm.value;
+    this.categoryService.adminUpdateCategory(data, data.id).subscribe(
+      (res) => {
+        data = res;
+        if(data.status === 'success'){
+          // alert('update category successfully!');
+          this.isUpdateForm = false;
+          this.getAllCategory();
+        }
+      }
+    )
+  }
+
+  showFormEditCategory(id:number){
+    this.isUpdateForm = true;
+    console.log(id);
+    this.categoryService.adminGetCategory(id).subscribe(
+      (res) => {
+        this.category = res;
+        console.log(this.category);
+        this.updateCategoryForm.patchValue(this.category);
+      }
+    )
+    
   }
 
   checkUniqueCategory(data:any)
@@ -86,6 +120,7 @@ export class CategoryListComponent implements OnInit {
       this.categoryService.adminSearchCategory(data).subscribe(
         (res) => {
           this.categories = res;
+          this.count = this.categories.length;
         }
       )
     }else{

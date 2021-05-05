@@ -9,8 +9,6 @@ import { BookEditComponent } from './components/book/book-edit/book-edit.compone
 import { BookDetailComponent } from './components/book/book-detail/book-detail.component';
 import { BookListComponent } from './components/book/book-list/book-list.component';
 import { CategoryListComponent } from './components/categories/category-list/category-list.component';
-import { CategoryAddComponent } from './components/categories/category-add/category-add.component';
-import { CategoryEditComponent } from './components/categories/category-edit/category-edit.component';
 import { AuthorListComponent } from './components/authors/author-list/author-list.component';
 import { AuthorAddComponent } from './components/authors/author-add/author-add.component';
 import { AuthorEditComponent } from './components/authors/author-edit/author-edit.component';
@@ -27,8 +25,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BookEditComponent,
     BookDetailComponent,
     CategoryListComponent,
-    CategoryAddComponent,
-    CategoryEditComponent,
     AuthorListComponent,
     AuthorAddComponent,
     AuthorEditComponent,

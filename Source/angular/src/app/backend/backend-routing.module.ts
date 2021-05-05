@@ -10,8 +10,6 @@ import { BookAddComponent } from './components/book/book-add/book-add.component'
 import { BookDetailComponent } from './components/book/book-detail/book-detail.component';
 import { BookEditComponent } from './components/book/book-edit/book-edit.component';
 import { BookListComponent } from './components/book/book-list/book-list.component';
-import { CategoryAddComponent } from './components/categories/category-add/category-add.component';
-import { CategoryEditComponent } from './components/categories/category-edit/category-edit.component';
 import { CategoryListComponent } from './components/categories/category-list/category-list.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -31,8 +29,6 @@ const routes: Routes = [
       
       // categories
       {path: 'category-list', component: CategoryListComponent},
-      {path: 'category-add', component: CategoryAddComponent},
-      {path: 'category-edit/:id', component: CategoryEditComponent},
 
       // authors
       {path: 'author-list', component: AuthorListComponent},
