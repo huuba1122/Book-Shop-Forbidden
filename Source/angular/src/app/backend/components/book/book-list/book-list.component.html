@@ -19,15 +19,15 @@
             <div class="box">
                 <div class="box-header col-md-3">
                     <!-- search form -->
-                    <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Search..." />
-                            <span class="input-group-btn">
-                                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i
-                                        class="fa fa-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
+                    <nav class="navbar navbar-light bg-light">
+                        <form class="form-inline">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                            </div>
+                            <input type="text" class="form-control" placeholder="Search..." aria-label="Username" aria-describedby="basic-addon1">
+                          </div>
+                        </form>
+                      </nav>
                     <!-- /.search form -->
                 </div>
                 <div class="box-header col-md-9">
@@ -50,9 +50,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-                            </tr>
+                            <tr *ngFor="let item of books | paginate : {
+                                itemsPerPage: pageSize,
+                                currentPage: page,
+                                totalItems: count
+                            }; index as i
+                            ">
+                            <td>{{i+1}}</td>
+                            <td>{{item['name']}}</td>
+                            <td>{{item['category_id']}}</td>
+                            <td>{{item['author_id']}}</td>
+                            <td>{{item['year_of_publication']}}</td>
+                            <td>{{item['isbn']}}</td>
+                            <td>{{item['publisher_id']}}</td>
+                            <td>{{item['license']}}</td>
+                            <td>{{item['image']}}</td>
+                            
                         </tbody>
                         <tfoot>
                             <tr>
