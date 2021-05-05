@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from 'src/app/services/admin/category.service';
 
 @Component({
@@ -21,7 +22,8 @@ export class CategoryListComponent implements OnInit {
   constructor(
     private categoryService : CategoryService,
     private router : Router,
-    private formbd : FormBuilder
+    private formbd : FormBuilder,
+    private toastr: ToastrService
   ) { 
     this.createCategoryForm = this.formbd.group({
       name:['', Validators.required]
@@ -62,13 +64,14 @@ export class CategoryListComponent implements OnInit {
           (res) => {
             if(res.status == 'success'){
               this.getAllCategory();
-              alert("create category successfully");
+             this.toastr.success('Thêm thể loại thành công!', 'Thông báo');
               this.createCategoryForm.reset();
             }
           }
         )
     }else{
-      alert(data.name + ' had exits!')
+      this.toastr.warning(data.name + ' đã tồn tại ', 'Thông báo');
+      
     }
   }
 
@@ -78,7 +81,7 @@ export class CategoryListComponent implements OnInit {
       (res) => {
         data = res;
         if(data.status === 'success'){
-          // alert('update category successfully!');
+          this.toastr.success('Cập nhập thể loại thành công!', 'Thông báo');
           this.isUpdateForm = false;
           this.getAllCategory();
         }
@@ -88,11 +91,9 @@ export class CategoryListComponent implements OnInit {
 
   showFormEditCategory(id:number){
     this.isUpdateForm = true;
-    console.log(id);
     this.categoryService.adminGetCategory(id).subscribe(
       (res) => {
         this.category = res;
-        console.log(this.category);
         this.updateCategoryForm.patchValue(this.category);
       }
     )
@@ -136,7 +137,7 @@ export class CategoryListComponent implements OnInit {
       this.categoryService.adminDeleteCategory(id).subscribe(
         (res) => {
           if(res.status === 'success'){
-            alert('delete category successfully!')
+            this.toastr.error('Xóa thể loại thành công!', 'Thông báo');
             this.getAllCategory();
           }
         }

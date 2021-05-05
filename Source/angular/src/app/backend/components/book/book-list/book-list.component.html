@@ -1,7 +1,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Books List
+        Danh mục sách
     </h1>
     <!-- <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -31,7 +31,7 @@
                     <!-- /.search form -->
                 </div>
                 <div class="box-header col-md-9">
-                    <a class="btn-sm btn-success btn-flat" style="float: right;margin-top: 15px;" [routerLink] = "['../book-add']">Add book</a>
+                    <a class="btn-sm btn-success btn-flat" style="float: right;margin-top: 15px;" [routerLink] = "['../book-add']">Thêm mới</a>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -39,14 +39,14 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>name</th>
-                                <th>category</th>
-                                <th>author</th>
-                                <th>year</th>
-                                <th>isbn</th>
-                                <th>publisher</th>
-                                <th>license</th>
-                                <th>image</th>
+                                <th>Tên</th>
+                                <th>Ảnh</th>
+                                <th>Thể loại</th>
+                                <th>Tác giả</th>
+                                <th>Năm xuất bản</th>
+                                <th>Nhà xuất bản</th>
+                                <th>Mã isbn</th>
+                                <th>Giấy phép</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,26 +58,25 @@
                             ">
                             <td>{{i+1}}</td>
                             <td>{{item['name']}}</td>
+                            <td><img src="{{item['image']}}" alt="" height="32"></td>
                             <td>{{item['category_id']}}</td>
                             <td>{{item['author_id']}}</td>
                             <td>{{item['year_of_publication']}}</td>
-                            <td>{{item['isbn']}}</td>
                             <td>{{item['publisher_id']}}</td>
+                            <td>{{item['isbn']}}</td>
                             <td>{{item['license']}}</td>
-                            <td>{{item['image']}}</td>
                             
                         </tbody>
                         <tfoot>
-                            <tr>
-                                <th>#</th>
-                                <th>name</th>
-                                <th>category</th>
-                                <th>author</th>
-                                <th>year</th>
-                                <th>isbn</th>
-                                <th>publisher</th>
-                                <th>license</th>
-                                <th>image</th>
+                            <tr> <th>#</th>
+                                <th>Tên</th>
+                                <th>Ảnh</th>
+                                <th>Thể loại</th>
+                                <th>Tác giả</th>
+                                <th>Năm xuất bản</th>
+                                <th>Nhà xuất bản</th>
+                                <th>Mã isbn</th>
+                                <th>Giấy phép</th>
                             </tr>
                         </tfoot>
                     </table>

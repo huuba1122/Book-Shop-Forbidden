@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { ToastrModule } from 'ngx-toastr';
+
 
 import { BackendRoutingModule } from './backend-routing.module';
 import { MenuComponent } from './components/menu/menu.component';
@@ -36,7 +39,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BackendRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    // BrowserAnimationsModule,
+    // ToastrModule.forRoot()
   ]
 })
 export class BackendModule { }
