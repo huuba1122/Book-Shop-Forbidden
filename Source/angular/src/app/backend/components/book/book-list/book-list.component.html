@@ -18,9 +18,9 @@
         <div class="col-xs-12">
             <div class="box">
                 <div>
-                    <div class="box-header col-md-3">
+                    <div class="box-header col-md-3" >
                         <!-- search form -->
-                        <nav class="navbar navbar-light bg-light">
+                        <nav class="navbar navbar-light bg-light ">
                             <form class="form-inline">
                               <div class="input-group">
                                 <div class="input-group-prepend">
@@ -72,7 +72,7 @@
                             <td>
                                 <div style="display: inline-flex;width:100%; justify-content: space-around;">
                                     <div>
-                                        <a class="text-primary"><i class="fa fa-edit"></i></a>
+                                        <a [routerLink]="['../book-edit', item.id]" class="text-primary"><i class="fa fa-edit"></i></a>
                                     </div>
                                     <div>
                                         <a class="text-danger" (click) = "deleteBook(item['id'],item['name'])"><i class="fa fa-trash-o"></i> </a>

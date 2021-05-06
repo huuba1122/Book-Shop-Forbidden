@@ -15,17 +15,20 @@
               <div class="form-group col-md-6">
                 <label>Tên</label>
                 <input formControlName="name"  type="text" class="form-control" placeholder="Enter ...">
-                <div class="alert alert-danger"
-                *ngIf="createBookForm.controls.name?.errors?.required && createBookForm.controls.name?.touched">
+                <div class="alert alert-danger" role="alert"
+                *ngIf="createBookForm.controls.name.errors?.required && createBookForm.controls.name?.touched">
                 Tên không được để trống!
-  </div>
+              </div>
               </div>
             
 
               <div class="form-group col-md-6">
                 <label>Giá tiền</label>
-                <input formControlName="price" type="number" class="form-control" placeholder="Enter ...">
-                
+                <input formControlName="price" type="number" class="form-control" placeholder="Enter ...">     
+                <div class="alert alert-danger"
+                *ngIf="createBookForm.controls.price.errors?.required && createBookForm.controls.price?.touched">
+                Giá không được để trống!
+              </div>
               </div>
             </div>
             <!-- textarea -->
@@ -58,6 +61,10 @@
               <div class="form-group col-md-6">
                 <label>Năm xuất bản </label>
                 <input type="date" formControlName="year_of_publication" class="form-control" placeholder="Enter ...">
+                <div class="alert alert-danger"
+                *ngIf="createBookForm.controls.year_of_publication.errors?.required && createBookForm.controls.year_of_publication?.touched">
+                Năm xuất bản  không được để trống!
+              </div>
               </div>
             </div>
             <!-- textarea -->
@@ -73,6 +80,10 @@
               <div class="form-group col-md-6">
                 <label>Mã isbn</label>
                 <input type="number" formControlName="isbn" class="form-control" placeholder="Enter ...">
+                <div class="alert alert-danger"
+                *ngIf="createBookForm.controls.isbn.errors?.required && createBookForm.controls.isbn?.touched">
+                Mã isbn  không được để trống!
+              </div>
               </div>
             </div>
             <!-- textarea -->
@@ -81,16 +92,24 @@
               <div class="form-group col-md-6">
                 <label>Giấy phép xuất bản</label>
                 <input type="text" formControlName="license" class="form-control" placeholder="Enter ...">
+                <div class="alert alert-danger"
+                *ngIf="createBookForm.controls.license.errors?.required && createBookForm.controls.license?.touched">
+                Giấy phép không được để trống!
+              </div>
               </div>
 
 
               <div class="form-group col-md-6">
                 <label>Tái bản lần </label>
                 <input type="number" formControlName="reprint_of_book" class="form-control" placeholder="Enter ...">
+                <div class="alert alert-danger"
+                *ngIf="createBookForm.controls.reprint_of_book.errors?.required && createBookForm.controls.reprint_of_book?.touched">
+                Tái bản  không được để trống!
+              </div>
               </div>
             </div>
             <!-- textarea -->
-            <div class="row">
+            <!-- <div class="row">
               
               <div class="form-group col-md-6">
                 <label>Sách hot mọi thời đại</label>
@@ -141,7 +160,7 @@
                   </label>
                 </div>
               </div>
-            </div>
+            </div> -->
             <!-- textarea -->
 
             
@@ -150,11 +169,19 @@
               <div class="form-group col-md-6">
                 <label>Số trang</label>
                 <input type="number" formControlName="page_number" class="form-control" placeholder="Enter ...">
+                <div class="alert alert-danger"
+                *ngIf="createBookForm.controls.page_number.errors?.required && createBookForm.controls.page_number?.touched">
+                Số trang không được để trống!
+              </div>
               </div>
 
               <div class="form-group col-md-6">
                 <label>Ngôn ngữ</label>
                 <input type="text" formControlName="language" class="form-control" placeholder="Enter ...">
+                <div class="alert alert-danger"
+                *ngIf="createBookForm.controls.language.errors?.required && createBookForm.controls.language?.touched">
+                Ngôn ngữ không được để trống!
+              </div>
               </div>
             </div>
 
@@ -163,17 +190,25 @@
               <div class="form-group col-md-6">
                 <label>Nội dung</label>
                 <textarea class="form-control" formControlName="content" rows="3" placeholder="Enter ..."></textarea>
+                <div class="alert alert-danger"
+                *ngIf="createBookForm.controls.content.errors?.required && createBookForm.controls.content?.touched">
+                Nội dung không được để trống!
+              </div>
               </div>
 
               <div class="form-group col-md-6">
                 <label>Tóm tắt sách</label>
                 <textarea class="form-control" formControlName="description" rows="3" placeholder="Enter ..."></textarea>
+                <div class="alert alert-danger"
+                *ngIf="createBookForm.controls.description.errors?.required && createBookForm.controls.description?.touched">
+                Tóm tắt không được để trống!
+              </div>
               </div>
             </div>
                         <!-- submit -->
 
             <div class="box-footer">
-              <button type="submit" (click)="createBook()" class="btn btn-primary">Submit</button>
+              <button   type="submit" (click)="createBook()" class="btn btn-primary">Submit</button>
             </div>
           </form>
         </div><!-- /.box-body -->
