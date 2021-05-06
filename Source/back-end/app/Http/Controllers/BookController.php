@@ -24,7 +24,7 @@ class BookController extends Controller
     }
     function store(Request $request): \Illuminate\Http\JsonResponse
     {
-        if($request->hasFile())
+        // if($request->hasFile())
 
         try {
             $this->bookService->store($request->all());

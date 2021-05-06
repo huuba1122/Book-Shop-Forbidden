@@ -58,7 +58,6 @@ export class BookAddComponent implements OnInit {
   
 
   createBook(){
-    
     let data = this.createBookForm.value;
     this.bookService.adminCreateBook(data).subscribe(
       (res) => {
