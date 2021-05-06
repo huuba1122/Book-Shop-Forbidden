@@ -25,5 +25,4 @@ class AuthorRepository
   {
       $author->delete();
   }
-
 }

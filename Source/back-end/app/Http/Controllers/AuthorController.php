@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\AuthorService;
+
+use App\Models\Author;
 use Illuminate\Http\Request;
 
 class AuthorController extends Controller
@@ -10,28 +12,29 @@ class AuthorController extends Controller
     protected $authorService;
     public function __construct(AuthorService $authorService)
     {
-        $this->authorService= $authorService;
+        $this->authorService = $authorService;
     }
+
     function getAll(): \Illuminate\Http\JsonResponse
     {
         $authors = $this->authorService->getAll();
         return response()->json($authors, 201);
     }
+
     function findById($id): \Illuminate\Http\JsonResponse
     {
         $author = $this->authorService->findById($id);
         return response()->json($author);
     }
+
     function store(Request $request): \Illuminate\Http\JsonResponse
     {
-        try {
-            $this->authorService->store($request->all());
-        }catch (\Exception $e){
-            return response()->json($e->getMessage());
+        $dataAuthor = $this->authorService->store($request->all());
+        if ($dataAuthor){
+            return response()->json([
+                'status' => 'success'
+            ]);
         }
-        return response()->json([
-            'status' => 'success'
-        ]);
     }
 
     function update(Request $request, $id): \Illuminate\Http\JsonResponse
@@ -56,6 +59,5 @@ class AuthorController extends Controller
         return response()->json([
             'status' => 'delete success'
         ]);
-
     }
 }

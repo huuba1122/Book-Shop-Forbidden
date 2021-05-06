@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthorController;
+
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PublisherController;
@@ -23,7 +24,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-        // jwt
 
 Route::prefix('admin')->group(function () {
     Route::post('/login', [UserController::class, 'login']);
@@ -62,3 +62,5 @@ Route::prefix('admin')->group(function () {
         });
     });
 });
+
+
