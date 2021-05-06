@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -47,14 +48,17 @@ Route::prefix('admin')->group(function () {
             Route::delete('/{id}/delete',[BookController::class, 'delete']);
         });
 
-
-
         Route::prefix('author')->group(function () {
             Route::get('list',[AuthorController::class, 'getAll']);
             Route::post('store',[AuthorController::class, 'store']);
             Route::get('/{id}',[AuthorController::class, 'findById']);
             Route::put('/{id}/update',[AuthorController::class, 'update']);
             Route::delete('/{id}/delete',[AuthorController::class, 'delete']);
+        });
+
+
+        Route::prefix('publisher')->group(function () {
+            Route::get('list',[PublisherController::class, 'getAll']);
         });
     });
 });
