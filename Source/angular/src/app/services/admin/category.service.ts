@@ -13,32 +13,48 @@ export class CategoryService {
   constructor(
     private authService: AuthService,
     private http: HttpClient
-    ) {}
+  ) {}
 
-   adminGetAllCategory(){
-    return this.http.get(this.authService.base_url + '/admin/category/list',this.authService.getHeader());
-   }
+  adminGetAllCategory() {
+    return this.http.get(this.authService.base_url + '/admin/category/list', {
+      headers: this.getHeaders()
+    });
+  }
 
-   adminCreateCategory(data:any): Observable<any>{
-      return this.http.post(this.authService.base_url + '/admin/category/store', data, this.authService.getHeader());
-   }
+  adminCreateCategory(data: any): Observable<any> {
+    // console.log(data);
+    return this.http.post(this.authService.base_url + '/admin/category/store', data, {
+      headers: this.getHeaders()
+    });
+  }
 
-   adminSearchCategory(data:any):Observable<any>{
-     return this.http.post(this.authService.base_url + '/admin/category/search', data, this.authService.getHeader());
-   }
+  adminSearchCategory(data: any): Observable<any> {
+    return this.http.post(this.authService.base_url + '/admin/category/search', data, {
+      headers: this.getHeaders()
+    });
+  }
 
-   adminGetCategory(id:any):Observable<any>
-   {
-      return this.http.get(this.authService.base_url + '/admin/category/'+id, this.authService.getHeader());
-   }
+  adminGetCategory(id: any): Observable<any> {
+    return this.http.get(this.authService.base_url + '/admin/category/' + id, {
+      headers: this.getHeaders()
+    });
+  }
 
-   adminUpdateCategory(data:any, id:number)
-   {
-     return this.http.put(this.authService.base_url + '/admin/category/'+ id +'/update',data,this.authService.getHeader());
-   }
+  adminUpdateCategory(data: any, id: number) {
+    return this.http.put(this.authService.base_url + '/admin/category/' + id + '/update', data, {
+      headers: this.getHeaders()
+    });
+  }
 
-   adminDeleteCategory(id: number): Observable<any>
-   {
-      return this.http.delete(this.authService.base_url + '/admin/category/' + id + '/delete', this.authService.getHeader());
-   }
+  adminDeleteCategory(id: number): Observable<any> {
+    return this.http.delete(this.authService.base_url + '/admin/category/' + id + '/delete', {
+      headers: this.getHeaders()
+    });
+  }
+
+  getHeaders() {
+    return new HttpHeaders({
+      'Authorization': "Bearer " + sessionStorage.getItem('token_admin')
+    });
+  }
 }
