@@ -7,45 +7,48 @@ namespace App\Http\Services;
 use App\Http\Repositories\AuthorRepository;
 use App\Models\Author;
 
-class AuthorService
-{
-     protected $authorRepo;
-     public function __construct(AuthorRepository $authorRepo)
-     {
-         $this->authorRepo = $authorRepo;
-     }
 
-     function getAll()
-     {
-         return $this->authorRepo->getAll();
-     }
+    class AuthorService
+    {
+        protected $authorRepo;
 
-     function findById($id)
-     {
-         return $this->authorRepo->findById($id);
-     }
+        public function __construct(AuthorRepository $authorRepo)
+        {
+            $this->authorRepo = $authorRepo;
+        }
 
-     function store($request)
-     {
-         
-         $author = new Author();
-         $author->fill($request);
-         
-         $path = $request['fileSource']->store('author-images', 'public');
-         $author->image = $path;
-         $this->authorRepo->store($author);
-     }
+        function getAll()
+        {
+            return $this->authorRepo->getAll();
+        }
 
-     function update($request, $id)
-     {
-         $author = $this->authorRepo->findById($id);
-         $author->fill($request);
-         $this->authorRepo->store($author);
-     }
+        function findById($id)
+        {
+            return $this->authorRepo->findById($id);
+        }
 
-     function delete($id)
-     {
-         $author = $this->authorRepo->findById($id);
-         $this->authorRepo->delete($author);
-     }
-}
+        function store($request)
+        {
+
+            $author = new Author();
+            $author->fill($request);
+
+            $path = $request['fileSource']->store('author-images', 'public');
+            $author->image = $path;
+            $this->authorRepo->store($author);
+        }
+
+        function update($request, $id)
+        {
+            $author = $this->authorRepo->findById($id);
+            $author->fill($request);
+            $this->authorRepo->store($author);
+        }
+
+        function delete($id)
+        {
+            $author = $this->authorRepo->findById($id);
+            $this->authorRepo->delete($author);
+        }
+    }
+
