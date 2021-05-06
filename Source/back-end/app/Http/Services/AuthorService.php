@@ -5,6 +5,7 @@ namespace App\Http\Services;
 
 
 use App\Http\Repositories\AuthorRepository;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Author;
 
 class AuthorService
@@ -29,9 +30,8 @@ class AuthorService
      {
          
          $author = new Author();
-         $author->fill($request);
-         
-         $path = $request['fileSource']->store('author-images', 'public');
+         $author->fill($request->all());
+         $path = $request->file('file')->store('author-images', 'public');
          $author->image = $path;
          $this->authorRepo->store($author);
      }
@@ -39,8 +39,21 @@ class AuthorService
      function update($request, $id)
      {
          $author = $this->authorRepo->findById($id);
-         $author->fill($request);
-         $this->authorRepo->store($author);
+         $oldImage = $author->image;
+         $author->fill($request->all());
+         if($request->hasFile('file')){
+            $path = $request->file('file')->store('author-images', 'public');
+            $author->image = $path;
+            Storage::disk('public')->delete($oldImage);
+         }
+         $this->authorRepo->update($author);
+     }
+
+     function updateQuantity($number, $id)
+     {
+        $author = $this->authorRepo->findById($id);
+        $author->quantity = $number;
+        $this->authorRepo->update($author);
      }
 
      function delete($id)

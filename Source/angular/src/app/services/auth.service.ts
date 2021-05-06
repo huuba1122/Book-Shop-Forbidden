@@ -25,7 +25,8 @@ export class AuthService {
     let httpOptions = {
       headers: new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
+        'Content-Type' : 'multipart/form-data',
+        'Accept': "application/json",
         'Authorization': "Bearer " + sessionStorage.getItem('token_admin')
       })
     }

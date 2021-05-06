@@ -35,7 +35,7 @@ export class MenuComponent implements OnInit {
       // console.log(sessionStorage.getItem('token_admin'));
       this.authService.adminLogout().subscribe(
         (res) => {
-          console.log(res);
+          // console.log(res);
           if(res.status === 'success'){
             sessionStorage.clear();
             this.router.navigate(['/admin/login']);

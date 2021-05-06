@@ -1,6 +1,6 @@
 <section class="content-header">
   <h1>
-    Add author
+    Thêm tác giả
   </h1>
   <!-- <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -12,73 +12,95 @@
 <section class="content">
   <div class="row">
     <!-- left column -->
-    <div class="col-md-6">
+    <div class="col-md-12">
       <!-- general form elements -->
       <div class="box box-primary">
-        <div class="box-header">
-          <h3 class="box-title">Author Infomation</h3>
+        <div class="box-header text-center">
+          <h3>Thông tin tác giả</h3>
         </div><!-- /.box-header -->
         <!-- form start -->
-        <form role="form" [formGroup]="createAuthorForm" (ngSubmit)="createAuthor()">
+        <form role="form" [formGroup]="createAuthorForm" (ngSubmit)="createAuthor()" enctype="multipart/form-data">
           <div class="box-body">
 
-            <!-- name -->
-            <div class="form-group">
-              <label for="exampleInputEmail1">Name</label>
-              <input formControlName="name" type="text" class="form-control" id="exampleInputEmail1">
-            </div>
-            <div class="alert alert-danger"
-              *ngIf="createAuthorForm.controls.name?.errors?.required && createAuthorForm.controls.name?.touched">
-              this field is required !
+            <div class="col-md-12" style="padding-top: 25px;">
+              <!-- name -->
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Tên</label>
+                  <input formControlName="name" type="text" class="form-control" id="exampleInputEmail1">
+                </div>
+                <div *ngIf="name?.invalid && (name!.dirty || name!.touched)" class="alert alert-danger">
+                  <div *ngIf="name!.errors!.required">
+                    Tên không được để trống!
+                  </div>
+                </div>
+              </div>
+
+              <!-- country -->
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Quốc tịch</label>
+                  <input formControlName="country" type="text" class="form-control" id="exampleInputEmail1">
+                </div>
+                <div *ngIf="country?.invalid && (country!.dirty || country!.touched)" class="alert alert-danger">
+                  <div *ngIf="country!.errors!.required">
+                    Quốc tịch không được để trống!
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <!-- country -->
-            <div class="form-group">
-              <label for="exampleInputEmail1">Country</label>
-              <input formControlName="country" type="text" class="form-control" id="exampleInputEmail1">
-            </div>
-            <div class="alert alert-danger"
-              *ngIf="createAuthorForm.controls.country?.errors?.required && createAuthorForm.controls.country?.touched">
-              this field is required !
-            </div>
 
             <!-- birth_death -->
-            <div class="form-group">
-              <label for="exampleInputPassword1">Birth - Death</label>
-              <input formControlName="birth_death" type="text" class="form-control" id="exampleInputPassword1"
-                placeholder="example: 1xxx-2xxx">
-            </div>
-            <div class="alert alert-danger"
-              *ngIf="createAuthorForm.controls.birth_death?.errors?.required && createAuthorForm.controls.birth_death?.touched">
-              this field is required !
+            <div class="col-md-12" >
+              <div class="col-md-6">
+                <!-- image -->
+                <div class="form-group">
+                  <label for="exampleInputFile">Hình ảnh</label>
+                  <input formControlName="image" type="file" (change)=(onImageChange($event)) id="exampleInputFile"
+                    accept="image/x-png,image/jpeg">
+                </div>
+                <div *ngIf="image?.invalid && (image!.dirty || image!.touched)" class="alert alert-danger">
+                  <div *ngIf="image!.errors!.required">
+                    Hình ảnh không được để trống!
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Năm sinh - năm mất</label>
+                  <input formControlName="birth_death" type="text" class="form-control" id="exampleInputPassword1"
+                    placeholder="VD: 1xxx-2xxx">
+                </div>
+                <div *ngIf="birth_death!.invalid && (birth_death!.dirty || birth_death!.touched)"
+                  class="alert alert-danger">
+                  <div *ngIf="birth_death!.errors!.required">
+                    Năm sinh, năm mất không được để trống!
+                  </div>
+                  <div *ngIf="birth_death!.errors!.pattern">
+                    Năm sinh, năm mất sai định dạng (VD: 1xxx-2xxx)!
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div *ngIf="imgSrc">
+                  <img [src]="imgSrc" style="width:100px;">
+                </div>
+              </div>
             </div>
 
-            <!-- image -->
-            <div class="form-group">
-              <label for="exampleInputFile">Image</label>
-              <input formControlName="image" type="file" (change)=(onImageChange($event)) id="exampleInputFile">
-            </div>
-            <div class="alert alert-danger"
-              *ngIf="createAuthorForm.controls.image?.errors?.required && createAuthorForm.controls.image?.touched">
-              this field is required !
-            </div>
-            <div *ngIf="imgFile">
-              <img [src]="imgFile" style="width:150px; height:200px">
-            </div>
             <!-- textarea -->
-            <div class="form-group">
-              <label>Link wikipedia</label>
-              <textarea formControlName="link_wiki" class="form-control" rows="3" placeholder="Enter ..."></textarea>
-            </div>
-            <div class="alert alert-danger"
-              *ngIf="createAuthorForm.controls.link_wiki?.errors?.required && createAuthorForm.controls.link_wiki?.touched">
-              this field is required !
+            <div class="col-md-12">
+              <div class="form-group col-md-12">
+                <label>Đường dẫn Wikipedia</label>
+                <textarea formControlName="link_wiki" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+              </div>
             </div>
           </div>
           <!-- /.box-body -->
 
           <div class="box-footer">
-            <button type="submit" class="btn-sm btn-success" [disabled]="!createAuthorForm.valid">Submit</button>
+            <button type="submit" class="btn btn-success" style="margin-left: 30px;"
+            [disabled]="!createAuthorForm.valid">Thêm tác giả</button>
           </div>
         </form>
       </div>

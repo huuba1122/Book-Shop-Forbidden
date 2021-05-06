@@ -26,4 +26,9 @@ class AuthorRepository
       $author->delete();
   }
 
+  function update($author)
+  {
+      $author->update();
+  }
+
 }

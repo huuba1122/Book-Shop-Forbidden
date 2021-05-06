@@ -53,7 +53,7 @@ Route::prefix('admin')->group(function () {
             Route::get('list',[AuthorController::class, 'getAll']);
             Route::post('store',[AuthorController::class, 'store']);
             Route::get('/{id}',[AuthorController::class, 'findById']);
-            Route::put('/{id}/update',[AuthorController::class, 'update']);
+            Route::post('/{id}/update',[AuthorController::class, 'update']);
             Route::delete('/{id}/delete',[AuthorController::class, 'delete']);
         });
     });

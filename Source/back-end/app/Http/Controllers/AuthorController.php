@@ -22,10 +22,10 @@ class AuthorController extends Controller
         $author = $this->authorService->findById($id);
         return response()->json($author);
     }
-    function store(Request $request): \Illuminate\Http\JsonResponse
+    function store(Request $request)
     {
         try {
-            $this->authorService->store($request->all());
+            $this->authorService->store($request);
         }catch (\Exception $e){
             return response()->json($e->getMessage());
         }
@@ -36,13 +36,26 @@ class AuthorController extends Controller
 
     function update(Request $request, $id): \Illuminate\Http\JsonResponse
     {
+        // if($request->hasFile('file')){
+        //     return response()->json([
+        //          'status' => 'success'
+        //         ]);
+        // }
+        // if($request->name){
+        //     return response()->json([
+        //         'status' => $request->name
+        //        ]);
+        // }
+        // return response()->json([
+        //     'status' => 'nothing'
+        //    ]);
         try {
-            $this->authorService->update($request->all(), $id);
+            $this->authorService->update($request, $id);
         }catch (\Exception $e){
             return response()->json($e->getMessage());
         }
         return response()->json([
-            'status' => 'update author successfully'
+            'status' => 'success'
         ]);
     }
 
@@ -54,7 +67,7 @@ class AuthorController extends Controller
             return response()->json($e->getMessage());
         }
         return response()->json([
-            'status' => 'delete success'
+            'status' => 'success'
         ]);
 
     }

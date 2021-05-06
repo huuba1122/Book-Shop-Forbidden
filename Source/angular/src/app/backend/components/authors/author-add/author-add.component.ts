@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthorService } from 'src/app/services/admin/author.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-author-add',
@@ -9,53 +11,65 @@ import { AuthorService } from 'src/app/services/admin/author.service';
 })
 export class AuthorAddComponent implements OnInit {
 
-  imgFile: string = '';
-  createAuthorForm: FormGroup;
+  imgSrc: string = '';
+  imgFile: any;
+  createAuthorForm!: FormGroup;
   constructor(
     private formbd: FormBuilder,
-    private authorService: AuthorService
+    private authorService: AuthorService,
+    private toastr: ToastrService,
+    private router: Router
   ) {
+
+  }
+
+  ngOnInit(): void {
     this.createAuthorForm = this.formbd.group({
       name: ['', Validators.required],
       image: ['', Validators.required],
       country: ['', Validators.required],
-      birth_death: [''],
+      birth_death: ['',Validators.compose([
+        Validators.required,
+        Validators.pattern('^(1|2)?[0-9]{3}((-)(1|2)?[0-9]{3})?$')
+      ])],
       link_wiki: [''],
-      fileSource: ['']
+      img: ['']
     })
   }
 
-  ngOnInit(): void {
-  }
-
   createAuthor() {
-    console.log(this.createAuthorForm.value);
+    let formData = new FormData();
     let data = this.createAuthorForm.value;
-    this.authorService.adminCreateAuthor(data).subscribe(
+    formData.append('name', data.name);
+    formData.append('file', this.imgFile, this.imgFile.name);
+    formData.append('country', data.country);
+    formData.append('birth_death', data.birth_death);
+    formData.append('link_wiki', data.link_wiki);
+    this.authorService.adminCreateAuthor(formData).subscribe(
       (res) => {
-        console.log(res);
+        // console.log(res);
+        if (res.status === 'success') {
+          this.router.navigate(['admin/author-list']);
+          this.toastr.success('Thêm mới tác giả thành công!', 'Thông báo');
+        }
       }
     )
   }
 
   onImageChange(e: any) {
-    console.log(e.target.files);
-    // console.log(e.target.files);
     const reader = new FileReader();
-
     if (e.target.files.length && e.target.files) {
-      // console.log(e.target.files[0]);
-      // const [file] = e.target.file;
-      const file = e.target.files[0];
-      this.createAuthorForm.patchValue({
-        fileSource: file
-      });
-      reader.readAsDataURL(e.target.files[0]);
+      this.imgFile = e.target.files[0];
+      // const file = e.target.files[0];
 
+      reader.readAsDataURL(e.target.files[0]);
       reader.onload = (e: any) => {
-        this.imgFile = e.target.result
+        this.imgSrc = e.target.result
       }
     }
   }
-
+  get name() { return this.createAuthorForm.get('name'); }
+  get image() { return this.createAuthorForm.get('image'); }
+  get country() { return this.createAuthorForm.get('country'); }
+  get birth_death() { return this.createAuthorForm.get('birth_death'); }
 }

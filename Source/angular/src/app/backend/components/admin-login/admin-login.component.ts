@@ -28,13 +28,14 @@ export class AdminLoginComponent implements OnInit {
   }
 
   checkLoginAdmin(){
-    console.log(this.loginForm?.value);
+    // console.log(this.loginForm?.value);
 
     let data = this.loginForm?.value;
     this.authService.adminLogin(data).subscribe(
       (res) => {
-        console.log(res);
+        // console.log(res);
         if(res.status === 'successfully'){
+          sessionStorage.removeItem('token_admin');
           sessionStorage.setItem('token_admin', res.token);
           sessionStorage.setItem('user_name', res.user.name);
           this.router.navigate(['admin']);
