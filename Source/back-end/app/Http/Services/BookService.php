@@ -23,8 +23,6 @@ class BookService
     }
     function store($request){
         $book = new Book();
-//        $data = ($request);
-//        dd($data);
         $book->fill($request);
         $this->bookRepo->store($book);
     }

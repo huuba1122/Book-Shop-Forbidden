@@ -13,7 +13,7 @@ class CategoryRepository
     }
 
     function findById($id){
-        return Category::findOrFail($id);;
+        return Category::findOrFail($id);
     }
 
     function getInstance(): Category

@@ -1,1 +1,218 @@
-<p>book-edit works!</p>
+<section class="content">
+    <div class="row">
+      <!-- left column -->
+  
+      <div class="col-md-12">
+        <!-- general form elements disabled -->
+        <div class="box box-warning">
+          <div class="box-header">
+            <h3 class="box-title">Chỉnh sửa sách</h3>
+          </div><!-- /.box-header -->
+          <div class="box-body">
+            <form role="form" [formGroup]="updateBookForm" (ngSubmit)="submit()">
+              <!-- text input -->
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label>Tên</label>
+                  <input formControlName="name"  type="text" class="form-control" placeholder="Enter ...">
+                  <div class="alert alert-danger" role="alert"
+                  *ngIf="updateBookForm.controls.name.errors?.required && updateBookForm.controls.name?.touched">
+                  Tên không được để trống!
+                </div>
+                </div>
+              
+  
+                <div class="form-group col-md-6">
+                  <label>Giá tiền</label>
+                  <input formControlName="price" type="text" class="form-control" placeholder="Enter ...">     
+                  <div class="alert alert-danger"
+                  *ngIf="updateBookForm.controls.price.errors?.required && updateBookForm.controls.price?.touched">
+                  Giá không được để trống!
+                </div>
+                </div>
+              </div>
+              <!-- textarea -->
+  
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label>Thể loại</label>
+                  <select class="form-control" formControlName="category_id">
+                    <option  *ngFor="let item of categories" [value]="item.id">{{item.name}}
+                    </option>
+                  </select>
+                </div>
+              <!-- textarea -->
+  
+                <div class="form-group col-md-6">
+                  <label>Tác giả</label>
+                  <select class="form-control" formControlName="author_id">
+                    <option *ngFor="let item of authors"[value]="item.id">{{item.name}}</option>
+                  </select>
+                </div>
+              </div>
+              <!-- textarea -->
+  
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label>Ảnh</label>
+                  <input #fileInput type="file" class="form-control" formControlName="image">
+                </div>
+  
+                <div class="form-group col-md-6">
+                  <label>Năm xuất bản </label>
+                  <input type="date" formControlName="year_of_publication" class="form-control" placeholder="Enter ...">
+                  <div class="alert alert-danger"
+                  *ngIf="updateBookForm.controls.year_of_publication.errors?.required && updateBookForm.controls.year_of_publication?.touched">
+                  Năm xuất bản  không được để trống!
+                </div>
+                </div>
+              </div>
+              <!-- textarea -->
+  
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label>Nhà xuất bản</label>
+                  <select class="form-control" formControlName="publisher_id">
+                    <option *ngFor="let item of publishers" [value]="item.id">{{item.name}}</option>
+                  </select>
+                </div>
+  
+                <div class="form-group col-md-6">
+                  <label>Mã isbn</label>
+                  <input type="number" formControlName="isbn" class="form-control" placeholder="Enter ...">
+                  <div class="alert alert-danger"
+                  *ngIf="updateBookForm.controls.isbn.errors?.required && updateBookForm.controls.isbn?.touched">
+                  Mã isbn  không được để trống!
+                </div>
+                </div>
+              </div>
+              <!-- textarea -->
+  
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label>Giấy phép xuất bản</label>
+                  <input type="text" formControlName="license" class="form-control" placeholder="Enter ...">
+                  <div class="alert alert-danger"
+                  *ngIf="updateBookForm.controls.license.errors?.required && updateBookForm.controls.license?.touched">
+                  Giấy phép không được để trống!
+                </div>
+                </div>
+  
+  
+                <div class="form-group col-md-6">
+                  <label>Tái bản lần </label>
+                  <input type="number" formControlName="reprint_of_book" class="form-control" placeholder="Enter ...">
+                  <div class="alert alert-danger"
+                  *ngIf="updateBookForm.controls.reprint_of_book.errors?.required && updateBookForm.controls.reprint_of_book?.touched">
+                  Tái bản  không được để trống!
+                </div>
+                </div>
+              </div>
+              <!-- textarea -->
+              <!-- <div class="row">
+                
+                <div class="form-group col-md-6">
+                  <label>Sách hot mọi thời đại</label>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Checkbox 1
+                    </label>
+                  </div>
+    
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Checkbox 2
+                    </label>
+                  </div>
+    
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Checkbox 3
+                    </label>
+                  </div>
+                </div>
+  
+                
+  
+                <div class="form-group col-md-6">
+                  <label>Sách đề cử</label>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Checkbox 1
+                    </label>
+                  </div>
+    
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Checkbox 2
+                    </label>
+                  </div>
+    
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Checkbox 3
+                    </label>
+                  </div>
+                </div>
+              </div> -->
+              <!-- textarea -->
+  
+              
+              <div class="row">
+                
+                <div class="form-group col-md-6">
+                  <label>Số trang</label>
+                  <input type="number" formControlName="page_number" class="form-control" placeholder="Enter ...">
+                  <div class="alert alert-danger"
+                  *ngIf="updateBookForm.controls.page_number.errors?.required && updateBookForm.controls.page_number?.touched">
+                  Số trang không được để trống!
+                </div>
+                </div>
+  
+                <div class="form-group col-md-6">
+                  <label>Ngôn ngữ</label>
+                  <input type="text" formControlName="language" class="form-control" placeholder="Enter ...">
+                  <div class="alert alert-danger"
+                  *ngIf="updateBookForm.controls.language.errors?.required && updateBookForm.controls.language?.touched">
+                  Ngôn ngữ không được để trống!
+                </div>
+                </div>
+              </div>
+  
+              <!-- textarea -->
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label>Nội dung</label>
+                  <textarea class="form-control" formControlName="content" rows="3" placeholder="Enter ..."></textarea>
+                  <div class="alert alert-danger"
+                  *ngIf="updateBookForm.controls.content.errors?.required && updateBookForm.controls.content?.touched">
+                  Nội dung không được để trống!
+                </div>
+                </div>
+  
+                <div class="form-group col-md-6">
+                  <label>Tóm tắt sách</label>
+                  <textarea class="form-control" formControlName="description" rows="3" placeholder="Enter ..."></textarea>
+                  <div class="alert alert-danger"
+                  *ngIf="updateBookForm.controls.description.errors?.required && updateBookForm.controls.description?.touched">
+                  Tóm tắt không được để trống!
+                </div>
+                </div>
+              </div>
+                          <!-- submit -->
+  
+              <div class="box-footer">
+                <button   type="submit" (click)="updateBook()" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div><!-- /.box-body -->
+        </div><!-- /.box -->
+      </div>
+    </div> <!-- /.row -->
+  </section>

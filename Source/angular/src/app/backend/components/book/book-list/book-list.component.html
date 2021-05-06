@@ -17,22 +17,25 @@
         <!-- data -->
         <div class="col-xs-12">
             <div class="box">
-                <div class="box-header col-md-3">
-                    <!-- search form -->
-                    <nav class="navbar navbar-light bg-light">
-                        <form class="form-inline">
-                          <div class="input-group">
-                            <div class="input-group-prepend">
-                            </div>
-                            <input type="text" class="form-control" placeholder="Search..." aria-label="Username" aria-describedby="basic-addon1">
-                          </div>
-                        </form>
-                      </nav>
-                    <!-- /.search form -->
+                <div>
+                    <div class="box-header col-md-3" >
+                        <!-- search form -->
+                        <nav class="navbar navbar-light bg-light ">
+                            <form class="form-inline">
+                              <div class="input-group">
+                                <div class="input-group-prepend">
+                                </div>
+                                <input type="text" class="form-control" placeholder="Search..." aria-label="Username" aria-describedby="basic-addon1">
+                              </div>
+                            </form>
+                          </nav>
+                        <!-- /.search form -->
+                    </div>
+                    <div class="box-header col-md-9">
+                        <a class="btn-sm btn-success btn-flat" style="float: right;margin-top: 15px;" [routerLink] = "['../book-add']">Thêm mới</a>
+                    </div>
                 </div>
-                <div class="box-header col-md-9">
-                    <a class="btn-sm btn-success btn-flat" style="float: right;margin-top: 15px;" [routerLink] = "['../book-add']">Thêm mới</a>
-                </div>
+                
                 <!-- /.box-header -->
                 <div class="box-body">
                     <table id="example2" class="table table-bordered table-hover">
@@ -40,13 +43,14 @@
                             <tr>
                                 <th>#</th>
                                 <th>Tên</th>
+                                <th>Mã isbn</th>
                                 <th>Ảnh</th>
                                 <th>Thể loại</th>
                                 <th>Tác giả</th>
-                                <th>Năm xuất bản</th>
+                                <!-- <th>Năm xuất bản</th> -->
                                 <th>Nhà xuất bản</th>
-                                <th>Mã isbn</th>
-                                <th>Giấy phép</th>
+                                <!-- <th>Giấy phép</th> -->
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,16 +62,27 @@
                             ">
                             <td>{{i+1}}</td>
                             <td>{{item['name']}}</td>
+                            <td>{{item['isbn']}}</td>
                             <td><img src="{{item['image']}}" alt="" height="32"></td>
                             <td>{{item['category_id']}}</td>
                             <td>{{item['author_id']}}</td>
-                            <td>{{item['year_of_publication']}}</td>
+                            <!-- <td>{{item['year_of_publication']}}</td> -->
                             <td>{{item['publisher_id']}}</td>
-                            <td>{{item['isbn']}}</td>
-                            <td>{{item['license']}}</td>
-                            
+                            <!-- <td>{{item['license']}}</td> -->
+                            <td>
+                                <div style="display: inline-flex;width:100%; justify-content: space-around;">
+                                    <div>
+                                        <a [routerLink]="['../book-edit', item.id]" class="text-primary"><i class="fa fa-edit"></i></a>
+                                    </div>
+                                    <div>
+                                        <a class="text-danger" (click) = "deleteBook(item['id'],item['name'])"><i class="fa fa-trash-o"></i> </a>
+                                    </div>
+                                </div>
+                            </td>    
                         </tbody>
-                        <tfoot>
+
+                        
+                        <!-- <tfoot>
                             <tr> <th>#</th>
                                 <th>Tên</th>
                                 <th>Ảnh</th>
@@ -78,37 +93,18 @@
                                 <th>Mã isbn</th>
                                 <th>Giấy phép</th>
                             </tr>
-                        </tfoot>
+                        </tfoot> -->
                     </table>
+                 
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="content-header main-header navbar-right">
-                                <ul class="pagination">
-                                    <li class="prev disabled">
-                                        <a href="#">← Previous</a>
-                                    </li>
-                                    <li class="active">
-                                        <a href="#">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">4</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">5</a>
-                                    </li>
-                                    <li class="next">
-                                        <a href="#">Next → </a>
-                                    </li>
-                                </ul>
+                                <pagination-controls previousLabel="Prev" nextLabel="Next"
+                                    (pageChange)="onTableDataChange($event)">
+                                </pagination-controls>
                             </div>
                         </div>
-                    </div>
+                    </div>    
                 </div>
                 <!-- /.box-body -->
             </div>

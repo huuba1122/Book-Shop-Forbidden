@@ -39,7 +39,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BackendRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule,
+    NgxPaginationModule
     // BrowserAnimationsModule,
     // ToastrModule.forRoot()
   ]

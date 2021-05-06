@@ -36,4 +36,18 @@ export class BookService {
       return this.http.delete(this.authService.base_url + '/admin/book/' + id + '/delete', this.authService.getHeader());
    }
 
+   adminGetCategory(){
+    return this.http.get(this.authService.base_url + '/admin/category/list',this.authService.getHeader());
+   }
+
+   adminGetAuthor(){
+    return this.http.get(this.authService.base_url + '/admin/author/list',this.authService.getHeader());
+   }
+
+
+   adminGePublisher(){
+    return this.http.get(this.authService.base_url + '/admin/publisher/list',this.authService.getHeader());
+   }
+
+   
 }

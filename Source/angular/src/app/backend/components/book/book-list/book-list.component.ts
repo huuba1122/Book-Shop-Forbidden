@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { BookService } from 'src/app/services/book.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class BookListComponent implements OnInit {
   constructor(
     private bookService: BookService,
     private formbd: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { 
     this.createBookForm = this.formbd.group({
       name: ['', Validators.required, Validators.minLength(6)],
@@ -44,9 +46,26 @@ export class BookListComponent implements OnInit {
         this.count = this.books.length;
       }
     )
-    
   }
 
-  
+
+  onTableDataChange(e:any){
+    this.page = e;
+    // console.log(e);
+  }
+
+  deleteBook(id: number, name: string ){
+    console.log(id, name);
+    if(confirm('Are you sure book: ' + name)){
+      this.bookService.adminDeleteBook(id).subscribe(
+        (res) => {
+          if(res.status === 'success'){
+            this.toastr.error('Xóa sach thành công!', 'Thông báo');
+            this.getAllBook();
+          }
+        }
+      )
+    }
+  }
 
 }

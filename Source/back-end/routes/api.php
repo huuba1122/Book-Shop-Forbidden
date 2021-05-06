@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AuthorController;
+
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +24,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-        // jwt
 
 Route::prefix('admin')->group(function () {
     Route::post('/login', [UserController::class, 'login']);
@@ -47,8 +48,6 @@ Route::prefix('admin')->group(function () {
             Route::delete('/{id}/delete',[BookController::class, 'delete']);
         });
 
-
-
         Route::prefix('author')->group(function () {
             Route::get('list',[AuthorController::class, 'getAll']);
             Route::post('store',[AuthorController::class, 'store']);
@@ -56,5 +55,12 @@ Route::prefix('admin')->group(function () {
             Route::post('/{id}/update',[AuthorController::class, 'update']);
             Route::delete('/{id}/delete',[AuthorController::class, 'delete']);
         });
+
+
+        Route::prefix('publisher')->group(function () {
+            Route::get('list',[PublisherController::class, 'getAll']);
+        });
     });
 });
+
+

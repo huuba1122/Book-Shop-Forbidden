@@ -1,113 +1,218 @@
 <section class="content">
-    <div class="row">
-      <!-- left column -->
+  <div class="row">
+    <!-- left column -->
+
+    <div class="col-md-12">
+      <!-- general form elements disabled -->
+      <div class="box box-warning">
+        <div class="box-header">
+          <h3 class="box-title">Thêm mới sách </h3>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+          <form role="form" [formGroup]="createBookForm" (ngSubmit)="submit()">
+            <!-- text input -->
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label>Tên</label>
+                <input formControlName="name"  type="text" class="form-control" placeholder="Enter ...">
+                <div class="alert alert-danger" role="alert"
+                *ngIf="createBookForm.controls.name.errors?.required && createBookForm.controls.name?.touched">
+                Tên không được để trống!
+              </div>
+              </div>
+            
+
+              <div class="form-group col-md-6">
+                <label>Giá tiền</label>
+                <input formControlName="price" type="number" class="form-control" placeholder="Enter ...">     
+                <div class="alert alert-danger"
+                *ngIf="createBookForm.controls.price.errors?.required && createBookForm.controls.price?.touched">
+                Giá không được để trống!
+              </div>
+              </div>
+            </div>
+            <!-- textarea -->
+
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label>Thể loại</label>
+                <select class="form-control" formControlName="category_id">
+                  <option  *ngFor="let item of categories" [value]="item.id">{{item.name}}
+                  </option>
+                </select>
+              </div>
+            <!-- textarea -->
+
+              <div class="form-group col-md-6">
+                <label>Tác giả</label>
+                <select class="form-control" formControlName="author_id">
+                  <option *ngFor="let item of authors"[value]="item.id">{{item.name}}</option>
+                </select>
+              </div>
+            </div>
+            <!-- textarea -->
+
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label>Ảnh</label>
+                <input #fileInput type="file" class="form-control" formControlName="image">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label>Năm xuất bản </label>
+                <input type="date" formControlName="year_of_publication" class="form-control" placeholder="Enter ...">
+                <div class="alert alert-danger"
+                *ngIf="createBookForm.controls.year_of_publication.errors?.required && createBookForm.controls.year_of_publication?.touched">
+                Năm xuất bản  không được để trống!
+              </div>
+              </div>
+            </div>
+            <!-- textarea -->
+
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label>Nhà xuất bản</label>
+                <select class="form-control" formControlName="publisher_id">
+                  <option *ngFor="let item of publishers" [value]="item.id">{{item.name}}</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label>Mã isbn</label>
+                <input type="number" formControlName="isbn" class="form-control" placeholder="Enter ...">
+                <div class="alert alert-danger"
+                *ngIf="createBookForm.controls.isbn.errors?.required && createBookForm.controls.isbn?.touched">
+                Mã isbn  không được để trống!
+              </div>
+              </div>
+            </div>
+            <!-- textarea -->
+
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label>Giấy phép xuất bản</label>
+                <input type="text" formControlName="license" class="form-control" placeholder="Enter ...">
+                <div class="alert alert-danger"
+                *ngIf="createBookForm.controls.license.errors?.required && createBookForm.controls.license?.touched">
+                Giấy phép không được để trống!
+              </div>
+              </div>
+
+
+              <div class="form-group col-md-6">
+                <label>Tái bản lần </label>
+                <input type="number" formControlName="reprint_of_book" class="form-control" placeholder="Enter ...">
+                <div class="alert alert-danger"
+                *ngIf="createBookForm.controls.reprint_of_book.errors?.required && createBookForm.controls.reprint_of_book?.touched">
+                Tái bản  không được để trống!
+              </div>
+              </div>
+            </div>
+            <!-- textarea -->
+            <!-- <div class="row">
+              
+              <div class="form-group col-md-6">
+                <label>Sách hot mọi thời đại</label>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox">
+                    Checkbox 1
+                  </label>
+                </div>
   
-      <div class="col-md-6">
-        <!-- general form elements disabled -->
-        <div class="box box-warning">
-          <div class="box-header">
-            <h3 class="box-title">Them moi sach </h3>
-          </div><!-- /.box-header -->
-          <div class="box-body">
-            <form role="form">
-              <!-- text input -->
-              <div class="form-group">
-                <label>Ten</label>
-                <input type="text" class="form-control" placeholder="Enter ...">
-              </div>
-             
-
-              <!-- textarea -->
-              <div class="form-group">
-                <label>Anh</label>
-              <input #fileInput type="file" class="form-control">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox">
+                    Checkbox 2
+                  </label>
+                </div>
+  
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox">
+                    Checkbox 3
+                  </label>
+                </div>
               </div>
 
-              <div class="form-group">
-                <label>The loai</label>
-                <select class="form-control">
-                  <option>option 1</option>
-                  <option>option 2</option>
-                  <option>option 3</option>
-                  <option>option 4</option>
-                  <option>option 5</option>
-                </select>
+              
+
+              <div class="form-group col-md-6">
+                <label>Sách đề cử</label>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox">
+                    Checkbox 1
+                  </label>
+                </div>
+  
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox">
+                    Checkbox 2
+                  </label>
+                </div>
+  
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox">
+                    Checkbox 3
+                  </label>
+                </div>
+              </div>
+            </div> -->
+            <!-- textarea -->
+
+            
+            <div class="row">
+              
+              <div class="form-group col-md-6">
+                <label>Số trang</label>
+                <input type="number" formControlName="page_number" class="form-control" placeholder="Enter ...">
+                <div class="alert alert-danger"
+                *ngIf="createBookForm.controls.page_number.errors?.required && createBookForm.controls.page_number?.touched">
+                Số trang không được để trống!
+              </div>
               </div>
 
-              <div class="form-group">
-                <label>Tac gia</label>
-                <select class="form-control">
-                  <option>option 1</option>
-                  <option>option 2</option>
-                  <option>option 3</option>
-                  <option>option 4</option>
-                  <option>option 5</option>
-                </select>
+              <div class="form-group col-md-6">
+                <label>Ngôn ngữ</label>
+                <input type="text" formControlName="language" class="form-control" placeholder="Enter ...">
+                <div class="alert alert-danger"
+                *ngIf="createBookForm.controls.language.errors?.required && createBookForm.controls.language?.touched">
+                Ngôn ngữ không được để trống!
+              </div>
+              </div>
+            </div>
+
+            <!-- textarea -->
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label>Nội dung</label>
+                <textarea class="form-control" formControlName="content" rows="3" placeholder="Enter ..."></textarea>
+                <div class="alert alert-danger"
+                *ngIf="createBookForm.controls.content.errors?.required && createBookForm.controls.content?.touched">
+                Nội dung không được để trống!
+              </div>
               </div>
 
-              <div class="form-group">
-                <label>Nam xuat ban</label>
-                <input type="date" class="form-control" placeholder="Enter ...">
+              <div class="form-group col-md-6">
+                <label>Tóm tắt sách</label>
+                <textarea class="form-control" formControlName="description" rows="3" placeholder="Enter ..."></textarea>
+                <div class="alert alert-danger"
+                *ngIf="createBookForm.controls.description.errors?.required && createBookForm.controls.description?.touched">
+                Tóm tắt không được để trống!
               </div>
+              </div>
+            </div>
+                        <!-- submit -->
 
-              <div class="form-group">
-                <label>Nha xuat ban</label>
-                <select class="form-control">
-                  <option>option 1</option>
-                  <option>option 2</option>
-                  <option>option 3</option>
-                  <option>option 4</option>
-                  <option>option 5</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label>Ma isbn</label>
-                <input type="number" class="form-control" placeholder="Enter ...">
-              </div>
-
-              <div class="form-group">
-                <label>Giay phep</label>
-                <input type="text" class="form-control" placeholder="Enter ...">
-              </div>
-              <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            </form>
-          </div><!-- /.box-body -->
-        </div><!-- /.box -->
-      </div><!--/.col (right) -->
-      <div class="col-md-6">
-        <div class="box box-primary">
-          <div class="box-header">
-            <h3 class="box-title"></h3>
-          </div><!-- /.box-header -->
-          <!-- form start -->
-          <form role="form">
-            <div class="box-body">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputFile">File input</label>
-                <input type="file" id="exampleInputFile">
-                <p class="help-block">Example block-level help text here.</p>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox"> Check me out
-                </label>
-              </div>
-            </div><!-- /.box-body -->
+            <div class="box-footer">
+              <button type="submit" (click)="createBook()" class="btn btn-primary">Submit</button>
+            </div>
           </form>
-        </div>
-
-
-      </div>
-    </div>   <!-- /.row -->
-  </section>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div>
+  </div> <!-- /.row -->
+</section>
