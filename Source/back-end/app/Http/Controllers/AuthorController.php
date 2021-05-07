@@ -75,4 +75,11 @@ class AuthorController extends Controller
             'status' => 'success'
         ]);
     }
+
+    function search(Request $request): \Illuminate\Http\JsonResponse
+    {
+        
+        $authors = $this->authorService->search($request->all());
+        return response()->json($authors, 200);
+    }
 }

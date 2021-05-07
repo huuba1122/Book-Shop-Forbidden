@@ -30,6 +30,12 @@ export class AuthorService {
     });
   }
 
+  adminDeleteAuthor(id: number): Observable<any> {
+    return this.http.delete(this.url + '/admin/author/' + id + '/delete', {
+      headers: this.getHeaders()
+    });
+  }
+
   adminUpdateAuthor(data: any, id: number): Observable<any> {
     return this.http.post(this.url + '/admin/author/' + id + '/update', data, {
       headers: this.getHeaders()
@@ -38,6 +44,12 @@ export class AuthorService {
   adminCreateAuthor(data: any): Observable<any> {
     // console.log(this.getHeaders());
     return this.http.post<any>(this.url + '/admin/author/store', data, {
+      headers: this.getHeaders()
+    });
+  }
+
+  adminSearchAuthor(data: any): Observable<any> {
+    return this.http.post(this.authService.base_url + '/admin/author/search', data, {
       headers: this.getHeaders()
     });
   }

@@ -34,7 +34,7 @@ const routes: Routes = [
       {path: 'author-list', component: AuthorListComponent},
       {path: 'author-add', component: AuthorAddComponent},
       {path: 'author-edit/:id', component: AuthorEditComponent},
-      {path: 'author-detail', component: AuthorDetailComponent}
+      {path: 'author-detail/:id', component: AuthorDetailComponent}
     ],
     canActivate: [AuthGuard],
   },

@@ -31,4 +31,9 @@ class AuthorRepository
       $author->update();
   }
 
+  function search($search)
+  {
+      return Author::where('name','LIKE',"%$search%")->get();
+  }
+
 }

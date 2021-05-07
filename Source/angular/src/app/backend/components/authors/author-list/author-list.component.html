@@ -19,8 +19,7 @@
                             <div class="form-inline">
                                 <div class="input-group">
                                     <div class="input-group-prepend" style="margin-top: 15px;">
-                                        <input type="text" class="form-control" placeholder="Search.." aria-label="Username"
-                                            aria-describedby="basic-addon1">
+                                        <input type="text" name="p" class="form-control" placeholder="Search..." aria-label="search" (change) = "searchAuthor($event)" aria-describedby="basic-addon1">
                                     </div>
                                 </div>
                             </div>
@@ -40,7 +39,8 @@
                             <tr>
                                 <th>#</th>
                                 <th>Tên</th>
-                                <th>Năm sinh-năm mất</th>
+                                <th>Năm sinh</th>
+                                <th>Năm mất</th>
                                 <th>Số lượng sách</th>
                                 <th>Hình ảnh</th>
                                 <th></th>
@@ -54,8 +54,9 @@
                             }; index as i
                             ">
                                 <td>{{i+1}}</td>
-                                <td>{{author.name}}</td>
-                                <td>{{author.birth_death}}</td>
+                                <td><a [routerLink]="['../author-detail', author.id]" routerLinkActive="active">{{author.name}}</a></td>
+                                <td>{{author.birth_of_year}}</td>
+                                <td>{{author.death_of_year}}</td>
                                 <td>{{author.quantity}}</td>
                                 <td><img src="{{image_path}}{{author.image}}" alt="image" height="32px"></td>
                                 <td>
@@ -64,7 +65,7 @@
                                             <a class="text-primary" [routerLink] = "['../author-edit/'+author.id]"><i class="fa fa-edit"></i></a>
                                         </div>
                                         <div>
-                                            <a class="text-danger"><i class="fa fa-trash-o"></i> </a>
+                                            <a class="text-danger" (click) = "deleteAuthor(author['id'],author['name'])" ><i class="fa fa-trash-o"></i></a>
                                         </div>
                                     </div>
                                 </td>
@@ -74,7 +75,8 @@
                             <tr>
                                 <th>#</th>
                                 <th>Tên</th>
-                                <th>Năm sinh-năm mất</th>
+                                <th>Năm sinh</th>
+                                <th>Năm mất</th>
                                 <th>Số lượng sách</th>
                                 <th>Hình ảnh</th>
                                 <th></th>

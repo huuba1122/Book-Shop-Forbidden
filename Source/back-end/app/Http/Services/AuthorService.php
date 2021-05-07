@@ -61,4 +61,10 @@ class AuthorService
          $author = $this->authorRepo->findById($id);
          $this->authorRepo->delete($author);
      }
+
+     function search($search)
+    {
+//        print_r($search['name']);
+        return $this->authorRepo->search($search['name']);
+    }
 }

@@ -137,7 +137,7 @@ export class CategoryListComponent implements OnInit {
       this.categoryService.adminDeleteCategory(id).subscribe(
         (res) => {
           if(res.status === 'success'){
-            this.toastr.error('Xóa thể loại thành công!', 'Thông báo');
+            this.toastr.success('Xóa thể loại thành công!', 'Thông báo');
             this.getAllCategory();
           }
         }

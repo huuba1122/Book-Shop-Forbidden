@@ -9,7 +9,8 @@ class Author extends Model
 {
     protected $fillable = [
         'name',
-        'birth_death',
+        'birth_of_year',
+        'death_of_year',
         'country',
         'link_wiki',
     ];

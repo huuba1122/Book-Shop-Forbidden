@@ -1,25 +1,30 @@
 <div class="col-sm-12 padding-right">
     <div class="product-details"><!--product-details-->
-        <div class="col-sm-4">
+        <div class="col-sm-3" style="height: 150px; ">
             <div class="view-product">
-                <img src="/assets/frontend/images/product-details/1.jpg" alt="" />
+                <img src="{{image_path}}{{author.image}}" alt="image"/>
             </div>
         </div>
-        <div class="col-sm-8">
-            <div class="product-information"><!--/product-information-->
+        <div class="col-sm-9">
+            <div class="product-information" *ngIf="author">
                 <img src="images/product-details/new.jpg" class="newarrival" alt="" />
-                <h2>Anne Klein Sleeveless Colorblock Scuba</h2>
-                <p>Web ID: 1089772</p>
-                <img src="images/product-details/rating.png" alt="" />
-                <p><b>Availability:</b> In Stock</p>
-                <p><b>Condition:</b> New</p>
-                <p><b>Brand:</b> E-SHOPPER</p>
+                <h2>{{author.name}}</h2>
+                <p><b>Năm sinh:  </b> {{author.birth_of_year}}</p>
+                <p><b>Năm mất:  </b> {{author.death_of_year}}</p>
+                <p><b>Số lượng tác phẩm: </b> {{author.quantity}}</p>
+                <p><b>Quốc tịch:</b> {{author.country}}</p>
+                <p><b>Link wiki: <a href="{{author.link_wiki}}">{{author.link_wiki}}</a></b></p>
                 <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
-            </div><!--/product-information-->
+                
+            </div>
+            <div>
+                <a class="btn btn-info btn-author-back" (click)="goList()" >Back</a>
+            </div>
         </div>
     </div><!--/product-details-->
     
-    <div class="category-tab shop-details-tab"><!--category-tab-->
+    <!--category-tab-->
+    <!-- <div class="category-tab shop-details-tab">
         <div class="col-sm-12">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#reviews" data-toggle="tab">Content</a></li>
@@ -33,4 +38,5 @@
                 </div>
             </div>
         </div>
-    </div><!--/category-tab-->
+    </div> -->
+    <!--/category-tab-->

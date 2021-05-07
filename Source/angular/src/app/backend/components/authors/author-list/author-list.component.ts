@@ -20,6 +20,7 @@ export class AuthorListComponent implements OnInit {
   constructor(
     private router: Router,
     private authorService: AuthorService,
+    private toast: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +36,39 @@ export class AuthorListComponent implements OnInit {
       }
     );
   }
+
+  deleteAuthor(id:number, name:string)
+  {
+    console.log(id, name);
+    if(confirm('Bạn chắc chắn có muốn xóa tác giả : ' + name)){
+      this.authorService.adminDeleteAuthor(id).subscribe(
+        (res) => {
+          this.getAllAuthor();
+          this.toast.success('Thông báo', 'Xóa tác giả thành công!')
+        }, error => console.log(error)
+      )
+    }
+  }
+  
+
+  searchAuthor(e: any)
+  {
+    let data = {
+      "name": e.target.value
+    }
+    if(data.name){
+      this.authorService.adminSearchAuthor(data).subscribe(
+        (res) => {
+          this.authors = res;
+          this.count = this.authors.length;
+        }
+      )
+    }else{
+      this.getAllAuthor();
+    }
+    
+  }
+
 
   onTableDataChange(e:any){
     this.page = e;

@@ -19,8 +19,11 @@ export class AdminLoginComponent implements OnInit {
     private authService: AuthService
   ) {
     this.loginForm =this.formbd.group({
-      email: [''],
-      password: ['']
+      email: ['', Validators.compose([
+        Validators.required,
+        Validators.email
+      ])],
+      password: ['', Validators.required]
     })
    }
 

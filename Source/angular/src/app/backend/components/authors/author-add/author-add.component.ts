@@ -28,7 +28,11 @@ export class AuthorAddComponent implements OnInit {
       name: ['', Validators.required],
       image: ['', Validators.required],
       country: ['', Validators.required],
-      birth_death: ['',Validators.compose([
+      birth_of_year: ['',Validators.compose([
+        Validators.required,
+        Validators.pattern('^(1|2)?[0-9]{3}((-)(1|2)?[0-9]{3})?$')
+      ])],
+      death_of_year: ['',Validators.compose([
         Validators.required,
         Validators.pattern('^(1|2)?[0-9]{3}((-)(1|2)?[0-9]{3})?$')
       ])],
@@ -43,7 +47,8 @@ export class AuthorAddComponent implements OnInit {
     formData.append('name', data.name);
     formData.append('file', this.imgFile, this.imgFile.name);
     formData.append('country', data.country);
-    formData.append('birth_death', data.birth_death);
+    formData.append('birth_of_year', data.birth_of_year);
+    formData.append('death_of_year', data.death_of_year);
     formData.append('link_wiki', data.link_wiki);
     this.authorService.adminCreateAuthor(formData).subscribe(
       (res) => {
@@ -71,5 +76,6 @@ export class AuthorAddComponent implements OnInit {
   get name() { return this.createAuthorForm.get('name'); }
   get image() { return this.createAuthorForm.get('image'); }
   get country() { return this.createAuthorForm.get('country'); }
-  get birth_death() { return this.createAuthorForm.get('birth_death'); }
+  get birth_of_year() { return this.createAuthorForm.get('birth_of_year'); }
+  get death_of_year() { return this.createAuthorForm.get('birth_of_year'); }
 }

@@ -34,10 +34,18 @@ export class AuthorEditComponent implements OnInit {
       name: ['', Validators.required],
       image: [''],
       country: ['', Validators.required],
-      birth_death: ['',Validators.compose([
-        Validators.required,
-        Validators.pattern('^(1|2)?[0-9]{3}((-)(1|2)?[0-9]{3})?$')
-      ])],
+      birth_of_year: ['',
+      //  Validators.compose([
+      //   Validators.required,
+      //   Validators.pattern('^(1|2)?[0-9]{3}((-)(1|2)?[0-9]{3})?$')
+      // ])
+    ],
+      death_of_year: ['',
+      //  Validators.compose([
+      //   Validators.required,
+      //   Validators.pattern('^(1|2)?[0-9]{3}((-)(1|2)?[0-9]{3})?$')
+      // ])
+    ],
       link_wiki: ['']
     })
   }
@@ -50,7 +58,8 @@ export class AuthorEditComponent implements OnInit {
         this.updateAuthorForm.patchValue({
           name: this.author.name,
           country: this.author.country,
-          birth_death: this.author.birth_death,
+          birth_of_year: this.author.birth_of_year,
+          death_of_year: this.author.death_of_year,
           link_wiki: this.author.link_wiki
         })
       }
@@ -64,7 +73,8 @@ export class AuthorEditComponent implements OnInit {
     formData.append('name', data.name);
     formData.append('file', this.imgFile);
     formData.append('country', data.country);
-    formData.append('birth_death', data.birth_death);
+    formData.append('birth_of_year', data.birth_of_year);
+    formData.append('death_of_year', data.death_of_year);
     formData.append('link_wiki', data.link_wiki);
     // console.log(formData.get('file'));
     this.authorService.adminUpdateAuthor(formData, this.id).subscribe(
@@ -94,6 +104,7 @@ export class AuthorEditComponent implements OnInit {
   get name() { return this.updateAuthorForm.get('name'); }
   get image() { return this.updateAuthorForm.get('image'); }
   get country() { return this.updateAuthorForm.get('country'); }
-  get birth_death() { return this.updateAuthorForm.get('birth_death'); }
+  get birth_of_year() { return this.updateAuthorForm.get('birth_of_year'); }
+  get death_of_year() { return this.updateAuthorForm.get('death_of_year'); }
 
 }

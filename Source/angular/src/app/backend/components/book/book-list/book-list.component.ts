@@ -54,16 +54,15 @@ export class BookListComponent implements OnInit {
     // console.log(e);
   }
 
-  deleteBook(id: number, name: string ){
+  deleteBook(id:number, name:string)
+  {
     console.log(id, name);
-    if(confirm('Are you sure book: ' + name)){
+    if(confirm('Are you sure book name: ' + name)){
       this.bookService.adminDeleteBook(id).subscribe(
         (res) => {
-          if(res.status === 'success'){
-            this.toastr.error('Xóa sach thành công!', 'Thông báo');
-            this.getAllBook();
-          }
-        }
+          this.getAllBook();
+          this.toastr.success('Message', 'Delete sucsess')
+        }, error => console.log(error)
       )
     }
   }

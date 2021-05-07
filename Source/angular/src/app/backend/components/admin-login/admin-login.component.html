@@ -1,9 +1,20 @@
+<form class="form-login" [formGroup]="loginForm" (ngSubmit)="checkLoginAdmin()">
+    <h1>Login</h1>
+    <div *ngIf="message" class="danger text-danger">{{message}}</div>
+    <input formControlName="email" type="email" placeholder="Email">
+    <div class="validation-login"
+        *ngIf="loginForm.controls.email?.errors?.required && loginForm.controls.email?.touched">
+        Email không được để trống!
+    </div>
+    <div class="validation-login"
+    *ngIf="loginForm.controls.email?.errors?.email && loginForm.controls.email?.touched">
+    Email không đúng định dạng!
+</div>
+    <input formControlName="password" type="password" placeholder="Password">
+    <div class="validation-login" style="margin-bottom: 15px;"
+        *ngIf="loginForm.controls.password?.errors?.required && loginForm.controls.password?.touched">
+        Mật khẩu  không được để trống!
+    </div>
 
-        <form class="form-login" [formGroup]="loginForm"  (ngSubmit) = "checkLoginAdmin()">
-            <h1>Login</h1>
-            <div *ngIf = "message" class="danger text-danger">{{message}}</div>
-            <input formControlName = "email" type = "email" placeholder="Email">
-            <input formControlName = "password" type="password" placeholder="Password">
-
-            <button type="submit">login</button>
-        </form>
+    <button type="submit" [disabled]="!loginForm.valid">login</button>
+</form>

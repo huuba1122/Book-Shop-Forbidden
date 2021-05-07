@@ -54,6 +54,8 @@ Route::prefix('admin')->group(function () {
             Route::get('/{id}',[AuthorController::class, 'findById']);
             Route::post('/{id}/update',[AuthorController::class, 'update']);
             Route::delete('/{id}/delete',[AuthorController::class, 'delete']);
+            Route::post('/search',[AuthorController::class, 'search']);
+
         });
 
 
