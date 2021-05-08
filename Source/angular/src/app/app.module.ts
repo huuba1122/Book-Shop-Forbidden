@@ -8,8 +8,8 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BookDetailsComponent } from './frontend/book-details/book-details.component';
-import { HomeComponent } from './frontend/home/home.component';
+import { BookDetailsComponent } from './frontend/components/book-details/book-details.component';
+import { HomeComponent } from './frontend/components/home/home.component';
 
 @NgModule({
   declarations: [

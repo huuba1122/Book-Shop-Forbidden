@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { Author } from 'src/app/backend/components/authors/author';
 import { AuthorService } from 'src/app/services/admin/author.service';
-import { Author } from '../author';
 import { environment } from 'src/environments/environment.prod';
-
 
 @Component({
   selector: 'app-author-detail',
@@ -12,6 +10,7 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./author-detail.component.css']
 })
 export class AuthorDetailComponent implements OnInit {
+
   id!: number;
   author!: Author;
   image_path = environment.image_url;
@@ -21,7 +20,6 @@ export class AuthorDetailComponent implements OnInit {
   constructor(
     private routeActive: ActivatedRoute,
     private router: Router,
-    private toast: ToastrService,
     private authorService: AuthorService
   ) { }
 
@@ -36,10 +34,8 @@ export class AuthorDetailComponent implements OnInit {
       }, error => console.log(error))
   }
 
+  
 
-  goList() {
-    this.router.navigate(['admin/author-list']);
-  }
 
 
 }

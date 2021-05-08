@@ -34,17 +34,8 @@ export class AuthorEditComponent implements OnInit {
       name: ['', Validators.required],
       image: [''],
       country: ['', Validators.required],
-      birth_of_year: ['',
-      //  Validators.compose([
-      //   Validators.required,
-      //   Validators.pattern('^(1|2)?[0-9]{3}((-)(1|2)?[0-9]{3})?$')
-      // ])
-    ],
-      death_of_year: ['',
-      //  Validators.compose([
-      //   Validators.required,
-      //   Validators.pattern('^(1|2)?[0-9]{3}((-)(1|2)?[0-9]{3})?$')
-      // ])
+      birth_of_year: ['', Validators.pattern('^(1|2)?[0-9]{3}$')],
+      death_of_year: ['',Validators.pattern('^(1|2)?[0-9]{3}$')
     ],
       link_wiki: ['']
     })
