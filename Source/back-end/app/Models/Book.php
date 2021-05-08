@@ -9,8 +9,6 @@ class Book extends Model
 {
     protected $guarded = [
         'image',
-        'recommend',
-        'best_seller',
         'view'
     ];
     use HasFactory;

@@ -49,7 +49,7 @@
 
 
             <!-- birth_death -->
-            <div class="col-md-12" >
+            <div class="col-md-12">
               <div class="col-md-6">
                 <!-- image -->
                 <div class="form-group">
@@ -64,16 +64,14 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Năm sinh </label>
-                  <input formControlName="birth_of_year" type="text" class="form-control" id="exampleInputPassword1"
-                    placeholder="VD: 1xxx-2xxx">
+                  <input formControlName="birth_of_year" type="text" class="form-control" id="exampleInputPassword1">
                 </div>
-                <div *ngIf="birth_of_year!.invalid && (birth_of_year!.dirty || birth_of_year!.touched)"
-                  class="alert alert-danger">
-                  <div *ngIf="birth_of_year!.errors!.required">
+                <div *ngIf="birth_of_year!.invalid &&  birth_of_year!.touched" class="alert alert-danger">
+                  <!-- <div *ngIf="birth_of_year!.errors!.required">
                     Năm sinh không được để trống!
-                  </div>
+                  </div> -->
                   <div *ngIf="birth_of_year!.errors!.pattern">
-                    Năm sinh, năm mất sai định dạng (VD: 1xxx-2xxx)!
+                    Năm sinh sai định dạng!
                   </div>
                 </div>
               </div>
@@ -90,32 +88,34 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="exampleInputPassword1">Năm mất</label>
-                  <input formControlName="death_of_year" type="text" class="form-control" id="exampleInputPassword1"
-                    placeholder="VD: 1xxx-2xxx">
+                  <input formControlName="death_of_year" type="text" class="form-control" id="exampleInputPassword1">
                 </div>
-                <div *ngIf="death_of_year!.invalid && (birth_of_year!.dirty || death_of_year!.touched)"
-                  class="alert alert-danger">
-                  <div *ngIf="death_of_year!.errors!.required">
+                <div *ngIf="death_of_year!.invalid &&  death_of_year!.touched" class="alert alert-danger">
+                  <!-- <div *ngIf="death_of_year!.errors!.required">
                     Năm mất không được để trống!
-                  </div>
+                  </div> -->
                   <div *ngIf="death_of_year!.errors!.pattern">
-                    Năm mất sai định dạng (VD: 1xxx-2xxx)!
+                    Năm mất sai định dạng !
                   </div>
                 </div>
+              </div>
+              <div class="col-md-6">
+                
                 <div class="form-group">
                   <label>Đường dẫn Wikipedia</label>
-                  <textarea formControlName="link_wiki" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                  <input formControlName="link_wiki" type="text" class="form-control">
+                  <!-- <textarea formControlName="link_wiki" class="form-control" rows="3"></textarea> -->
                 </div>
               </div>
 
-             
+
             </div>
           </div>
           <!-- /.box-body -->
 
           <div class="box-footer">
             <button type="submit" class="btn btn-success" style="margin-left: 30px;"
-            [disabled]="!createAuthorForm.valid">Thêm tác giả</button>
+              [disabled]="!createAuthorForm.valid">Thêm tác giả</button>
           </div>
         </form>
       </div>

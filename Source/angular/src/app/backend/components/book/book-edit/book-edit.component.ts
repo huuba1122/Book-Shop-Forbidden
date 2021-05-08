@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BookService } from 'src/app/services/book.service';
+import { environment } from 'src/environments/environment.prod';
 import { Books } from '../Book';
 
 @Component({
@@ -19,6 +20,10 @@ export class BookEditComponent implements OnInit {
   publishers: any= [];
   count: any;
   id: any;
+  imgSrc = '';
+  imgFile:any;
+  image_path = environment.image_url;
+  isShowOleImage = true;
   // category: any;
   constructor(
     private routeActive: ActivatedRoute,
@@ -49,32 +54,34 @@ export class BookEditComponent implements OnInit {
       description: ['', Validators.required],
       content: ['', Validators.required],
       reprint_of_book: ['', Validators.required],
-      view: ['', Validators.required],
-      // recommend: ['', Validators.required],
-      // best_seller: ['', Validators.required],
+      recommend: [''],
+      best_seller: [''],
       stock: ['', Validators.required],
       page_number: ['', Validators.required],
-      language: ['', Validators.required],
-      image: ['', Validators.required]
+      language: [''],
+      image: ['']
 
     })
     
-    // this.books = this.bookService.adminGetCategory();
+    this.id = +this.routeActive.snapshot.paramMap.get("id")!;
   }
   
 
   updateBook(){
+    // console.log(this.imgFile);
+    // console.log(this.id);
     let data = this.updateBookForm.value;
-    this.bookService.adminUpdateBook(data.id, data).subscribe(
-      (res) => {
+    // console.log(JSON.stringify(data));
+    let formData = new FormData();
+    formData.append('data', JSON.stringify(data));
+    if(this.imgFile){
+      formData.append('file', this.imgFile, this.imgFile.name);
+      // console.log(formData.get('file'));
+    }
+    // console.log(formData.get('data'));
+    this.bookService.adminUpdateBook(formData, this.id).subscribe(
+      res => {
         console.log(res);
-        this.router.navigate(['admin/book-list']);
-        // this.toastr.success('Cap nhap thành công!', 'Thông báo');
-        this.updateBookForm.reset();
-      }, error => {
-        console.log(error);
-        this.toastr.error("You have failed update !")
-
       }
     )
   }
@@ -84,8 +91,9 @@ export class BookEditComponent implements OnInit {
     this.bookService.adminGetBook(this.id).subscribe(
       res => {
         this.book = res;
-        console.log(res);
-        this.updateBookForm.patchValue({
+        // console.log(res);
+        this.updateBookForm.patchValue(
+          {
           name: this.book.name,
           price: this.book.price,
           isbn: this.book.isbn,
@@ -97,22 +105,56 @@ export class BookEditComponent implements OnInit {
           description: this.book.description,
           content: this.book.content,
           license: this.book.license,
-          image: this.book.image,
-          view: this.book.view,
           recommend: this.book.recommend,
           best_seller: this.book.best_seller,
           stock: this.book.stock,
           page_number: this.book.page_number,
           language: this.book.language
-        })
+        }
+        )
       }
     )
 
 
   }
 
-  submit(){
-    console.log(this.updateBookForm.value);
+
+  onImageChange(e: any) {
+    const reader = new FileReader();
+    if (e.target.files.length && e.target.files) {
+      this.imgFile = e.target.files[0];
+      // console.log(this.imgFile);
+
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = (e: any) => {
+        this.imgSrc = e.target.result;
+        this.isShowOleImage = false;
+      }
+    }
+  }
+
+  isBestSeller(e: any) {
+    if (e.target.checked) {
+      this.updateBookForm.patchValue({
+        best_seller: 1
+      })
+    } else {
+      this.updateBookForm.patchValue({
+        best_seller: 0
+      })
+    }
+  }
+
+  isRecommend(e: any) {
+    if (e.target.checked) {
+      this.updateBookForm.patchValue({
+        recommend: 1
+      })
+    } else {
+      this.updateBookForm.patchValue({
+        recommend: 0
+      })
+    }
   }
 
   loadData()

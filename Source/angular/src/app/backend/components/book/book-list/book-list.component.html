@@ -18,16 +18,19 @@
         <div class="col-xs-12">
             <div class="box">
                 <div>
-                    <div class="box-header col-md-3" >
+                    <div class="box-header col-md-3" style="margin-top: 15px;">
                         <!-- search form -->
                         <nav class="navbar navbar-light bg-light ">
-                            <form class="form-inline">
+                            <!-- <form class="form-inline"> -->
                               <div class="input-group">
                                 <div class="input-group-prepend">
                                 </div>
-                                <input type="text" class="form-control" placeholder="Search..." aria-label="Username" aria-describedby="basic-addon1">
+                                <label>
+                                    <input type="text" class="form-control" placeholder="Tìm kiếm sách" aria-label="Username" aria-describedby="basic-addon1">
+                                </label>
+                                
                               </div>
-                            </form>
+                            <!-- </form> -->
                           </nav>
                         <!-- /.search form -->
                     </div>
@@ -45,11 +48,9 @@
                                 <th>Tên</th>
                                 <th>Mã isbn</th>
                                 <th>Ảnh</th>
-                                <th>Thể loại</th>
                                 <th>Tác giả</th>
-                                <!-- <th>Năm xuất bản</th> -->
+                                <th>Thể loại</th>
                                 <th>Nhà xuất bản</th>
-                                <!-- <th>Giấy phép</th> -->
                                 <th></th>
                             </tr>
                         </thead>
@@ -61,13 +62,13 @@
                             }; index as i
                             ">
                             <td>{{i+1}}</td>
-                            <td>{{item['name']}}</td>
-                            <td>{{item['isbn']}}</td>
-                            <td><img src="{{item['image']}}" alt="" height="32"></td>
-                            <td>{{item['category_id']}}</td>
-                            <td>{{item['author_id']}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.isbn}}</td>
+                            <td><img src="{{image_url}}{{item.image}}" alt="" height="32"></td>
+                            <td>{{item.author_name}}</td>
+                            <td>{{item.category_name}}</td>
                             <!-- <td>{{item['year_of_publication']}}</td> -->
-                            <td>{{item['publisher_id']}}</td>
+                            <td>{{item.publisher_name}}</td>
                             <!-- <td>{{item['license']}}</td> -->
                             <td>
                                 <div style="display: inline-flex;width:100%; justify-content: space-around;">
@@ -75,25 +76,25 @@
                                         <a [routerLink]="['../book-edit', item.id]" class="text-primary"><i class="fa fa-edit"></i></a>
                                     </div>
                                     <div>
-                                        <a class="text-danger" (click) = "deleteBook(item['id'],item['name'])"><i class="fa fa-trash-o"></i> </a>
+                                        <a class="text-danger" (click) = "deleteBook(item.id,item.name)"><i class="fa fa-trash-o"></i> </a>
                                     </div>
                                 </div>
                             </td>    
                         </tbody>
 
                         
-                        <!-- <tfoot>
-                            <tr> <th>#</th>
+                        <tfoot>
+                            <tr>
+                                <th>#</th>
                                 <th>Tên</th>
-                                <th>Ảnh</th>
-                                <th>Thể loại</th>
-                                <th>Tác giả</th>
-                                <th>Năm xuất bản</th>
-                                <th>Nhà xuất bản</th>
                                 <th>Mã isbn</th>
-                                <th>Giấy phép</th>
+                                <th>Ảnh</th>
+                                <th>Tác giả</th>
+                                <th>Thể loại</th>
+                                <th>Nhà xuất bản</th>
+                                <th></th>
                             </tr>
-                        </tfoot> -->
+                        </tfoot>
                     </table>
                  
                     <div class="row">

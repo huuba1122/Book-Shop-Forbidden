@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class AuthorDetailComponent implements OnInit {
   id!: number;
-  author!:Author ;
+  author!: Author;
   image_path = environment.image_url;
 
 
@@ -30,16 +30,16 @@ export class AuthorDetailComponent implements OnInit {
     this.author = new Author();
     this.id = +this.routeActive.snapshot.paramMap.get("id")!;
     this.authorService.adminGetAuthor(this.id).subscribe(
-        res => {
-          console.log(res);
-          this.author = res;
-          }, error => console.log(error))
-        }
+      res => {
+        console.log(res);
+        this.author = res;
+      }, error => console.log(error))
+  }
 
 
-        goList(){
-          this.router.navigate(['admin/author-list']);
-        }
+  goList() {
+    this.router.navigate(['admin/author-list']);
+  }
 
 
 }

@@ -17,3 +17,6 @@ p , table, a, li{
 .btn-sm{
     border-radius: 0 !important;
 }
+a{
+    cursor: pointer;
+}

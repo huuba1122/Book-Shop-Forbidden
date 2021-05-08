@@ -30,7 +30,8 @@ class CategoryService
 
     function updateQuantity($quantity, $id){
         $category = $this->categoryRepo->findById($id);
-        $category->quantity = $quantity;
+        $oldQuantity = $category->quantity;
+        $category->quantity = $quantity + $oldQuantity;
         $this->categoryRepo->update($category);
     }
 
