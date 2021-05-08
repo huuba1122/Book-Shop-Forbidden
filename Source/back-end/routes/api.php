@@ -44,7 +44,7 @@ Route::prefix('admin')->group(function () {
             Route::get('list',[BookController::class, 'getAll']);
             Route::post('store',[BookController::class, 'store']);
             Route::get('/{id}',[BookController::class, 'findById']);
-            Route::put('/{id}/update',[BookController::class, 'update']);
+            Route::post('/{id}/update',[BookController::class, 'update']);
             Route::delete('/{id}/delete',[BookController::class, 'delete']);
         });
 
@@ -57,7 +57,6 @@ Route::prefix('admin')->group(function () {
             Route::post('/search',[AuthorController::class, 'search']);
 
         });
-
 
         Route::prefix('publisher')->group(function () {
             Route::get('list',[PublisherController::class, 'getAll']);

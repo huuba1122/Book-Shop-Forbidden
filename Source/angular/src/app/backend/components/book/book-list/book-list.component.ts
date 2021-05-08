@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BookService } from 'src/app/services/book.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-book-list',
@@ -10,30 +11,18 @@ import { BookService } from 'src/app/services/book.service';
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit {
-  createBookForm!: FormGroup;
+  
   books: any;
   page = 1;
   count = 0;
-  pageSize = 3;
-
+  pageSize = 5;
+  image_url = environment.image_url;
   constructor(
     private bookService: BookService,
     private formbd: FormBuilder,
     private router: Router,
     private toastr: ToastrService
-  ) { 
-    this.createBookForm = this.formbd.group({
-      name: ['', Validators.required, Validators.minLength(6)],
-      category_id: ['', Validators.required],
-      author_id: ['', Validators.required],
-      year_of_publication: ['', Validators.required],
-      isbn: ['', Validators.required],
-      publisher_id: ['', Validators.required],
-      license: ['', Validators.required],
-      image: ['', Validators.required]
-  
-    })
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getAllBook();
@@ -42,6 +31,7 @@ export class BookListComponent implements OnInit {
   getAllBook(){
     this.bookService.adminGetAllBook().subscribe(
       (res)  => {
+        // console.log(res);
         this.books = res;
         this.count = this.books.length;
       }
@@ -56,7 +46,7 @@ export class BookListComponent implements OnInit {
 
   deleteBook(id:number, name:string)
   {
-    console.log(id, name);
+    // console.log(id, name);
     if(confirm('Are you sure book name: ' + name)){
       this.bookService.adminDeleteBook(id).subscribe(
         (res) => {

@@ -1,5 +1,5 @@
 <form class="form-login" [formGroup]="loginForm" (ngSubmit)="checkLoginAdmin()">
-    <h1>Login</h1>
+    <h1>Đăng nhập</h1>
     <div *ngIf="message" class="danger text-danger">{{message}}</div>
     <input formControlName="email" type="email" placeholder="Email">
     <div class="validation-login"
@@ -16,5 +16,5 @@
         Mật khẩu  không được để trống!
     </div>
 
-    <button type="submit" [disabled]="!loginForm.valid">login</button>
+    <button type="submit" [disabled]="!loginForm.valid">Đăng nhập</button>
 </form>

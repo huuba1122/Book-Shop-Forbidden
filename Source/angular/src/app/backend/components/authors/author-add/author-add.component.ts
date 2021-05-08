@@ -28,14 +28,8 @@ export class AuthorAddComponent implements OnInit {
       name: ['', Validators.required],
       image: ['', Validators.required],
       country: ['', Validators.required],
-      birth_of_year: ['',Validators.compose([
-        Validators.required,
-        Validators.pattern('^(1|2)?[0-9]{3}((-)(1|2)?[0-9]{3})?$')
-      ])],
-      death_of_year: ['',Validators.compose([
-        Validators.required,
-        Validators.pattern('^(1|2)?[0-9]{3}((-)(1|2)?[0-9]{3})?$')
-      ])],
+      birth_of_year: ['',Validators.pattern('^(1|2)?[0-9]{3}$')],
+      death_of_year: ['',Validators.pattern('^(1|2)?[0-9]{3}$')],
       link_wiki: [''],
       img: ['']
     })
@@ -52,7 +46,7 @@ export class AuthorAddComponent implements OnInit {
     formData.append('link_wiki', data.link_wiki);
     this.authorService.adminCreateAuthor(formData).subscribe(
       (res) => {
-        // console.log(res);
+        console.log(res);
         if (res.status === 'success') {
           this.router.navigate(['admin/author-list']);
           this.toastr.success('Thêm mới tác giả thành công!', 'Thông báo');
@@ -77,5 +71,5 @@ export class AuthorAddComponent implements OnInit {
   get image() { return this.createAuthorForm.get('image'); }
   get country() { return this.createAuthorForm.get('country'); }
   get birth_of_year() { return this.createAuthorForm.get('birth_of_year'); }
-  get death_of_year() { return this.createAuthorForm.get('birth_of_year'); }
+  get death_of_year() { return this.createAuthorForm.get('death_of_year'); }
 }

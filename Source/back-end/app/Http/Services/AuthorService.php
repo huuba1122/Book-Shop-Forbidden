@@ -52,7 +52,8 @@ class AuthorService
      function updateQuantity($number, $id)
      {
         $author = $this->authorRepo->findById($id);
-        $author->quantity = $number;
+        $oldQuantity = $author->quantity;
+        $author->quantity = $number + $oldQuantity;
         $this->authorRepo->update($author);
      }
 
