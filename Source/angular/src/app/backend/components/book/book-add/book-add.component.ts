@@ -71,8 +71,6 @@ export class BookAddComponent implements OnInit {
     let formData = new FormData();
     formData.append('data', JSON.stringify(data));
     formData.append('file', this.imgFile, this.imgFile.name);
-    // console.log(formData.get('data'));
-    // console.log(formData.get('file'));
 
     this.bookService.adminCreateBook(formData).subscribe(
       (res) => {
@@ -82,7 +80,7 @@ export class BookAddComponent implements OnInit {
           this.toastr.success('Thêm sách mới thành công!', 'Thông báo');
         }
       }, error => {
-        this.toastr.error('Thêm sách sách mới thất bại. Vui lòng liên hệ admin!', 'Thông báo');
+        this.toastr.error('Thêm sách mới thất bại. Vui lòng liên hệ admin!', 'Thông báo');
       }
     );
   }

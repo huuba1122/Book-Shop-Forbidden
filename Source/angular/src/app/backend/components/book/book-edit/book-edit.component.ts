@@ -68,31 +68,34 @@ export class BookEditComponent implements OnInit {
   
 
   updateBook(){
-    // console.log(this.imgFile);
-    // console.log(this.id);
     let data = this.updateBookForm.value;
     // console.log(JSON.stringify(data));
     let formData = new FormData();
     formData.append('data', JSON.stringify(data));
     if(this.imgFile){
       formData.append('file', this.imgFile, this.imgFile.name);
-      // console.log(formData.get('file'));
     }
-    // console.log(formData.get('data'));
     this.bookService.adminUpdateBook(formData, this.id).subscribe(
-      res => {
-        console.log(res);
-        this.router.navigate(['admin/book-list']);
+
+      (res) => {
+          // console.log(res.status);
+          if(res.status ==='success'){
+            this.router.navigate(['admin/book-list']);
+            this.toastr.success('Chỉnh Sửa sách thành công!', 'Thông báo');
+          }
+      },error => {
+        this.toastr.error('Chỉnh Sửa sách thất bại. Vui lòng liên hệ admin!', 'Thông báo');
       }
     )
   }
 
   getBook(){    
     this.id = +this.routeActive.snapshot.paramMap.get("id")!;
+    console.log(this.id);
     this.bookService.adminGetBook(this.id).subscribe(
       res => {
-        this.book = res;
-        // console.log(res);
+        this.book = res[0];
+        console.log(this.book);
         this.updateBookForm.patchValue(
           {
           name: this.book.name,

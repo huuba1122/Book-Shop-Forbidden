@@ -43,9 +43,12 @@ Route::prefix('admin')->group(function () {
         Route::prefix('book')->group(function () {
             Route::get('list',[BookController::class, 'getAll']);
             Route::post('store',[BookController::class, 'store']);
-            Route::get('/{id}',[BookController::class, 'findById']);
+            Route::get('/{id}',[BookController::class, 'showDetail']);
+            Route::get('/{id}/author-id',[BookController::class, 'findByAuthorId']);
+            Route::get('/{id}/category-id',[BookController::class, 'findByCategoryId']);
             Route::post('/{id}/update',[BookController::class, 'update']);
             Route::delete('/{id}/delete',[BookController::class, 'delete']);
+            Route::post('/search',[BookController::class, 'searchBooks']);
         });
 
         Route::prefix('author')->group(function () {

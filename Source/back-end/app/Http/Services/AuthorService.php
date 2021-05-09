@@ -5,15 +5,18 @@ namespace App\Http\Services;
 
 
 use App\Http\Repositories\AuthorRepository;
+use App\Http\Repositories\BookRepository;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Author;
 
 class AuthorService
 {
      protected $authorRepo;
-     public function __construct(AuthorRepository $authorRepo)
+     protected $bookRepo;
+     public function __construct(AuthorRepository $authorRepo, BookRepository $bookRepo)
      {
          $this->authorRepo = $authorRepo;
+         $this->bookRepo = $bookRepo;
      }
 
      function getAll()
@@ -59,8 +62,17 @@ class AuthorService
 
      function delete($id)
      {
-         $author = $this->authorRepo->findById($id);
-         $this->authorRepo->delete($author);
+        $author = $this->authorRepo->findById($id);
+        $books = $this->bookRepo->findByAuthorId($id);
+        foreach($books as $key => $value)
+        {
+            $book = $this->bookRepo->findById($value->id);
+            $book->author_id = 1;
+            $quantity = $value->stock;
+            $this->updateQuantity($quantity, 1);
+            $this->bookRepo->update($book);
+        }
+        $this->authorRepo->delete($author);
      }
 
      function search($search)

@@ -26,7 +26,9 @@
                                 <div class="input-group-prepend">
                                 </div>
                                 <label>
-                                    <input type="text" class="form-control" placeholder="Tìm kiếm sách" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control" 
+                                    (change) = "searchBooks($event)"
+                                    placeholder="Tìm kiếm sách" aria-label="Username" aria-describedby="basic-addon1">
                                 </label>
                                 
                               </div>

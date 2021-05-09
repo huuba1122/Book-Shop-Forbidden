@@ -31,28 +31,47 @@ export class BookListComponent implements OnInit {
   getAllBook(){
     this.bookService.adminGetAllBook().subscribe(
       (res)  => {
-        // console.log(res);
         this.books = res;
         this.count = this.books.length;
       }
     )
   }
 
+  searchBooks(e:any){
+    let data = e.target.value;
+    if(data){
+      let formData = new FormData();
+      formData.append('data', data);
+      this.bookService.adminSearchBook(formData).subscribe(
+        (res) => {
+          console.log(res);
+          this.books = res;
+          this.count = this.books.length;
+        }
+      )
+    }else{
+      this.getAllBook();
+    }
+  }
+
 
   onTableDataChange(e:any){
     this.page = e;
-    // console.log(e);
   }
 
   deleteBook(id:number, name:string)
   {
-    // console.log(id, name);
-    if(confirm('Are you sure book name: ' + name)){
+    if(confirm('Xác nhận xóa đầu sách có tên: ' + name)){
       this.bookService.adminDeleteBook(id).subscribe(
         (res) => {
-          this.getAllBook();
-          this.toastr.success('Message', 'Delete sucsess')
-        }, error => console.log(error)
+          if(res.status === 'success'){
+            this.getAllBook();
+            this.toastr.success('Xóa sách thành công', 'Thông báo')
+          }
+        }, error => {
+          this.toastr.success('Xóa sách thất bại! Vui lòng liên hệ admin.', 'Thông báo')
+          console.log(error)
+        }
       )
     }
   }
