@@ -39,12 +39,16 @@ class BookRepository
 
     function findByAuthorId($id)
     {
-        return Book::where('author_id', '=', $id)->get();
+        return DB::table('v_books')->where('author_id', '=', $id)->get();
+
+        // return Book::where('author_id', '=', $id)->get();
     }
 
     function findByCategoryId($id)
     {
-        return Book::where('category_id', '=', $id)->get();
+        return DB::table('v_books')->where('category_id', '=', $id)->get();
+
+        // return Book::where('category_id', '=', $id)->get();
     }
 
     function showDetail($id)

@@ -24,18 +24,24 @@ export class BookDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    // this.book = new Books();
     this.id = +this.routeActive.snapshot.paramMap.get("id")!;
-    this.bookService.adminGetBook(this.id).subscribe(
+    this.bookService.adminShowBookDetail(this.id).subscribe(
       res => {
         console.log(res);
-        this.book = res;
+        this.book = res[0];
+        
       }, error => console.log(error))
   }
 
 
   goList() {
     this.router.navigate(['admin/book-list']);
+  }
+  
+  goAuthorDetail(id: number){
+    this.router.navigate(['admin/author-detail/' + id]);
+
   }
 
 

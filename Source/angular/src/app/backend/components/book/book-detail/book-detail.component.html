@@ -7,18 +7,18 @@
         </div>
         <div class="col-sm-9">
             <div class="product-information" *ngIf="book">
-                <img src="images/product-details/new.jpg" class="newarrival" alt="" />
+                <!-- <img src="images/product-details/new.jpg" class="newarrival" alt="" /> -->
                 <h2>{{book.name}}</h2>
                 <p><b>Ma isbn:  </b> {{book.isbn}}</p>
-                <p><b>The loai:  </b> {{book.category_id}}</p>
-                <p><b>Tac gia:  </b> {{book.author_name}}</p>
+                <p><b>The loai:  </b> {{book.category_name}}</p>
+                <p><b>Tac gia:  </b> <a (click)="goAuthorDetail(book.author_id)">{{book.author_name}}</a> </p>
                 <p><b>Gia tien: </b>{{book.price}}</p>
                 <p><b>Giay phep xuat hanh: </b>{{book.license}}</p>
                 <p><b>Nam xuat ban: </b>{{book.year_of_publication}}</p>
                 <p><b>Noi dung: </b>{{book.description}}</p>
                 <!-- <p><b>Quốc tịch:</b> {{author.country}}</p>
                 <p><b>Link wiki: <a href="{{author.link_wiki}}">{{author.link_wiki}}</a></b></p> -->
-                <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+                <!-- <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a> -->
                 
             </div>
             <div>

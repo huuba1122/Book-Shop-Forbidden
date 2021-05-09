@@ -31,6 +31,13 @@ export class BookService {
       });
    }
 
+   adminShowBookDetail(id:any):Observable<any>
+   {
+      return this.http.get(this.authService.base_url + '/admin/book/'+id + '/show-detail', {
+        headers: this.getHeaders()
+      });
+   }
+
    adminGetBookByAuthorId(id:any):Observable<any>
    {
       return this.http.get(this.authService.base_url + '/admin/book/'+ id + '/author-id', {

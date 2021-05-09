@@ -21,22 +21,79 @@
                 <a class="btn btn-info btn-author-back" (click)="goList()" >Back</a>
             </div>
         </div>
-    </div><!--/product-details-->
+    </div>
+    <!--/product-details-->
     
     <!--category-tab-->
-    <!-- <div class="category-tab shop-details-tab">
+     <div class="category-tab shop-details-tab">
         <div class="col-sm-12">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#reviews" data-toggle="tab">Content</a></li>
             </ul>
+
         </div>
         <div class="tab-content">
             <div class="tab-pane fade active in" id="reviews" >
                 <div class="col-sm-12">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <p><b>Write Your Review</b></p>
+                    <div class="category-tab shop-details-tab">
+                        <div class="col-sm-12">
+                            <!-- data -->
+                            <div class="col-xs-12">
+                                <div class="box">
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <table id="example2" class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Tên</th>
+                                                    <th>Mã isbn</th>
+                                                    <th>Ảnh</th>
+                                                    <th>Tác giả</th>
+                                                    <th>Thể loại</th>
+                                                    <th>Nhà xuất bản</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let item of books ; index as i ">
+                                                    <td>{{i+1}}</td>
+                                                    <td><a [routerLink]="['../show-detail', item.id]"
+                                                            routerLinkActive="active">{{item.name}}</a></td>
+                                                    <td>{{item.isbn}}</td>
+                                                    <td><img src="{{image_path}}{{item.image}}" alt="" height="32"></td>
+                                                    <td>{{item.author_name}}</td>
+                                                    <td>{{item.category_name}}</td>
+                                                    <!-- <td>{{item['year_of_publication']}}</td> -->
+                                                    <td>{{item.publisher_name}}</td>
+                                                    <!-- <td>{{item['license']}}</td> -->
+                                            </tbody>
+                
+                
+                                            <tfoot>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Tên</th>
+                                                    <th>Mã isbn</th>
+                                                    <th>Ảnh</th>
+                                                    <th>Tác giả</th>
+                                                    <th>Thể loại</th>
+                                                    <th>Nhà xuất bản</th>
+                                                    <th></th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                                <!-- /.box -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div> -->
+    </div> 
     <!--/category-tab-->
