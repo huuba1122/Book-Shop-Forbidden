@@ -91,11 +91,10 @@ export class BookEditComponent implements OnInit {
 
   getBook(){    
     this.id = +this.routeActive.snapshot.paramMap.get("id")!;
-    console.log(this.id);
-    this.bookService.adminGetBook(this.id).subscribe(
+    this.bookService.adminShowBookDetail(this.id).subscribe(
       res => {
         this.book = res[0];
-        console.log(this.book);
+        // console.log(this.book);
         this.updateBookForm.patchValue(
           {
           name: this.book.name,

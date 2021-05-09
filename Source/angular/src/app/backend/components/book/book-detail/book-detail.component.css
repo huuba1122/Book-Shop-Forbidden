@@ -1,7 +1,29 @@
 p{
     font-size: 16px !important;
+    color: black;
 }
 
 a{
     cursor: pointer;
+}
+
+.view-product img{
+    margin-top: 15px;
+    height: 280px !important;
+}
+
+.product-information{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.content-wrapper{
+    background-color: #fff;
+}
+
+.box-header{
+    border-bottom: 1px solid #d2d6de;
+}
+.product-details{
+    margin-bottom: 15px !important;
 }

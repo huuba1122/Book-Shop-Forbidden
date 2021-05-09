@@ -1,46 +1,43 @@
 <div class="col-sm-12 padding-right">
-    <div class="product-details"><!--product-details-->
-        <div class="col-sm-3" style="height: 150px; ">
+    <div class="product-details">
+        <!--product-details-->
+        <div class="col-sm-3">
             <div class="view-product">
-                <img src="{{image_path}}{{book.image}}" alt="image"/>
+                <img src="{{image_path}}{{book.image}}" alt="image" />
+            </div>
+            <div style="margin: 20px 0;">
+                <a class="btn btn-info btn-author-back" (click)="goList()">Back</a>
             </div>
         </div>
         <div class="col-sm-9">
             <div class="product-information" *ngIf="book">
                 <!-- <img src="images/product-details/new.jpg" class="newarrival" alt="" /> -->
-                <h2>{{book.name}}</h2>
-                <p><b>Ma isbn:  </b> {{book.isbn}}</p>
-                <p><b>The loai:  </b> {{book.category_name}}</p>
-                <p><b>Tac gia:  </b> <a (click)="goAuthorDetail(book.author_id)">{{book.author_name}}</a> </p>
-                <p><b>Gia tien: </b>{{book.price}}</p>
-                <p><b>Giay phep xuat hanh: </b>{{book.license}}</p>
-                <p><b>Nam xuat ban: </b>{{book.year_of_publication}}</p>
-                <p><b>Noi dung: </b>{{book.description}}</p>
-                <!-- <p><b>Quốc tịch:</b> {{author.country}}</p>
-                <p><b>Link wiki: <a href="{{author.link_wiki}}">{{author.link_wiki}}</a></b></p> -->
-                <!-- <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a> -->
-                
-            </div>
-            <div>
-                <a class="btn btn-info btn-author-back" (click)="goList()" >Back</a>
+                <h2 >{{book.name}}</h2>
+                <p><b>Mã ISBN:      </b> {{book.isbn}}</p>
+                <p><b>Thể loại:     </b> {{book.category_name}}</p>
+                <p><b>Tác giả:      </b> <a (click)="goAuthorDetail(book.author_id!)">{{book.author_name}}</a> </p>
+                <p><b>Năm xuất bản: </b>{{book.year_of_publication}}</p>
+                <p><b>Giá bán:      </b>{{book.price}}</p>
+                <p><b>Số lượng:     </b>{{book.stock}}</p>
+                <p><b>Số trang:     </b>{{book.page_number}}</p>
+                <p><b>Ngôn ngữ:     </b>{{book.language}}</p>
+                <p><b>Lượt xem:     </b>{{book.view}}</p>
+
             </div>
         </div>
-    </div><!--/product-details-->
-    
-    <!--category-tab-->
-    <!-- <div class="category-tab shop-details-tab">
-        <div class="col-sm-12">
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#reviews" data-toggle="tab">Content</a></li>
-            </ul>
-        </div>
-        <div class="tab-content">
-            <div class="tab-pane fade active in" id="reviews" >
-                <div class="col-sm-12">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <p><b>Write Your Review</b></p>
-                </div>
+    </div>
+    <div class="col-xs-12" style="border-bottom: 3px solid #d2d6de; margin-bottom: 15px;">
+        <div class="box">
+            <div class="box-header">
+                <h3>Nội dung</h3>
             </div>
+
+            <!-- /.box-header -->
+            <div class="box-body">
+                <p>{{book.content}}</p>
+            </div>
+            <!-- /.box-body -->
         </div>
-    </div> -->
-    <!--/category-tab-->
+        <!-- /.box -->
+    </div>
+</div>

@@ -2,3 +2,21 @@
     padding: 5px 20px;
     margin-top: 10px;
 }
+
+
+.view-product img{
+    height: 280px !important;
+}
+
+.product-information{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.box-header{
+    border-bottom: 1px solid #d2d6de;
+}
+
+a{
+    cursor: pointer;
+}

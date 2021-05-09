@@ -35,7 +35,7 @@ export class AuthorDetailComponent implements OnInit {
     this.id = +this.routeActive.snapshot.paramMap.get("id")!;
     this.authorService.adminGetAuthor(this.id).subscribe(
       res => {
-        console.log(res);
+        // console.log(res);
         this.author = res;
       }, error => console.log(error));
 
@@ -51,13 +51,16 @@ export class AuthorDetailComponent implements OnInit {
     this.bookService.adminGetBookByAuthorId(id).subscribe(
       res => {
         this.books = res;
-        console.log(this.books);
+        // console.log(this.books);
       }
     )
 
   }
 
-
+  showBookDetail(id: number)
+  {
+    this.router.navigate(['admin/show-detail/' + id]);
+  }
 
 
 }

@@ -63,7 +63,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Năm sinh</label>
                                     <input formControlName="birth_of_year" type="text" class="form-control"
-                                        id="exampleInputPassword1" placeholder="VD: 1xxx-2xxx">
+                                        id="exampleInputPassword1">
                                 </div>
                                 <div *ngIf="birth_of_year!.invalid && (birth_of_year!.dirty || birth_of_year!.touched)"
                                     class="alert alert-danger">
@@ -94,7 +94,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Năm mất</label>
                                     <input formControlName="death_of_year" type="text" class="form-control"
-                                        id="exampleInputPassword1" placeholder="VD: 1xxx-2xxx">
+                                        id="exampleInputPassword1" >
                                         <div *ngIf="death_of_year!.invalid && (death_of_year!.dirty || death_of_year!.touched)"
                                         class="alert alert-danger">
                                         <!-- <div *ngIf="death_of_year!.errors!.required">

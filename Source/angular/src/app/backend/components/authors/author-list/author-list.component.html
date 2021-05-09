@@ -55,8 +55,8 @@
                             ">
                                 <td>{{i+1}}</td>
                                 <td><a [routerLink]="['../author-detail', author.id]" routerLinkActive="active">{{author.name}}</a></td>
-                                <td>{{author.birth_of_year}}</td>
-                                <td>{{author.death_of_year}}</td>
+                                <td>{{author.birth_of_year != null ? author.birth_of_year : 'Đang cập nhật'}}</td>
+                                <td>{{author.death_of_year != null ? author.death_of_year : 'Đang cập nhật'}}</td>
                                 <td>{{author.quantity}}</td>
                                 <td><img src="{{image_path}}{{author.image}}" alt="image" height="32px"></td>
                                 <td>

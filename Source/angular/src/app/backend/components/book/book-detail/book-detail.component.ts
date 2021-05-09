@@ -12,7 +12,7 @@ import { Books } from '../Book';
 export class BookDetailComponent implements OnInit {
 
   id!: number;
-  book!: any;
+  book: Books = {};
   image_path = environment.image_url;
 
 
@@ -24,11 +24,10 @@ export class BookDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.book = new Books();
     this.id = +this.routeActive.snapshot.paramMap.get("id")!;
     this.bookService.adminShowBookDetail(this.id).subscribe(
       res => {
-        console.log(res);
+        // console.log(res);
         this.book = res[0];
         
       }, error => console.log(error))

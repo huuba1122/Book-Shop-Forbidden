@@ -11,9 +11,9 @@
 p , table, a, li{
     font-size: 16px;
 }
-.content-wrapper{
+/* .content-wrapper{
     min-height: 490px !important;
-}
+} */
 .btn-sm{
     border-radius: 0 !important;
 }
