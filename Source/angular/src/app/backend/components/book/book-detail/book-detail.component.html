@@ -1,36 +1,46 @@
 <div class="col-sm-12 padding-right">
-  <div class="product-details"><!--product-details-->
-      <div class="col-sm-4">
-          <div class="view-product">
-              <img src="/assets/frontend/images/product-details/1.jpg" alt="" />
-          </div>
-      </div>
-      <div class="col-sm-8">
-          <div class="product-information"><!--/product-information-->
-              <img src="images/product-details/new.jpg" class="newarrival" alt="" />
-              <h2>Anne Klein Sleeveless Colorblock Scuba</h2>
-              <p>Web ID: 1089772</p>
-              <img src="images/product-details/rating.png" alt="" />
-              <p><b>Availability:</b> In Stock</p>
-              <p><b>Condition:</b> New</p>
-              <p><b>Brand:</b> E-SHOPPER</p>
-              <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
-          </div><!--/product-information-->
-      </div>
-  </div><!--/product-details-->
-  
-  <div class="category-tab shop-details-tab"><!--category-tab-->
-      <div class="col-sm-12">
-          <ul class="nav nav-tabs">
-              <li class="active"><a href="#reviews" data-toggle="tab">Content</a></li>
-          </ul>
-      </div>
-      <div class="tab-content">
-          <div class="tab-pane fade active in" id="reviews" >
-              <div class="col-sm-12">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                  <p><b>Write Your Review</b></p>
-              </div>
-          </div>
-      </div>
-  </div><!--/category-tab-->
+    <div class="product-details"><!--product-details-->
+        <div class="col-sm-3" style="height: 150px; ">
+            <div class="view-product">
+                <img src="{{image_path}}{{book.image}}" alt="image"/>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="product-information" *ngIf="book">
+                <img src="images/product-details/new.jpg" class="newarrival" alt="" />
+                <h2>{{book.name}}</h2>
+                <p><b>Ma isbn:  </b> {{book.isbn}}</p>
+                <p><b>The loai:  </b> {{book.category_id}}</p>
+                <p><b>Tac gia:  </b> {{book.author_name}}</p>
+                <p><b>Gia tien: </b>{{book.price}}</p>
+                <p><b>Giay phep xuat hanh: </b>{{book.license}}</p>
+                <p><b>Nam xuat ban: </b>{{book.year_of_publication}}</p>
+                <p><b>Noi dung: </b>{{book.description}}</p>
+                <!-- <p><b>Quốc tịch:</b> {{author.country}}</p>
+                <p><b>Link wiki: <a href="{{author.link_wiki}}">{{author.link_wiki}}</a></b></p> -->
+                <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+                
+            </div>
+            <div>
+                <a class="btn btn-info btn-author-back" (click)="goList()" >Back</a>
+            </div>
+        </div>
+    </div><!--/product-details-->
+    
+    <!--category-tab-->
+    <!-- <div class="category-tab shop-details-tab">
+        <div class="col-sm-12">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#reviews" data-toggle="tab">Content</a></li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade active in" id="reviews" >
+                <div class="col-sm-12">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    <p><b>Write Your Review</b></p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!--/category-tab-->

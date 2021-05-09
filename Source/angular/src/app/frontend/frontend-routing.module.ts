@@ -6,7 +6,7 @@ import { BookListComponent } from './components/book-list/book-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { HomeComponent } from './components/home/home.component';
-import { AuthorDetailComponent } from './author-detail/author-detail.component';
+import { AuthorDetailComponent } from './components/author-detail/author-detail.component';
 
 const routes: Routes = [
   {

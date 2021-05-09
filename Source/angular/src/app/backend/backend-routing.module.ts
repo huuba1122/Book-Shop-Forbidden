@@ -25,7 +25,7 @@ const routes: Routes = [
       {path:'book-list', component: BookListComponent},
       {path:'book-add', component: BookAddComponent},
       {path: 'book-edit/:id', component: BookEditComponent},
-      {path: 'book-detail', component: BookDetailComponent},
+      {path: 'book-detail/:id', component: BookDetailComponent},
       
       // categories
       {path: 'category-list', component: CategoryListComponent},

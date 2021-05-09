@@ -82,6 +82,7 @@ export class BookEditComponent implements OnInit {
     this.bookService.adminUpdateBook(formData, this.id).subscribe(
       res => {
         console.log(res);
+        this.router.navigate(['admin/book-list']);
       }
     )
   }
