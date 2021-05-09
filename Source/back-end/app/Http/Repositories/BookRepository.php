@@ -37,4 +37,28 @@ class BookRepository
        $book->delete();
     }
 
+    function findByAuthorId($id)
+    {
+        return Book::where('author_id', '=', $id)->get();
+    }
+
+    function findByCategoryId($id)
+    {
+        return Book::where('category_id', '=', $id)->get();
+    }
+
+    function showDetail($id)
+    {
+        return DB::table('v_books')->where('id', $id)->get();
+    }
+
+    function searchBooks($search)
+    {
+        return DB::table('v_books')
+            ->where('name', 'LIKE', "%$search%")
+            ->orWhere('author_name', 'LIKE', "%$search%")
+            ->orWhere('category_name', 'LIKE', "%$search%")
+            ->orderBy('name', 'ASC')
+            ->get();
+    }
 }

@@ -31,10 +31,31 @@ export class BookService {
       });
    }
 
+   adminGetBookByAuthorId(id:any):Observable<any>
+   {
+      return this.http.get(this.authService.base_url + '/admin/book/'+ id + '/author-id', {
+        headers: this.getHeaders()
+      });
+   }
 
-   adminUpdateBook(data:any, id:number)
+   adminGetBookByCategoryId(id:any):Observable<any>
+   {
+      return this.http.get(this.authService.base_url + '/admin/book/'+id+ '/category-id', {
+        headers: this.getHeaders()
+      });
+   }
+
+
+   adminUpdateBook(data:any, id:number):Observable<any>
    {
      return this.http.post(this.authService.base_url + '/admin/book/'+ id +'/update',data, {
+      headers: this.getHeaders()
+    });
+   }
+
+   adminSearchBook(data:any):Observable<any>
+   {
+     return this.http.post(this.authService.base_url + '/admin/book/search',data, {
       headers: this.getHeaders()
     });
    }

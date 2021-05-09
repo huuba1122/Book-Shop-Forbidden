@@ -19,13 +19,31 @@ class BookService
         $this->authorService = $authorService;
         $this->categoryService = $categoryService;
     }
+
     function getAll()
     {
         return $this->bookRepo->getAll();
     }
+
     function findById($id){
         return $this->bookRepo->findById($id);
     }
+
+   function showDetail($id)
+   {
+       return $this->bookRepo->showDetail($id);
+   }
+
+   function findByAuthorId($id)
+   {
+       return $this->bookRepo->findByAuthorId($id);
+   }
+
+   function findByCategoryId($id)
+   {
+       return $this->bookRepo->findByCategoryId($id);
+   }
+
     function store($request){
         $data = json_decode($request->data, true);
         $book = new Book();
@@ -57,7 +75,7 @@ class BookService
         }else{
             $this->authorService->updateQuantity($oldQuantity*(-1), $oldAuthorId);
             $this->authorService->updateQuantity($data['stock'], $data['author_id']);
-        };
+        }
         if($data['category_id'] == $oldCategoryId){
             $this->categoryService->updateQuantity($newQuantity, $data['category_id']);
         }else{
@@ -68,8 +86,18 @@ class BookService
     function delete($id)
     {
        $book = $this->bookRepo->findById($id);
+       $authorId = $book->author_id;
+       $categoryId = $book->category_id;
+       $oldQuantity = $book->stock;
+       $this->authorService->updateQuantity($oldQuantity*(-1), $authorId);
+       $this->categoryService->updateQuantity($oldQuantity*(-1), $categoryId);
        $this->bookRepo->delete($book);
     }
+
     
 
+    function searchBooks($search)
+    {
+        return $this->bookRepo->searchBooks($search);
+    }
 }

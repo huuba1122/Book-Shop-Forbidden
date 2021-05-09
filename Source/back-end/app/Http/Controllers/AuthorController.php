@@ -41,19 +41,6 @@ class AuthorController extends Controller
 
     function update(Request $request, $id): \Illuminate\Http\JsonResponse
     {
-        // if($request->hasFile('file')){
-        //     return response()->json([
-        //          'status' => 'success'
-        //         ]);
-        // }
-        // if($request->name){
-        //     return response()->json([
-        //         'status' => $request->name
-        //        ]);
-        // }
-        // return response()->json([
-        //     'status' => 'nothing'
-        //    ]);
         try {
             $this->authorService->update($request, $id);
         }catch (\Exception $e){
