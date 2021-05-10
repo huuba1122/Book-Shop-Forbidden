@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     this.authorService.adminGetAllAuthor().subscribe(
       (res) => {
         this.authors = res;
-        console.log(res)
+        // console.log(res)
         // this.count = this.authors.length;
       }
     )
@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
     this.categoryService.adminGetAllCategory().subscribe(
       (res) => {
         this.categories = res;
-        console.log(res)
+        // console.log(res)
       }
     )
   }

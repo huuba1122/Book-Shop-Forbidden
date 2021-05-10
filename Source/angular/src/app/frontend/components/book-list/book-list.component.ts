@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Books } from 'src/app/backend/components/book/Book';
 import { BookService } from 'src/app/services/book.service';
 import { environment } from 'src/environments/environment.prod';
+import { IUser } from '../IUser';
 
 @Component({
   selector: 'app-book-list',
@@ -11,8 +12,11 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class BookListComponent implements OnInit {
   books: any = [];
+  page = 1;
   count = 0;
+  pageSize = 9;
   image_path = environment.image_url;
+
 
 
   constructor(private bookService: BookService,
@@ -21,6 +25,10 @@ export class BookListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllBook();
+  }
+
+  onTableDataChange(e:any){
+    this.page = e;
   }
 
   getAllBook(){
@@ -32,6 +40,8 @@ export class BookListComponent implements OnInit {
       }
     )
   }
+
+
 
 
 

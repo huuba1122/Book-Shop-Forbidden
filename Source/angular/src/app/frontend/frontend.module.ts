@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 
 import { FrontendRoutingModule } from './frontend-routing.module';
@@ -23,7 +25,8 @@ import { AuthorDetailComponent } from './components/author-detail/author-detail.
     CommonModule,
     FrontendRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
     
 
   ]

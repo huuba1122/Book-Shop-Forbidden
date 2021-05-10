@@ -1,98 +1,37 @@
 
-   <div class="col-sm-9 padding-right">
+
+
+<div class="col-sm-9 padding-right">
     <div class="features_items">
-        <!--features_items-->
-        <h2 class="title text-center">Book list</h2>
-        <div class="col-sm-4"  *ngFor="let item of books">
-            <div class="product-image-wrapper" >
-                <div class="single-products" >
-                    <div class="productinfo text-center">
-                        <img src="{{image_path}}{{item.image}}" alt="image" style="width: 100px;"/>
-                        <h2>{{item.price}}$</h2>
-                        <p>{{item.name}}</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i
-                                class="fa fa-shopping-cart"></i>Add to cart</a>
+        <h2 class="title text-center">Danh Mục Sách</h2>
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-12 col-md-4 col-sm-4" style="height: 290px;" *ngFor="let item of books | paginate : {
+                    itemsPerPage: pageSize,
+                    currentPage: page,
+                    totalItems: count
+                };
+                " >
+
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="{{image_path}}{{item.image}}" alt="image" style="width: 100px;" />
+                                <h4>{{item.name}}</h4>
+                                <h4 class="text-primary">{{item.price}}VND</h4>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
+                                    to
+                                    cart</a>
+                            </div>
+                     
+                        </div>
+                     
                     </div>
-                </div>
-                <div class="choose">
-                    <ul class="nav nav-pills nav-justified">
-                        <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                        <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                    </ul>
                 </div>
             </div>
         </div>
-
-
-        <div class="col-sm-4">
-            <div class="product-image-wrapper">
-                <div class="single-products">
-                    <div class="productinfo text-center">
-                        <img src="images/home/product4.jpg" alt="" />
-                        <h2>$56</h2>
-                        <p>Easy Polo Black Edition</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i
-                                class="fa fa-shopping-cart"></i>Add to cart</a>
-                    </div>
-                </div>
-                <div class="choose">
-                    <ul class="nav nav-pills nav-justified">
-                        <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                        <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-4">
-            <div class="product-image-wrapper">
-                <div class="single-products">
-                    <div class="productinfo text-center">
-                        <img src="images/home/product3.jpg" alt="" />
-                        <h2>$56</h2>
-                        <p>Easy Polo Black Edition</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i
-                                class="fa fa-shopping-cart"></i>Add to cart</a>
-                    </div>
-                </div>
-                <div class="choose">
-                    <ul class="nav nav-pills nav-justified">
-                        <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                        <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-sm-4">
-            <div class="product-image-wrapper">
-                <div class="single-products">
-                    <div class="productinfo text-center">
-                        <img src="images/home/product2.jpg" alt="" />
-                        <h2>$56</h2>
-                        <p>Easy Polo Black Edition</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i
-                                class="fa fa-shopping-cart"></i>Add to cart</a>
-                    </div>
-    
-                </div>
-                <div class="choose">
-                    <ul class="nav nav-pills nav-justified">
-                        <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                        <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-
-        <ul class="pagination">
-            <li class="active"><a href="">1</a></li>
-            <li><a href="">2</a></li>
-            <li><a href="">3</a></li>
-            <li><a href="">&raquo;</a></li>
-        </ul>
     </div>
-    <!--features_items-->
-</div>
+
+    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+    </pagination-controls>
+</div> 
