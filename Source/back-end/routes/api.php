@@ -6,6 +6,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -72,4 +73,10 @@ Route::prefix('admin')->group(function () {
     });
 });
 
+
+Route::prefix('home')->group(function () {
+    Route::get('/book-topic', [HomeController::class, 'getTopicBooks']);
+    Route::get('/book-all', [HomeController::class, 'index']);
+
+});
 
