@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Books } from 'src/app/backend/components/book/Book';
-import { BookService } from 'src/app/services/book.service';
+import { HomeService } from 'src/app/services/frontend/home.service';
 import { environment } from 'src/environments/environment.prod';
 import { IUser } from '../IUser';
 
@@ -18,8 +18,7 @@ export class BookListComponent implements OnInit {
   image_path = environment.image_url;
 
 
-
-  constructor(private bookService: BookService,
+  constructor(private homeService: HomeService,
     private router: Router
   ) { }
 
@@ -32,7 +31,7 @@ export class BookListComponent implements OnInit {
   }
 
   getAllBook(){
-    this.bookService.adminGetAllBook().subscribe(
+    this.homeService.homeGetAllBooks().subscribe(
       (res)  => {
         this.books = res;
         console.log(res)

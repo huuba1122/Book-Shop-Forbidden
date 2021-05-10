@@ -77,5 +77,13 @@ class BookRepository
                ->take(10)
                ->get();
     }
+
+    function getTopicBooks($column)
+    {
+        return Book::where($column, 1)
+               ->orderBy('id', 'DESC')
+               ->take(10)
+               ->get();
+    }
     
 }
