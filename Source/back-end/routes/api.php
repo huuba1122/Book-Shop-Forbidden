@@ -77,6 +77,8 @@ Route::prefix('admin')->group(function () {
 Route::prefix('home')->group(function () {
     Route::get('/book-topic', [HomeController::class, 'getTopicBooks']);
     Route::get('/book-all', [HomeController::class, 'index']);
-
+    Route::get('/author-all', [HomeController::class, 'getAllAuthors']);
+    Route::get('/category-all', [HomeController::class, 'getAllCategories']);
+    Route::post('/search', [HomeController::class, 'search']);
 });
 

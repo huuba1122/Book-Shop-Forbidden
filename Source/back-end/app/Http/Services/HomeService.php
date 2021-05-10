@@ -34,4 +34,19 @@ class HomeService
      {
          return $this->bookRepo->getAll();
      }
+
+     function getAllAuthors()
+     {
+         return $this->authorRepo->getAll();
+     }
+
+     function getAllCategories()
+     {
+         return $this->categoryRepo->getAll();
+     }
+
+     function search($search)
+     {
+         return $this->bookRepo->searchBooks($search);
+     }
 }

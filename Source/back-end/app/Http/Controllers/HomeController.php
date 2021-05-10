@@ -25,4 +25,22 @@ class HomeController extends Controller
         return response()->json($books);
     }
 
+    function search(Request $request)
+    {
+        $books = $this->homeService->search($request->search);
+        return response()->json($books);
+    }
+
+    function getAllAuthors()
+    {
+        $authors = $this->homeService->getAllAuthors();
+        return response()->json($authors);
+    }
+
+    function getAllCategories()
+    {
+        $categories = $this->homeService->getAllCategories();
+        return response()->json($categories);
+    }
+
 }
