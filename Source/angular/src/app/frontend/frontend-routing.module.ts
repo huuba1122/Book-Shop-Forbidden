@@ -29,7 +29,10 @@ const routes: Routes = [
         path: 'book-list',
         component: BookListComponent
       },
-      {path: 'author-detail/:id', component: AuthorDetailComponent}
+      {
+        path: 'author-detail/:id',
+        component: AuthorDetailComponent
+      }
 
 
 
