@@ -24,6 +24,18 @@ export class AuthorService {
     });
   }
 
+  adminGetTenNewAuthor(): Observable<any> {
+    return this.http.get(this.url + '/admin/author/list-ten', {
+      headers: this.getHeaders()
+    });
+  }
+
+  adminCountAuthors(): Observable<any> {
+    return this.http.get(this.url + '/admin/author/count', {
+      headers: this.getHeaders()
+    });
+  }
+
   adminGetAuthor(id: number): Observable<any> {
     return this.http.get(this.url + '/admin/author/' + id, {
       headers: this.getHeaders()

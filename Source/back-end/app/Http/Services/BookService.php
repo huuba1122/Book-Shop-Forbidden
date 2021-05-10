@@ -54,6 +54,7 @@ class BookService
         $this->authorService->updateQuantity($data['stock'], $data['author_id']);
         $this->categoryService->updateQuantity($data['stock'], $data['category_id']);
     }
+
     function update($request, $id)
     {
         $data = json_decode($request->data, true);
@@ -83,6 +84,7 @@ class BookService
             $this->categoryService->updateQuantity($data['stock'], $data['category_id']);
         }
     }
+
     function delete($id)
     {
        $book = $this->bookRepo->findById($id);
@@ -94,10 +96,18 @@ class BookService
        $this->bookRepo->delete($book);
     }
 
-    
-
     function searchBooks($search)
     {
         return $this->bookRepo->searchBooks($search);
+    }
+
+    function countBooks()
+    {
+        return $this->bookRepo->countBooks();
+    }
+
+    function getTenBook()
+    {
+        return $this->bookRepo->getTenBook();
     }
 }

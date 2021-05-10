@@ -33,6 +33,7 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('category')->group(function () {
             Route::get('list',[CategoryController::class, 'getAll']);
+            Route::get('count',[CategoryController::class, 'countCategories']);
             Route::post('store',[CategoryController::class, 'store']);
             Route::get('/{id}',[CategoryController::class, 'findById']);
             Route::put('/{id}/update',[CategoryController::class, 'update']);
@@ -42,6 +43,8 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('book')->group(function () {
             Route::get('list',[BookController::class, 'getAll']);
+            Route::get('list-ten',[BookController::class, 'getTenbook']);
+            Route::get('count',[BookController::class, 'countBooks']);
             Route::post('store',[BookController::class, 'store']);
             Route::get('/{id}/show-detail/',[BookController::class, 'showDetail']);
             Route::get('/{id}/author-id',[BookController::class, 'findByAuthorId']);
@@ -53,6 +56,8 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('author')->group(function () {
             Route::get('list',[AuthorController::class, 'getAll']);
+            Route::get('count',[AuthorController::class, 'countAuthors']);
+            Route::get('list-ten',[AuthorController::class, 'getTenAuthor']);
             Route::post('store',[AuthorController::class, 'store']);
             Route::get('/{id}',[AuthorController::class, 'findById']);
             Route::post('/{id}/update',[AuthorController::class, 'update']);

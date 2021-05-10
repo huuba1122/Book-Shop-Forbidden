@@ -80,4 +80,14 @@ class AuthorService
 //        print_r($search['name']);
         return $this->authorRepo->search($search['name']);
     }
+
+    function countAuthors()
+    {
+        return $this->authorRepo->countAuthors();
+    }
+
+    function getTenAuthor()
+    {
+        return $this->authorRepo->getTenAuthor();
+    }
 }

@@ -18,6 +18,12 @@ export class BookService {
     });
   }
 
+  adminGetTenNewBook(){
+    return this.http.get(this.authService.base_url + '/admin/book/list-ten', {
+      headers: this.getHeaders()
+    });
+  }
+
   adminCreateBook(data: any): Observable<any>{
     return this.http.post(this.authService.base_url+ '/admin/book/store', data, {
       headers: this.getHeaders()
@@ -34,6 +40,13 @@ export class BookService {
    adminShowBookDetail(id:any):Observable<any>
    {
       return this.http.get(this.authService.base_url + '/admin/book/'+id + '/show-detail', {
+        headers: this.getHeaders()
+      });
+   }
+
+   adminCountBooks():Observable<any>
+   {
+      return this.http.get(this.authService.base_url + '/admin/book/count', {
         headers: this.getHeaders()
       });
    }

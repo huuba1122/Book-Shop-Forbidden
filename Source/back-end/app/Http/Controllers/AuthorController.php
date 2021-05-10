@@ -69,4 +69,16 @@ class AuthorController extends Controller
         $authors = $this->authorService->search($request->all());
         return response()->json($authors, 200);
     }
+
+    function countAuthors()
+    {
+        $quantityAuthors = $this->authorService->countAuthors();
+        return response()->json($quantityAuthors, 200);
+    }
+
+    function getTenAuthor()
+    {
+        $authors = $this->authorService->getTenAuthor();
+        return response()->json($authors, 200);
+    }
 }

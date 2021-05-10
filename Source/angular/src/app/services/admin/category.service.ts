@@ -21,6 +21,12 @@ export class CategoryService {
     });
   }
 
+  adminCountCategories() {
+    return this.http.get(this.authService.base_url + '/admin/category/count', {
+      headers: this.getHeaders()
+    });
+  }
+
   adminCreateCategory(data: any): Observable<any> {
     // console.log(data);
     return this.http.post(this.authService.base_url + '/admin/category/store', data, {

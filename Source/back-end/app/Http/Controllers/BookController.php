@@ -37,11 +37,11 @@ class BookController extends Controller
       return response()->json($books);
     }
 
-   function showDetail($id)
-   {
+    function showDetail($id)
+    {
        $book = $this->bookService->showDetail($id);
        return response()->json($book, 200);
-   }
+    }
 
     function store(Request $request): \Illuminate\Http\JsonResponse
     {
@@ -53,10 +53,10 @@ class BookController extends Controller
         return response()->json([
             'status' => 'success'
         ]);
-     }
+    }
 
-     function update(Request $request, $id): \Illuminate\Http\JsonResponse
-     {
+    function update(Request $request, $id): \Illuminate\Http\JsonResponse
+    {
 
          try {
              $this->bookService->update($request, $id);
@@ -66,10 +66,10 @@ class BookController extends Controller
          return response()->json([
             'status' => 'success'
         ]);
-     }
+    }
 
-     function delete($id): \Illuminate\Http\JsonResponse
-     {
+    function delete($id): \Illuminate\Http\JsonResponse
+    {
          try {
              $this->bookService->delete($id);
          } catch (\Exception $e){
@@ -79,10 +79,10 @@ class BookController extends Controller
              'status' => 'success'
          ]);
 
-     }
+    }
 
-     function searchBooks(Request $request)
-     {
+    function searchBooks(Request $request)
+    {
          try{
             $books = $this->bookService->searchBooks($request->data);
             return response()->json($books, 200);
@@ -90,6 +90,17 @@ class BookController extends Controller
             return response()->json($e->getMessage());
         }
          
-     }
+    }
 
+    function countBooks()
+    {
+        $quantityBooks = $this->bookService->countBooks();
+        return response()->json($quantityBooks, 200);
+    }
+
+    function getTenbook()
+    {
+        $books = $this->bookService->getTenbook();
+        return response()->json($books, 200);
+    }
 }

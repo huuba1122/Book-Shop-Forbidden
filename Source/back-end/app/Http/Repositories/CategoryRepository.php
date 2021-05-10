@@ -42,4 +42,9 @@ class CategoryRepository
     {
         return Category::where('name','LIKE',"%$search%")->get();
     }
+
+    function countCategories()
+    {
+        return Category::count();
+    }
 }

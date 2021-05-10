@@ -66,4 +66,9 @@ class CategoryService
         return $this->categoryRepo->search($search['name']);
     }
 
+
+    function countCategories()
+    {
+        return $this->categoryRepo->countCategories();
+    }
 }

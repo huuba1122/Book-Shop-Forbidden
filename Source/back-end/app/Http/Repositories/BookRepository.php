@@ -65,4 +65,17 @@ class BookRepository
             ->orderBy('name', 'ASC')
             ->get();
     }
+
+    function countBooks()
+    {
+        return Book::count();
+    }
+
+    function getTenBook()
+    {
+        return Book::orderBy('id', 'DESC')
+               ->take(10)
+               ->get();
+    }
+    
 }

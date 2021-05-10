@@ -1,6 +1,125 @@
+<section class="content-header">
+    <h1>
+        Trang chủ
+    </h1>
+</section>
 
-<div style="height: 480px;">
+<!-- Main content -->
+<section class="content">
+    <!-- Info boxes -->
+    <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="fa fa-book"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Sách</span>
+                    <span class="info-box-number">{{quantityOfBook}}</span>
+                </div><!-- /.info-box-content -->
+            </div><!-- /.info-box -->
+        </div><!-- /.col -->
 
-    
-    <p>dashboard works!</p>
-</div>
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Tác giả</span>
+                    <span class="info-box-number">{{quantityOfAuthor}}</span>
+                </div><!-- /.info-box-content -->
+            </div><!-- /.info-box -->
+        </div><!-- /.col -->
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="ion ion-ios-pricetag-outline"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Thể loại</span>
+                    <span class="info-box-number">{{quantityOfCategory}}</span>
+                </div><!-- /.info-box-content -->
+            </div><!-- /.info-box -->
+        </div><!-- /.col -->
+
+        <!-- fix for small devices only -->
+        <!-- <div class="clearfix visible-sm-block"></div> -->
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Hóa đơn</span>
+                    <span class="info-box-number">760</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+    <div class="row" style="margin-top: 15px;">
+        <div class="col-md-7">
+            <!-- TABLE: LATEST ORDERS -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Sách mới</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                                <tr>
+                                    <th>Mã sách</th>
+                                    <th>Hình ảnh</th>
+                                    <th>Tên</th>
+                                    <th>Số lượng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let book of books">
+                                    <td>{{book.id}}</td>
+                                    <td><img src="{{image_path}}{{book.image}}" alt="" height="32" width="18"></td>
+                                    <td>{{book.name}}</td>
+                                    <td>{{book.stock}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <a [routerLink] = "['../admin/book-list']" class="btn btn-sm btn-default btn-flat pull-right">Xem tất cả</a>
+                </div><!-- /.box-footer -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+        <div class="col-md-5">
+            <!-- PRODUCT LIST -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Tác giả mới</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                                <tr>
+                                    <th>Mã tác giả</th>
+                                    <th>Hình ảnh</th>
+                                    <th>Tên</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let author of authors">
+                                    <td>{{author.id}}</td>
+                                    <td><img src="{{image_path}}{{author.image}}" alt="" height="32" width="18"></td>
+                                    <td>{{author.name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <a [routerLink] = "['../admin/author-list']" class="btn btn-sm btn-default btn-flat pull-right">Xem tất cả</a>
+                </div><!-- /.box-footer -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+
+</section><!-- /.content -->

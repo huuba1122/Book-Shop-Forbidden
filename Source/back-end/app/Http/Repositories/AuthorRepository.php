@@ -36,4 +36,15 @@ class AuthorRepository
       return Author::where('name','LIKE',"%$search%")->get();
   }
 
+  function countAuthors()
+  {
+      return Author::count();
+  }
+
+  function getTenAuthor()
+    {
+        return Author::orderBy('id', 'DESC')
+               ->take(10)
+               ->get();
+    }
 }

@@ -70,4 +70,10 @@ class CategoryController extends Controller
         $categories = $this->categoryService->search($request->all());
         return response()->json($categories, 200);
     }
+
+    function countCategories()
+    {
+        $quantityCategories = $this->categoryService->countCategories();
+        return response()->json($quantityCategories, 200);
+    }
 }

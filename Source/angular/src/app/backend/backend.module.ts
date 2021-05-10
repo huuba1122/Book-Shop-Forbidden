@@ -18,6 +18,7 @@ import { AuthorEditComponent } from './components/authors/author-edit/author-edi
 import { AuthorDetailComponent } from './components/authors/author-detail/author-detail.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AuthorAddComponent,
     AuthorEditComponent,
     AuthorDetailComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,
