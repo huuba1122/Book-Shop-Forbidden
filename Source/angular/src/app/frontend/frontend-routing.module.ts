@@ -33,9 +33,6 @@ const routes: Routes = [
         path: 'author-detail/:id',
         component: AuthorDetailComponent
       }
-
-
-
     ]
   },
 

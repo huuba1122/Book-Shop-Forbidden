@@ -53,13 +53,21 @@ class HomeService
      {
          return $this->bookRepo->searchBooks($search);
      }
+
      function findByAuthorId($id)
-   {
+     {
        return $this->bookRepo->findByAuthorId($id);
-   }
+     }
    
    function showDetail($id)
-   {
+     {
        return $this->bookRepo->showDetail($id);
-   }
+     }
+
+     
+   function findByCategoryId($id)
+     {
+       return $this->bookRepo->findByCategoryId($id);
+     }
+
 }

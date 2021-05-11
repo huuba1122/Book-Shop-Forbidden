@@ -52,6 +52,14 @@ export class HomeService {
       });
    }
 
+   homeGetAllCategory()
+   {
+    return this.http.get(this.base_url + '/home/category-all', {
+      headers: this.headers
+    });
+
+   }
+
 
 
 
