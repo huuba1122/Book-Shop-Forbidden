@@ -2,11 +2,13 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Customer;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
-class VerifyJWTToken
+class CustomerJwtToken
 {
     /**
      * Handle an incoming request.
@@ -17,9 +19,13 @@ class VerifyJWTToken
      */
     public function handle(Request $request, Closure $next)
     {
-
+//        Config::set('jwt.user', Customer::class);
+//        Config::set('auth.providers', ['users' => [
+//            'driver' => 'eloquent',
+//            'model' => Customer::class,
+//        ]]);
         try {
-            $user = JWTAuth::parseToken()->authenticate();
+            $customer = JWTAuth::parseToken()->authenticate();
         } catch (\Exception $e) {
             if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException){
                 return response()->json(['status' => 'Token is Invalid']);
@@ -29,7 +35,8 @@ class VerifyJWTToken
                 return response()->json(['status' => 'Authorization Token not found']);
             }
         }
-        if($user->role === 1){
+        $user = JWTAuth::user();
+        if($user->role === 0){
             return $next($request);
         }else{
             return response()->json(['status' => 'Unauthorized']);

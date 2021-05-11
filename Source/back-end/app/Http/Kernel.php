@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CustomerJwtToken;
 use App\Http\Middleware\VerifyJWTToken;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -66,5 +67,8 @@ class Kernel extends HttpKernel
 
         // jwt middleware
         'jwt.verify' => VerifyJWTToken::class,
+        //jwt customers
+
+        'jwt.customer' => CustomerJwtToken::class,
     ];
 }

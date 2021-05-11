@@ -3,7 +3,9 @@
 use App\Http\Controllers\AuthorController;
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
@@ -80,5 +82,26 @@ Route::prefix('home')->group(function () {
     Route::get('/author-all', [HomeController::class, 'getAllAuthors']);
     Route::get('/category-all', [HomeController::class, 'getAllCategories']);
     Route::post('/search', [HomeController::class, 'search']);
+});
+
+//Route::prefix('cart')->group(function() {
+//    Route::get('list', [CartController::class, 'showCart']);
+//    Route::get('{id}/add', [CartController::class, 'addToCart']);
+//    Route::get('{id}/remove', [CartController::class, 'removeBook']);
+//    Route::post('update', [CartController::class, 'updateCart']);
+//    Route::delete('delete', [CartController::class, 'deleteCart']);
+//});
+
+Route::post('login', [UserController::class, 'login']);
+Route::post('register', [UserController::class, 'register']);
+Route::prefix('customer')->group(function() {
+    Route::group(['middleware' => ['jwt.customer']], function () {
+            Route::get('{id}/cart-list', [CartController::class, 'showCart']);
+            Route::get('{id}/cart-info', [CartController::class, 'cartInfo']);
+            Route::post('cart-add', [CartController::class, 'addToCart']);
+            Route::post('cart-update', [CartController::class, 'updateItemQuantity']);
+            Route::post('cart-remove-item', [CartController::class, 'removeItem']);
+            Route::get('{id}/cart-delete', [CartController::class, 'deleteCart']);
+    });
 });
 
