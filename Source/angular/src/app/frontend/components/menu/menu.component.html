@@ -73,7 +73,7 @@
               <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                 <ul role="menu" class="sub-menu">
                   <li><a [routerLink]="['/book-list']">Books</a></li>
-                  <li><a [routerLink]="['/bookdetails']">Book Details</a></li>
+                  <!-- <li><a [routerLink]="['../author-detail']">Book Details</a></li> -->
                   <li><a href="checkout.html">Checkout</a></li>
                   <li><a href="cart.html">Cart</a></li>
                   <li><a href="login.html">Login</a></li>
@@ -92,7 +92,8 @@
         </div>
         <div class="col-sm-3">
           <div class="search_box pull-right">
-            <input type="text" placeholder="Search" />
+            <input type="text"  (change) = "searchBooks($event)" placeholder="Search" />
+            
           </div>
         </div>
       </div>
@@ -108,7 +109,6 @@
       <!-- sidebar -->
       <div class="col-sm-3">
         <div class="left-sidebar">
-          <h2>Category</h2>
           <div class="panel-group category-products" id="accordian">
             <!--category-productsr-->
             <div class="panel panel-default">
@@ -116,44 +116,15 @@
                 <h4 class="panel-title">
                   <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
                     <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                    Sportswear
+                    Thể loại 
                   </a>
                 </h4>
               </div>
               <div id="sportswear" class="panel-collapse collapse">
-                <div class="panel-body">
+                <div class="panel-body" *ngFor="let item of categories">
                   <ul>
-                    <li><a href="#">Nike </a></li>
-                    <li><a href="#">Under Armour </a></li>
-                    <li><a href="#">Adidas </a></li>
-                    <li><a href="#">Puma</a></li>
-                    <li><a href="#">ASICS </a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordian" href="#mens">
-                    <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                    Mens
-                  </a>
-                </h4>
-              </div>
-              <div id="mens" class="panel-collapse collapse">
-                <div class="panel-body">
-                  <ul>
-                    <li><a href="#">Fendi</a></li>
-                    <li><a href="#">Guess</a></li>
-                    <li><a href="#">Valentino</a></li>
-                    <li><a href="#">Dior</a></li>
-                    <li><a href="#">Versace</a></li>
-                    <li><a href="#">Armani</a></li>
-                    <li><a href="#">Prada</a></li>
-                    <li><a href="#">Dolce and Gabbana</a></li>
-                    <li><a href="#">Chanel</a></li>
-                    <li><a href="#">Gucci</a></li>
+                    <li><a href="#">{{item.name}} </a></li>
+                    
                   </ul>
                 </div>
               </div>
@@ -164,75 +135,21 @@
                 <h4 class="panel-title">
                   <a data-toggle="collapse" data-parent="#accordian" href="#womens">
                     <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                    Womens
+                    Tác giả
                   </a>
                 </h4>
               </div>
               <div id="womens" class="panel-collapse collapse">
-                <div class="panel-body">
+                <div class="panel-body" *ngFor="let item of authors">
                   <ul>
-                    <li><a href="#">Fendi</a></li>
-                    <li><a href="#">Guess</a></li>
-                    <li><a href="#">Valentino</a></li>
-                    <li><a href="#">Dior</a></li>
-                    <li><a href="#">Versace</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <!--/category-products-->
-
-          <h2>Author</h2>
-          <div class="panel-group category-products" id="accordian">
-            <!--category-productsr-->
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-                    <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                    Sportswear
-                  </a>
-                </h4>
-              </div>
-              <div id="sportswear" class="panel-collapse collapse">
-                <div class="panel-body">
-                  <ul>
-                    <li><a href="#">Nike </a></li>
-                    <li><a href="#">Under Armour </a></li>
-                    <li><a href="#">Adidas </a></li>
-                    <li><a href="#">Puma</a></li>
-                    <li><a href="#">ASICS </a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordian" href="#womens">
-                    <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                    Womens
-                  </a>
-                </h4>
-              </div>
-              <div id="womens" class="panel-collapse collapse">
-                <div class="panel-body">
-                  <ul>
-                    <li><a href="#">Fendi</a></li>
-                    <li><a href="#">Guess</a></li>
-                    <li><a href="#">Valentino</a></li>
-                    <li><a href="#">Dior</a></li>
-                    <li><a href="#">Versace</a></li>
+                    <li><a [routerLink]="['../author-detail', item.id]" routerLinkActive="active">{{item.name}}</a></li>
                   </ul>
                 </div>
               </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading" *ngFor="let item of authors">
-                  <h4 class="panel-title"><a [routerLink]="['../author-detail', item.id]" routerLinkActive="active">{{item.name}}</a></h4>
+                <div class="panel-heading" >
+                  <h4 class="panel-title"></h4>
                 </div>
               </div>
           </div>
