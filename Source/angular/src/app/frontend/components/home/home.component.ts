@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
     this.homeService.homeGetTopicBooks(formData).subscribe(
       (res) => {
         this.bookRecommeds = res
+        console.log(this.getBookRecommend);
       }
     )
   }
@@ -52,6 +53,7 @@ export class HomeComponent implements OnInit {
     this.homeService.homeGetTopicBooks(formData).subscribe(
       (res) => {
         this.bookBestSeller = res;
+        console.log(res)
       }
     )
   }
@@ -60,35 +62,31 @@ export class HomeComponent implements OnInit {
     this.homeService.homeGetTenNewBooks().subscribe(
       (res) => {
         this.bookNews = res;
+        console.log(res)
       }
     )
   }
 
-  searchBooks(e:any){
-    let data = e.target.value;
-    if(data){
-      let formData = new FormData();
-      formData.append('data', data);
-      this.homeService.homeSearchBook(formData).subscribe(
-        (res) => {
-          console.log(res);
-          this.books = res;
-          this.count = this.books.length;
-        }
-      )
-    }else{
-      this.getNewBooks();
-    }
-  }
+  // searchBooks(e:any){
+  //   let data = e.target.value;
+  //   if(data){
+  //     let formData = new FormData();
+  //     formData.append('data', data);
+  //     this.homeService.homeSearchBook(formData).subscribe(
+  //       (res) => {
+  //         console.log(res);
+  //         this.books = res;
+  //         this.count = this.books.length;
+  //       }
+  //     )
+  //   }else{
+  //     this.getNewBooks();
+  //   }
+  // }
 
 
   onTableDataChange(e:any){
     this.page = e;
   }
-
-
-
-
-
 
 }

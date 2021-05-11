@@ -17,66 +17,37 @@ export class MenuComponent implements OnInit {
   categories: any = [];
   books: any = [];
   count = 0;
-  image_path = environment.image_url;
+  // image_path = environment.image_url;
 
 
-  constructor(private authorService: AuthorService,
-    private categoryService: CategoryService,
+  constructor(
     private router: Router,
     private homeService: HomeService
-
-
   ) { }
 
   ngOnInit(): void {
     this.getAllAuthor();
     this.getCategoryAll();
-    this.getBookNews();
+    // this.getBookNews();
   }
 
   getAllAuthor() {
-    this.authorService.adminGetAllAuthor().subscribe(
+    this.homeService.homeGetAllAuthors().subscribe(
       (res) => {
         this.authors = res;
-        // console.log(res)
+        console.log(res);
         // this.count = this.authors.length;
       }
     )
   }
 
   getCategoryAll() {
-    this.categoryService.adminGetAllCategory().subscribe(
+    this.homeService.homeGetAllCategory().subscribe(
       (res) => {
         this.categories = res;
+        console.log(res);
       }
     )
   }
 
-
-  getBookNews(){
-    this.homeService.homeGetTenNewBooks().subscribe(
-      (res) => {
-        this.bookNews = res
-      }
-    )
-  }
-
-
-  searchBooks(e: any) {
-    let data = e.target.value;
-    if (data) {
-      let formData = new FormData();
-      formData.append('search', data);
-      this.homeService.homeSearchBook(formData).subscribe(
-        (res) => {
-          // console.log(res);
-          this.books = res[0];
-          // this.count = this.books.length;
-        }
-      )
-    } else {
-      this.getBookNews()
-      
-    }
-  }
 }

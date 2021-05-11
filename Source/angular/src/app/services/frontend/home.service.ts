@@ -44,6 +44,19 @@ export class HomeService {
         headers: this.headers
       });
    }
+   homeGetAllAuthors()
+   {
+      return this.http.get(this.base_url + '/home/author-all', {
+      headers: this.headers
+      });
+   }
+
+   homeGetAllCategory()
+   {
+    return this.http.get(this.base_url + '/home/category-all', {
+      headers: this.headers
+    });
+   }
 
    homeShowBookDetail(id:any):Observable<any>
    {
@@ -59,8 +72,6 @@ export class HomeService {
     });
 
    }
-
-
 
 
 }
