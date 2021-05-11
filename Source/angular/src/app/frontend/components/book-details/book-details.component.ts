@@ -18,10 +18,10 @@ export class BookDetailsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.getBookDetail(this.id);
+    this.getBookDetail();
   }
 
-  getBookDetail(id: number){
+  getBookDetail(){
     this.id = +this.routeActive.snapshot.paramMap.get("id")!;
     this.homeService.homeShowBookDetail(this.id).subscribe(
       res => {

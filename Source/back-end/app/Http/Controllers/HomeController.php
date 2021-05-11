@@ -56,7 +56,7 @@ class HomeController extends Controller
 
     function showDetail($id)
     {
-       $book = $this->bookService->showDetail($id);
+       $book = $this->homeService->showDetail($id);
        return response()->json($book, 200);
     }
 
