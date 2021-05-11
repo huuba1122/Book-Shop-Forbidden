@@ -4,3 +4,13 @@
 .btn-default:hover, .btn-default:active, .btn-default.hover{
     background-color: #FE980F !important;
 }
+
+.book-name{
+    color: #000;
+    cursor: pointer;
+
+}
+.book-name:hover{
+    cursor: pointer;
+    color: rgb(240, 16, 16);
+}

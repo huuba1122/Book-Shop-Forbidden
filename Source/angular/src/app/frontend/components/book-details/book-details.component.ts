@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HomeService } from 'src/app/services/frontend/home.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-book-details',
@@ -6,10 +9,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-details.component.css']
 })
 export class BookDetailsComponent implements OnInit {
-
-  constructor() { }
+  image_path = environment.image_url;
+  id!: number;
+  book: any;
+  constructor(private homeService: HomeService,
+               private routeActive: ActivatedRoute
+              
+    ) { }
 
   ngOnInit(): void {
+    this.getBookDetail(this.id);
   }
+
+  getBookDetail(id: number){
+    this.id = +this.routeActive.snapshot.paramMap.get("id")!;
+    this.homeService.homeShowBookDetail(this.id).subscribe(
+      res => {
+        console.log(res);
+        this.book = res[0];
+        
+      }, error => console.log(error))
+
+  }
+
+
+  
 
 }

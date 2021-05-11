@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthorService } from 'src/app/services/admin/author.service';
 import { CategoryService } from 'src/app/services/admin/category.service';
+import { HomeService } from 'src/app/services/frontend/home.service';
 import { environment } from 'src/environments/environment.prod';
 
 @Component({
@@ -11,16 +12,18 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class MenuComponent implements OnInit {
 
-  
+  bookNews: any;
   authors: any = [];
-  categories: any =[];
+  categories: any = [];
+  books: any = [];
   count = 0;
   image_path = environment.image_url;
 
 
   constructor(private authorService: AuthorService,
     private categoryService: CategoryService,
-    private router: Router
+    private router: Router,
+    private homeService: HomeService
 
 
   ) { }
@@ -28,6 +31,7 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this.getAllAuthor();
     this.getCategoryAll();
+    this.getBookNews();
   }
 
   getAllAuthor() {
@@ -44,8 +48,35 @@ export class MenuComponent implements OnInit {
     this.categoryService.adminGetAllCategory().subscribe(
       (res) => {
         this.categories = res;
-        // console.log(res)
       }
     )
+  }
+
+
+  getBookNews(){
+    this.homeService.homeGetTenNewBooks().subscribe(
+      (res) => {
+        this.bookNews = res
+      }
+    )
+  }
+
+
+  searchBooks(e: any) {
+    let data = e.target.value;
+    if (data) {
+      let formData = new FormData();
+      formData.append('search', data);
+      this.homeService.homeSearchBook(formData).subscribe(
+        (res) => {
+          // console.log(res);
+          this.books = res[0];
+          // this.count = this.books.length;
+        }
+      )
+    } else {
+      this.getBookNews()
+      
+    }
   }
 }

@@ -74,7 +74,7 @@ class BookRepository
     function getTenBook()
     {
         return Book::orderBy('id', 'DESC')
-               ->take(10)
+               ->take(9)
                ->get();
     }
 
@@ -82,7 +82,7 @@ class BookRepository
     {
         return Book::where($column, 1)
                ->orderBy('id', 'DESC')
-               ->take(10)
+               ->take(9)
                ->get();
     }
     

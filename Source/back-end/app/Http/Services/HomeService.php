@@ -25,6 +25,10 @@ class HomeService
 
      }
 
+     function getTenNewBooks(){
+        return $this->bookRepo->getTenBook();
+     }
+
      function getTopicBooks($column)
      {
         return $this->bookRepo->getTopicBooks($column);
@@ -49,4 +53,13 @@ class HomeService
      {
          return $this->bookRepo->searchBooks($search);
      }
+     function findByAuthorId($id)
+   {
+       return $this->bookRepo->findByAuthorId($id);
+   }
+   
+   function showDetail($id)
+   {
+       return $this->bookRepo->showDetail($id);
+   }
 }
