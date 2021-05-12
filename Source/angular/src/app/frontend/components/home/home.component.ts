@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/app/services/cart/cart.service';
+import { AuthFrontendService } from 'src/app/services/frontend/auth-frontend.service';
 import { HomeService } from 'src/app/services/frontend/home.service';
 import { environment } from 'src/environments/environment.prod';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -20,12 +23,14 @@ export class HomeComponent implements OnInit {
   pageSize = 3;
   p: number = 1;
   p1: number =1;
-
   
 
 
   constructor(
-    private homeService: HomeService
+    private homeService: HomeService,
+    private cartService: CartService,
+    private AuthFrontendService: AuthFrontendService,
+    private toastr: ToastrService,
 
   ) { }
 
@@ -42,7 +47,6 @@ export class HomeComponent implements OnInit {
     this.homeService.homeGetTopicBooks(formData).subscribe(
       (res) => {
         this.bookRecommeds = res
-        console.log(this.getBookRecommend);
       }
     )
   }
@@ -53,7 +57,6 @@ export class HomeComponent implements OnInit {
     this.homeService.homeGetTopicBooks(formData).subscribe(
       (res) => {
         this.bookBestSeller = res;
-        console.log(res)
       }
     )
   }
@@ -62,27 +65,39 @@ export class HomeComponent implements OnInit {
     this.homeService.homeGetTenNewBooks().subscribe(
       (res) => {
         this.bookNews = res;
-        console.log(res)
       }
     )
   }
 
-  // searchBooks(e:any){
-  //   let data = e.target.value;
-  //   if(data){
-  //     let formData = new FormData();
-  //     formData.append('data', data);
-  //     this.homeService.homeSearchBook(formData).subscribe(
-  //       (res) => {
-  //         console.log(res);
-  //         this.books = res;
-  //         this.count = this.books.length;
-  //       }
-  //     )
-  //   }else{
-  //     this.getNewBooks();
-  //   }
-  // }
+  addToCart(id:any)
+  {
+  
+    let isLogin = this.AuthFrontendService.checklogin();
+    if(isLogin){
+      let customerId = sessionStorage.getItem('customer_id')!;
+      let formDate = new FormData();
+      formDate.append('customerId', customerId);
+      formDate.append('bookId', id);
+      this.cartService.addToCart(formDate).subscribe(
+        (res) => {
+          if(res.status === 'success'){
+            this.toastr.success('Thêm sản phẩm vào giỏ hàng thành công!');
+            this.getCartInfo(customerId);
+          }
+        }
+      );
+    }
+  }
+
+  getCartInfo(id:any)
+  {
+    this.cartService.getCartInfo(id).subscribe(
+      (res) => {
+        // console.log(res);
+        this.cartService.changeCartQuantity(res.totalQuantity);
+      }
+    );
+  }
 
 
   onTableDataChange(e:any){

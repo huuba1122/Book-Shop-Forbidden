@@ -71,7 +71,7 @@ class UserController extends Controller
         }catch (JWTException $e){
             return response()->json(['status' => 'token absent'], $e->getStatusCode());
         }
-        return response()->json(['user' => $user], 201);
+        return response()->json( $user, 201);
     }
 
     function logout(Request $request){

@@ -1,0 +1,11 @@
+.breadcrumbs .breadcrumb{
+    margin-bottom: 30px !important;
+}
+
+.btn-checkout:hover{
+    background-color: #ff6359 !important;
+}
+
+a{
+    cursor: pointer;
+}

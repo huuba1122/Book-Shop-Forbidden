@@ -14,3 +14,7 @@
     cursor: pointer;
     color: rgb(240, 16, 16);
 }
+
+.ngx-pagination .current{
+    background: #FE980F !important;
+}

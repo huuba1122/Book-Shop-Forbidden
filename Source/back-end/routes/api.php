@@ -100,12 +100,16 @@ Route::post('login', [UserController::class, 'login']);
 Route::post('register', [UserController::class, 'register']);
 Route::prefix('customer')->group(function() {
     Route::group(['middleware' => ['jwt.customer']], function () {
+            Route::get('', [UserController::class, 'getUser']);
+            Route::post('logout', [UserController::class, 'logout']);
             Route::get('{id}/cart-list', [CartController::class, 'showCart']);
             Route::get('{id}/cart-info', [CartController::class, 'cartInfo']);
             Route::post('cart-add', [CartController::class, 'addToCart']);
             Route::post('cart-update', [CartController::class, 'updateItemQuantity']);
             Route::post('cart-remove-item', [CartController::class, 'removeItem']);
             Route::get('{id}/cart-delete', [CartController::class, 'deleteCart']);
+            Route::post('checkout', [CartController::class, 'checkout']);
+            
     });
 });
 

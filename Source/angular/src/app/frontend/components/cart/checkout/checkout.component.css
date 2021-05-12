@@ -1,0 +1,21 @@
+.breadcrumbs .breadcrumb{
+    margin-bottom: 30px !important;
+}
+
+.btn-checkout:hover{
+    background-color: #ff6359 !important;
+}
+
+a{
+    cursor: pointer;
+}
+
+.customer-info{
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.order-message textarea{
+    height: 200px;
+    font-size: 16px;
+}

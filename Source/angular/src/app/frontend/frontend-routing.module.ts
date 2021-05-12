@@ -7,6 +7,8 @@ import { LoginComponent } from './components/login/login.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthorDetailComponent } from './components/author-detail/author-detail.component';
+import { CartListComponent } from './components/cart/cart-list/cart-list.component';
+import { CheckoutComponent } from './components/cart/checkout/checkout.component';
 
 const routes: Routes = [
   {
@@ -32,8 +34,15 @@ const routes: Routes = [
       {
         path: 'author-detail/:id',
         component: AuthorDetailComponent
+      },
+      {
+        path: 'customer/:id/cart-list',
+        component: CartListComponent
+      },
+      {
+        path: 'customer/:id/checkout',
+        component: CheckoutComponent
       }
-
 
 
     ]

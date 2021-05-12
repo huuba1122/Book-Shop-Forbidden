@@ -15,7 +15,8 @@ import { HomeComponent } from './frontend/components/home/home.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    
     
     
   ],

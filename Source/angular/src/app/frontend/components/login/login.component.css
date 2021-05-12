@@ -1,0 +1,15 @@
+.validation-login{
+    color: red;
+  }
+
+.login-form form button{
+    background: #5cb85c !important;
+}
+
+.signup-form form button{
+    background: #5cb85c !important;
+}
+
+.or{
+    background: #5cb85c !important;
+}

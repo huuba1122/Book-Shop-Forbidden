@@ -10,6 +10,8 @@ import { LoginComponent } from './components/login/login.component';
 import { BookListComponent } from './components/book-list/book-list.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { AuthorDetailComponent } from './components/author-detail/author-detail.component';
+import { CartListComponent } from './components/cart/cart-list/cart-list.component';
+import { CheckoutComponent } from './components/cart/checkout/checkout.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { AuthorDetailComponent } from './components/author-detail/author-detail.
     LoginComponent,
     BookListComponent,
     MenuComponent,
-    AuthorDetailComponent
+    AuthorDetailComponent,
+    CartListComponent,
+    CheckoutComponent
     
   ],
   imports: [

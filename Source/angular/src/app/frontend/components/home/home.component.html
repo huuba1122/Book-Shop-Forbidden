@@ -25,7 +25,7 @@
                   <img src="{{image_path}}{{item.image}}" alt="" style="width: 100px; height: 148px;" />
                   <h4 style="color: #FE980F;">{{item.price}} VNG</h4>
                   <p class="book-name"><a [routerLink]="['../book-detail', item.id]" routerLinkActive="active">{{item.name}}</a></p>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
+                  <a (click) = "addToCart(item.id)" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
                     cart</a>
                 </div>
               </div>
@@ -58,7 +58,7 @@
                   <img src="{{image_path}}{{item.image}}" alt="" style="width: 100px; height: 148px;" />
                   <h4 style="color: #FE980F;">{{item.price}} VNG</h4>
                   <p class="book-name"><a [routerLink]="['../book-detail', item.id]" routerLinkActive="active">{{item.name}}</a></p>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
+                  <a (click) = "addToCart(item.id)" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
                     cart</a>
                 </div>
 
@@ -90,7 +90,7 @@
                   <img src="{{image_path}}{{item.image}}" alt="" style="width: 100px; height: 148px;" />
                   <h4 style="color: #FE980F;">{{item.price}} VNG</h4>
                   <p class="book-name"><a [routerLink]="['../book-detail', item.id]" routerLinkActive="active">{{item.name}}</a></p>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
+                  <a (click) = "addToCart(item.id)" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
                     cart</a>
                 </div>
 

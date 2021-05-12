@@ -6,14 +6,13 @@
         *ngIf="loginForm.controls.email?.errors?.required && loginForm.controls.email?.touched">
         Email không được để trống!
     </div>
-    <div class="validation-login"
-    *ngIf="loginForm.controls.email?.errors?.email && loginForm.controls.email?.touched">
-    Email không đúng định dạng!
-</div>
+    <div class="validation-login" *ngIf="loginForm.controls.email?.errors?.email && loginForm.controls.email?.touched">
+        Email không đúng định dạng!
+    </div>
     <input formControlName="password" type="password" placeholder="Password">
     <div class="validation-login" style="margin-bottom: 15px;"
         *ngIf="loginForm.controls.password?.errors?.required && loginForm.controls.password?.touched">
-        Mật khẩu  không được để trống!
+        Mật khẩu không được để trống!
     </div>
 
     <button type="submit" [disabled]="!loginForm.valid">Đăng nhập</button>

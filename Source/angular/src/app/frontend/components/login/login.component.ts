@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthFrontendService } from 'src/app/services/frontend/auth-frontend.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  homeFormLogin: FormGroup;
+  message = '';
+  constructor(
+    private router: Router,
+    private formBd : FormBuilder,
+    private AuthFrontendService: AuthFrontendService
+  ) {
+    this.homeFormLogin = this.formBd.group({
+      email: ['', Validators.compose([
+        Validators.required,
+        Validators.email
+      ])],
+      password: ['', Validators.required]
+    })
+   }
 
   ngOnInit(): void {
+  }
+
+  checkLogin()
+  {
+    let data = this.homeFormLogin.value;
+    console.log(data);
+    this.AuthFrontendService.homeLogin(data).subscribe(
+      (res) => {
+        console.log(res);
+        if(res.status === 'successfully'){
+          sessionStorage.clear();
+          sessionStorage.setItem('token_customer', res.token);
+          sessionStorage.setItem('customer_name', res.user.name);
+          sessionStorage.setItem('customer_id', res.user.id);
+          this.router.navigate(['']);
+        }else{
+          this.message = res.message;
+        }
+      }
+    );
   }
 
 }
