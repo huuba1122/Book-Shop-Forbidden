@@ -141,13 +141,9 @@ class CartController extends Controller
         ]);
     }
 
-<<<<<<< HEAD
-    function getOrderUser()
+
+    function generateRandomString($length = 5)
     {
-        $user = JWTAuth::parseToken()->authenticate();
-        
-=======
-    function generateRandomString($length = 5) {
         $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
@@ -155,6 +151,5 @@ class CartController extends Controller
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
->>>>>>> 56e6bccda8c3b355bdfef7ea5dc319bd4b5a6473
     }
 }

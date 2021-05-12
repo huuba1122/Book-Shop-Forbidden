@@ -20,21 +20,21 @@ class KhachHangSeeder extends Seeder
                 'address' => 'ha noi',
                 'phone' => '0981111111',
                 'email' => 'thang@gmail.com',
-                'password' => Hash::make('12345')
+                'password' => Hash::make('123456')
             ],
             [
                 'name' => 'hung',
                 'address' => 'ha noi',
                 'phone' => '0981111222',
                 'email' => 'hung@gmail.com',
-                'password' => Hash::make('12345')
+                'password' => Hash::make('123456')
             ],
             [
                 'name' => 'tuan',
                 'address' => 'ha noi',
                 'phone' => '0981111333',
                 'email' => 'tuan@gmail.com',
-                'password' => Hash::make('12345')
+                'password' => Hash::make('123456')
             ],
         ];
         DB::table('users')->insert($data);

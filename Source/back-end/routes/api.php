@@ -121,6 +121,7 @@ Route::prefix('customer')->group(function() {
             Route::post('cart-remove-item', [CartController::class, 'removeItem']);
             Route::get('{id}/cart-delete', [CartController::class, 'deleteCart']);
             Route::post('checkout', [CartController::class, 'checkout']);
+            Route::get('order-detail/{id}', [HomeController::class, 'getOrderDetail']);
     });
 });
 
