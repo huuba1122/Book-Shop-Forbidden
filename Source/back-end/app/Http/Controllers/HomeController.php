@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\HomeService;
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class HomeController extends Controller
 {
@@ -81,10 +82,46 @@ class HomeController extends Controller
 
     // order
 
+    function getOrdersByUserId()
+    {
+        try {
+            $user = JWTAuth::parseToken()->authenticate();
+            $orders = $this->homeService->getOrdersByUserId($user->id);
+        }catch (\Exception $e){
+            return response()->json($e->getMessage());
+        }
+
+        return response()->json($orders);
+    }
+
     function getOrderDetail($id)
     {
         $orders = $this->homeService->getOrderDetail($id);
         return response()->json($orders);
+    }
+
+    function getOrderById($id)
+    {
+        try {
+            $order = $this->homeService->getOrderById($id);
+            return response()->json($order);
+        }catch (\Exception $e){
+            return response()->json($e->getMessage());
+        }
+
+    }
+
+    function cancelOrder($id)
+    {
+        try {
+            $this->homeService->cancelOrder($id);
+        }catch (\Exception $e){
+            return response()->json($e->getMessage());
+        }
+        return response()->json([
+            'status' => 'success'
+        ]);
+
     }
 
 }

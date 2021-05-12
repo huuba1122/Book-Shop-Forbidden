@@ -21,7 +21,7 @@ export class MenuComponent implements OnInit {
   books: any = [];
   count = 0;
   cartQuantity:any;
-  username = sessionStorage.getItem('customer_name');
+  username:any;
   // image_path = environment.image_url;
 
 
@@ -30,14 +30,18 @@ export class MenuComponent implements OnInit {
     private homeService: HomeService,
     private cartService: CartService,
     private AuthFrontendService: AuthFrontendService,
-  ) { }
+  ) {
+    // this.username = sessionStorage.getItem('customer_name')!;
+   }
 
   ngOnInit(): void {
     this.getAllAuthor();
     this.getCategoryAll();
     // this.getBookNews();
     this.cartService.data$.subscribe(res => this.cartQuantity = res);
-    this.getCartInfo();
+    this.cartService.customerName$.subscribe(res => this.username = res);
+    
+    // this.getUserName();
   }
 
   getAllAuthor() {
@@ -100,6 +104,25 @@ export class MenuComponent implements OnInit {
   cartHistory()
   {
     this.router.navigate(['cart/history']);
+  }
+
+  // getUserName()
+  // {
+  //   this.username = sessionStorage.getItem('customer_name')!;
+  // }
+
+  homeLogout()
+  {
+    if(confirm('Bạn muốn đăng xuất khỏi hệ thống?')){
+      this.AuthFrontendService.homeLogout().subscribe(
+        (res) => {
+          if(res.status === 'success'){
+            sessionStorage.clear();
+            this.username = '';
+          }
+        }
+      );
+    }
   }
 
 }
