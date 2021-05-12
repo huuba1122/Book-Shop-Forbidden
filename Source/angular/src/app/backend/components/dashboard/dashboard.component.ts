@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthorService } from 'src/app/services/admin/author.service';
 import { CategoryService } from 'src/app/services/admin/category.service';
+import { OrderService } from 'src/app/services/admin/order.service';
 import { BookService } from 'src/app/services/book.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -15,14 +16,18 @@ export class DashboardComponent implements OnInit {
   quantityOfBook:any;
   quantityOfAuthor:any;
   quantityOfCategory:any;
+  quantityOfOrder: any;
   books:any;
   authors:any;
+  orders: any;
   image_path = environment.image_url;
   constructor(
     private router: Router,
     private bookService: BookService,
     private categoryService: CategoryService,
-    private authorService: AuthorService
+    private authorService: AuthorService,
+    private orderService: OrderService
+    
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +36,9 @@ export class DashboardComponent implements OnInit {
     this.countCategories();
     this.getTenNewBook();
     this.getTenNewAuthor();
+    this.getOrderBook();
+    this.countOrders();
+    
   }
 
   countBooks()
@@ -65,7 +73,7 @@ export class DashboardComponent implements OnInit {
       this.bookService.adminGetTenNewBook().subscribe(
         (res) => {
           this.books = res;
-          console.log(this.books);
+          // console.log(this.books);
         }
       );
   }
@@ -74,7 +82,27 @@ export class DashboardComponent implements OnInit {
     this.authorService.adminGetTenNewAuthor().subscribe(
       (res) => {
         this.authors = res;
-        console.log(this.authors);
+        // console.log(this.authors);
+      }
+    );
+  }
+
+  getOrderBook(){
+    this.orderService.adminGetAllOrder().subscribe(
+      (res) => {
+        // console.log(res)
+        this.orders = res
+      }
+    )
+  }
+
+
+  countOrders()
+  {
+    this.orderService.adminCountOrders().subscribe(
+      (res) => {
+        this.quantityOfOrder = res;
+        // console.log(this.quantityOfBook);
       }
     );
   }
