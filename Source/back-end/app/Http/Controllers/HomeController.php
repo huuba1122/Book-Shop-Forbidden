@@ -28,6 +28,7 @@ class HomeController extends Controller
     function search(Request $request)
     {
         $books = $this->homeService->search($request->search);
+
         return response()->json($books);
     }
 
@@ -56,12 +57,27 @@ class HomeController extends Controller
 
     function showDetail($id)
     {
+        $this->homeService->addViewBook($id);
        $book = $this->homeService->showDetail($id);
        return response()->json($book, 200);
     }
 
-    function finByCategoryId($id)
+   
+
+    function findAuthorById($id)
     {
+      $book = $this->homeService->findAuthorById($id);
+      return response()->json($book);
     }
+
+
+    function findCategoryById($id)
+    {
+        $books = $this->homeService->findByCategoryId($id);
+        
+         return response()->json($books);
+    }
+
+    
 
 }

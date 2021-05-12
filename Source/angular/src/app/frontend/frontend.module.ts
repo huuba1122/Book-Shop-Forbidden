@@ -10,6 +10,11 @@ import { LoginComponent } from './components/login/login.component';
 import { BookListComponent } from './components/book-list/book-list.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { AuthorDetailComponent } from './components/author-detail/author-detail.component';
+import { CategoryListComponent } from './components/category-list/category-list.component';
+import { BookNewsComponent } from './components/book-news/book-news.component';
+import { BookRecommendComponent } from './components/book-recommend/book-recommend.component';
+import { BookBestsellerComponent } from './components/book-bestseller/book-bestseller.component';
+import { SearchBookComponent } from './components/search/search-book/search-book.component';
 
 
 @NgModule({
@@ -18,7 +23,13 @@ import { AuthorDetailComponent } from './components/author-detail/author-detail.
     LoginComponent,
     BookListComponent,
     MenuComponent,
-    AuthorDetailComponent
+    AuthorDetailComponent,
+    CategoryListComponent,
+    BookNewsComponent,
+    BookRecommendComponent,
+    BookBestsellerComponent,
+    SearchBookComponent,
+    
     
   ],
   imports: [

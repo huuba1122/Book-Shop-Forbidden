@@ -19,6 +19,7 @@ import { AuthorDetailComponent } from './components/authors/author-detail/author
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     BackendRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    CKEditorModule
     // BrowserAnimationsModule,
     // ToastrModule.forRoot()
   ]

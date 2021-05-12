@@ -8,3 +8,11 @@
     margin-top: 0px;
     display: 0;
 }
+.click{
+   cursor: pointer;
+}
+
+p{
+    font-size: 16px !important;
+    color: black;
+}

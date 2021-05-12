@@ -1,43 +1,56 @@
-<div class="col-sm-12 padding-right">
-    <div class="product-details">
-        <!--product-details-->
-        <div class="col-sm-3">
-            <div class="view-product">
-                <img src="{{image_path}}{{book.image}}" alt="image" />
-            </div>
-            <div style="margin: 20px 0;">
-                <a class="btn btn-info btn-author-back" (click)="goList()">Back</a>
-            </div>
-        </div>
-        <div class="col-sm-9">
-            <div class="product-information" *ngIf="book">
-                <!-- <img src="images/product-details/new.jpg" class="newarrival" alt="" /> -->
-                <h2 >{{book.name}}</h2>
-                <p><b>Mã ISBN:      </b> {{book.isbn}}</p>
-                <p><b>Thể loại:     </b> {{book.category_name}}</p>
-                <p><b>Tác giả:      </b> <a (click)="goAuthorDetail(book.author_id!)">{{book.author_name}}</a> </p>
-                <p><b>Năm xuất bản: </b>{{book.year_of_publication}}</p>
-                <p><b>Giá bán:      </b>{{book.price}}</p>
-                <p><b>Số lượng:     </b>{{book.stock}}</p>
-                <p><b>Số trang:     </b>{{book.page_number}}</p>
-                <p><b>Ngôn ngữ:     </b>{{book.language}}</p>
-                <p><b>Lượt xem:     </b>{{book.view}}</p>
+<section class="content-header">
+    <h1>
+        <li><a (click)="goBookList()" style="font-size: 18px;"> Danh mục sách</a></li>
+    </h1>
+</section>
 
+
+<section class="content">
+    <div class="row">
+
+        <div class="col-sm-12 padding-right">
+            <div class="product-details">
+                <!--product-details-->
+                <div class="col-sm-3">
+                    <div class="view-product">
+                        <img src="{{image_path}}{{book.image}}" alt="image" />
+                    </div>
+                    <div style="margin: 20px 0;">
+                        <!-- <a class="btn btn-info btn-author-back" (click)="goList()">Back</a> -->
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="product-information" *ngIf="book">
+                        <!-- <img src="images/product-details/new.jpg" class="newarrival" alt="" /> -->
+                        <h2>{{book.name}}</h2>
+                        <p><b>Mã ISBN: </b> {{book.isbn}}</p>
+                        <p><b>Thể loại: </b> {{book.category_name}}</p>
+                        <p><b>Tác giả: </b> <a (click)="goAuthorDetail(book.author_id!)">{{book.author_name}}</a> </p>
+                        <p><b>Năm xuất bản: </b>{{book.year_of_publication}}</p>
+                        <p><b>Giá bán: </b>{{book.price | number: '1.0'}} VND</p>
+                        <p><b>Số lượng: </b>{{book.stock}}</p>
+                        <p><b>Số trang: </b>{{book.page_number}}</p>
+                        <p><b>Ngôn ngữ: </b>{{book.language}}</p>
+                        <p><b>Lượt xem: </b>{{book.view}}</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12" style="border-bottom: 3px solid #d2d6de; margin-bottom: 15px;">
+                <div class="box">
+                    <div class="box-header">
+                        <h3>Nội dung</h3>
+                    </div>
+
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p [innerHTML]="book.content" class="p"></p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
             </div>
         </div>
     </div>
-    <div class="col-xs-12" style="border-bottom: 3px solid #d2d6de; margin-bottom: 15px;">
-        <div class="box">
-            <div class="box-header">
-                <h3>Nội dung</h3>
-            </div>
-
-            <!-- /.box-header -->
-            <div class="box-body">
-                <p>{{book.content}}</p>
-            </div>
-            <!-- /.box-body -->
-        </div>
-        <!-- /.box -->
-    </div>
-</div>
+    <!-- /.row -->
+</section>

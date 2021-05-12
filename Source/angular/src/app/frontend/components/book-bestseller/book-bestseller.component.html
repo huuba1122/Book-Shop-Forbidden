@@ -1,0 +1,31 @@
+<div class="col-sm-9 padding-right">
+    <div class="features_items">
+        <!--features_items-->
+        <h2 class="title text-center">SÁCH HOT MỌI THỜI ĐẠI</h2>
+        <ng-container *ngFor="let book of bookBestSeller | paginate : {
+            itemsPerPage: pageSize,
+            currentPage: page,
+            totalItems: count
+        }
+        ">
+            <div class="col-sm-4" style="height: 290px;">
+                <div class="product-image-wrapper">
+                    <div class="single-products">
+                        <div class="productinfo text-center">
+                            <img src="{{image_path}}{{book.image}}" alt="" style="width: 100px; height: 148px;" />
+                            <h4 style="color: #FE980F;">{{book.price  | number: '1.0'}} VND</h4>
+                            <p class="book-name"><a [routerLink]="['../book-detail', book.id]" routerLinkActive="active">{{book.name}}</a></p>
+                            <a href="#" class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
+                                cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <!-- <pagination-controls previousLabel="Prev" nextLabel="Next"
+        (pageChange)="onTableDataChange($event)" style="float: right;">
+    </pagination-controls> -->
+    </div>
+    <!--features_items-->
+
+</div>

@@ -70,4 +70,15 @@ class HomeService
        return $this->bookRepo->findByCategoryId($id);
      }
 
+     function findAuthorById($id){
+      return $this->authorRepo->findAuthorById($id);
+  }
+
+  function addViewBook($id)
+    {
+      $book = $this->bookRepo->findById($id);
+      $book->view = $book->view + 1;
+      $this->bookRepo->update($book);
+    }
+
 }

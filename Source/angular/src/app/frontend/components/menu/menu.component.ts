@@ -35,7 +35,7 @@ export class MenuComponent implements OnInit {
     this.homeService.homeGetAllAuthors().subscribe(
       (res) => {
         this.authors = res;
-        console.log(res);
+        // console.log(res);
         // this.count = this.authors.length;
       }
     )
@@ -45,9 +45,29 @@ export class MenuComponent implements OnInit {
     this.homeService.homeGetAllCategory().subscribe(
       (res) => {
         this.categories = res;
-        console.log(res);
+        // console.log(res);
       }
     )
   }
+
+  goAuthorDetail(id: number) {
+    this.router.navigate(['author-detail/' + id]);
+
+  }
+
+  goCategoryList(id: number) {
+    this.router.navigate(['category-list/' + id]);
+  }
+
+
+
+  searchBooks(e: any) {
+    let data = e.target.value;
+    if (data) {
+      this.router.navigate(['search-book/' + data]);
+    }
+  }
+
+
 
 }

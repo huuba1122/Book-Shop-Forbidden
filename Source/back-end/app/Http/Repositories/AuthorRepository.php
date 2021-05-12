@@ -40,6 +40,13 @@ class AuthorRepository
   {
       return Author::count();
   }
+  
+
+  function findAuthorById($id)
+  {
+      return Author::findOrFail($id);
+  }
+
 
   function getTenAuthor()
     {

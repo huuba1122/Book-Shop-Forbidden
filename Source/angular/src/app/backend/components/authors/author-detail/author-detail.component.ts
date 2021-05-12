@@ -62,5 +62,9 @@ export class AuthorDetailComponent implements OnInit {
     this.router.navigate(['admin/show-detail/' + id]);
   }
 
+  goBookList(){
+    this.router.navigate(['admin/author-list']);
+  }
+
 
 }
