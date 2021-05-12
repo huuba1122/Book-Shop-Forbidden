@@ -18,6 +18,14 @@ class OrderRepository
             ->get();
     }
 
+    function getDetailOdersById($id)
+    {
+        return DB::table('v_oders')
+            ->where('id', $id)
+            ->select(['book_id','book_quantiy','price', 'name'])
+            ->get();
+    }
+
     function findOrderById($id){
         return Order::findOrFail($id);
     }

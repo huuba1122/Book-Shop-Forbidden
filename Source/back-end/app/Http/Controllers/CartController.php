@@ -141,7 +141,9 @@ class CartController extends Controller
         ]);
     }
 
-    function generateRandomString($length = 5) {
+
+    function generateRandomString($length = 5)
+    {
         $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
