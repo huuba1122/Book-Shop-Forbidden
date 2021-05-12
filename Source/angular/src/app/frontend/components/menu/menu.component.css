@@ -4,3 +4,6 @@
 a{
     cursor: pointer !important;
 }
+.search_box input{
+    color: black;
+}

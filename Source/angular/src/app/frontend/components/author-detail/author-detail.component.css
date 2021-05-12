@@ -1,0 +1,15 @@
+
+.p{
+    font-size: 16px !important;
+    color: black;
+}
+.click{
+    cursor: pointer;
+ }
+ .btn add-to-cart{
+    background: orange;
+    border: 0 none;
+    border-radius: 0;
+    color: #FFFFFF;
+
+}

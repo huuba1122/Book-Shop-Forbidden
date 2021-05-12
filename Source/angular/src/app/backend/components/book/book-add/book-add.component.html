@@ -6,7 +6,7 @@
       <!-- general form elements disabled -->
       <div class="box box-warning">
         <div class="box-header text-center">
-          <h3 >Thêm mới sách </h3>
+          <h3>Thêm mới sách </h3>
         </div><!-- /.box-header -->
         <div class="box-body">
           <form role="form" [formGroup]="createBookForm" (ngSubmit)="createBook()">
@@ -163,7 +163,7 @@
             </div>
 
             <!-- textarea -->
-            <div class="row">
+            <!-- <div class="row">
               <div class="form-group col-md-6">
                 <label>Nội dung</label>
                 <textarea class="form-control" formControlName="content" rows="3" placeholder="Enter ..."></textarea>
@@ -182,7 +182,40 @@
                   Tóm tắt không được để trống!
                 </div>
               </div>
+            </div> -->
+
+            <div class="row col-md-12">
+              <div class="form-group ">
+                <label>Nội dung</label>
+                <ckeditor  data="<p>Editor' content</p>" name="content" formControlName="content">
+                </ckeditor>
+                <div class="alert alert-danger"
+                  *ngIf="createBookForm.controls.content.errors?.required && createBookForm.controls.content?.touched">
+                  Nội dung không được để trống!
+                </div>
+              </div>
+              <!-- [(ngModel)]="books.content"   -->
+             
             </div>
+
+            <div class="row col-md-12">
+              <div class="form-group ">
+                <label>Mô tả</label>
+                <ckeditor  data="<p>Editor' content</p>" name="description"  formControlName="description">
+                </ckeditor>
+                <div class="alert alert-danger"
+                  *ngIf="createBookForm.controls.description.errors?.required && createBookForm.controls.description?.touched">
+                  Mô tả không được để trống!
+                </div>
+              </div>
+              <!-- [(ngModel)]="books.description"  -->
+             
+            </div>
+
+
+            <!-- <ckeditor [(ngModel)]="ckeditorContent"> -->
+             
+            <!-- </ckeditor> -->
             <!-- submit -->
 
             <div class="box-footer">

@@ -1,17 +1,14 @@
-<!--/slider-->
-
 <div class="col-sm-9 padding-right">
-  <!--/New Books-->
 
   <div class="recommended_items">
 
-    <h2 class="title text-center">SÁCH MỚI </h2>
+    <h2 class="title text-center">DANH MỤC SÁCH</h2>
     <div>
 
     </div>
     <div id="new-item-carousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
-        <div class="item active" *ngFor="let item of bookNews |paginate : {
+        <div class="item active" *ngFor="let item of books |paginate : {
           itemsPerPage: pageSize,
           currentPage: page,
           totalItems: count
@@ -23,7 +20,7 @@
               <div class="single-products">
                 <div class="productinfo text-center">
                   <img src="{{image_path}}{{item.image}}" alt="" style="width: 100px; height: 148px;" />
-                  <h4 style="color: #FE980F;">{{item.price}} VNG</h4>
+                  <h4 style="color: #FE980F;">{{item.price | number: '1.0'}} VND</h4>
                   <p class="book-name"><a [routerLink]="['../book-detail', item.id]" routerLinkActive="active">{{item.name}}</a></p>
                   <a (click) = "addToCart(item.id)" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
                     cart</a>
@@ -35,70 +32,6 @@
         <pagination-controls previousLabel="Prev" nextLabel="Next" style="float: right;"
           (pageChange)="onTableDataChange($event)">
         </pagination-controls>
-      </div>
-    </div>
-  </div>
-  <!--/New Books-->
-
-  <!--/recommended_items-->
-  <div class="recommended_items">
-
-    <h2 class="title text-center">SÁCH ĐỀ CỬ</h2>
-
-    <div id="best-item-carousel" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="item active" *ngFor="let item of bookRecommeds |paginate : {
-          itemsPerPage: 3, currentPage: p1
-    }
-    ">
-          <div class="col-sm-4">
-            <div class="product-image-wrapper">
-              <div class="single-products">
-                <div class="productinfo text-center">
-                  <img src="{{image_path}}{{item.image}}" alt="" style="width: 100px; height: 148px;" />
-                  <h4 style="color: #FE980F;">{{item.price}} VNG</h4>
-                  <p class="book-name"><a [routerLink]="['../book-detail', item.id]" routerLinkActive="active">{{item.name}}</a></p>
-                  <a (click) = "addToCart(item.id)" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
-                    cart</a>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <pagination-controls previousLabel="Prev" nextLabel="Next" style="float: right;" (pageChange)="p1 =$event">
-        </pagination-controls>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="recommended_items">
-
-    <h2 class="title text-center">SÁCH HOT MỌI THỜI ĐẠI</h2>
-
-    <div id="best-item-carousel" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="item active" *ngFor="let item of bookBestSeller |paginate : {
-       itemsPerPage: 3, currentPage: p
-    }
-    ">
-          <div class="col-sm-4">
-            <div class="product-image-wrapper">
-              <div class="single-products">
-                <div class="productinfo text-center">
-                  <img src="{{image_path}}{{item.image}}" alt="" style="width: 100px; height: 148px;" />
-                  <h4 style="color: #FE980F;">{{item.price}} VNG</h4>
-                  <p class="book-name"><a [routerLink]="['../book-detail', item.id]" routerLinkActive="active">{{item.name}}</a></p>
-                  <a (click) = "addToCart(item.id)" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
-                    cart</a>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <pagination-controls (pageChange)="p = $event" style="float: right;"></pagination-controls>
       </div>
     </div>
   </div>

@@ -13,33 +13,34 @@ import { environment } from 'src/environments/environment.prod';
 export class AuthorDetailComponent implements OnInit {
 
   id!: number;
-  author!: Author;
+  author: any;
   image_path = environment.image_url;
   books: any;
   p: number = 1;
 
-
-
-
   constructor(
     private routeActive: ActivatedRoute,
     private router: Router,
-    private authorService: AuthorService,
     private homeService: HomeService
   ) { }
-
   ngOnInit(): void {
-
-    this.author = new Author();
-    this.id = +this.routeActive.snapshot.paramMap.get("id")!;
-    this.authorService.adminGetAuthor(this.id).subscribe(
-      res => {
-        // console.log(res);
-        this.author = res;
-      }, error => console.log(error))
-
-      this.getBookByAuthorId(this.id);
+    this.getAuthorDetail();
+    this.getBookByAuthorId(this.id);
   }
+
+  getAuthorDetail() {
+    this.id = +this.routeActive.snapshot.paramMap.get("id")!;
+    this.homeService.homeGetAuthorId(this.id).subscribe(
+      res => {
+        console.log(res);
+        this.author = res;
+
+      }, error => console.log(error))
+    console.log(this.id);
+
+  }
+
+
 
 
   getBookByAuthorId(id: number) {
@@ -48,10 +49,15 @@ export class AuthorDetailComponent implements OnInit {
         this.books = res;
         console.log(this.books);
       }, error => console.log(error)
-
     )
-
   }
+
+
+  goBookDetail(id: number){
+    this.router.navigate(['book-detail/' + id]);
+  }
+
+  
 
 
 

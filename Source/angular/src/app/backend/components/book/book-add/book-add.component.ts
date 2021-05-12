@@ -20,7 +20,6 @@ export class BookAddComponent implements OnInit {
   imgFile: any;
   imgSrc = '';
   isbn = '';
-  // category: any;
   constructor(
     private bookService: BookService,
     private fb: FormBuilder,
@@ -70,6 +69,7 @@ export class BookAddComponent implements OnInit {
     // console.log(JSON.stringify(data));
     let formData = new FormData();
     formData.append('data', JSON.stringify(data));
+    console.log(data);
     formData.append('file', this.imgFile, this.imgFile.name);
 
     this.bookService.adminCreateBook(formData).subscribe(

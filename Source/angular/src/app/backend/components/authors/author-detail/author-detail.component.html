@@ -1,71 +1,90 @@
-<div class="col-sm-12 padding-right">
-    <div class="product-details"><!--product-details-->
-        <div class="col-sm-3" style="height: 150px; ">
-            <div class="view-product">
-                <img src="{{image_path}}{{author.image}}" alt="image"/>
+<section class="content-header">
+    <h2>
+        <li><a (click)="goBookList()" style="font-size: 18px;">        Danh mục tác giả
+        </a></li>
+    </h2>
+</section>
+
+
+
+
+
+<section class="content">
+    <div class="row">
+
+        <div class="col-sm-12 padding-right">
+            <div class="product-details"><!--product-details-->
+                <div class="col-sm-3" style="height: 150px; ">
+                    <div class="view-product">
+                        <img src="{{image_path}}{{author.image}}" alt="image"/>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="product-information" *ngIf="author">
+                        <img src="images/product-details/new.jpg" class="newarrival" alt="" />
+                        <h2>{{author.name}}</h2>
+                        <p><b>Năm sinh:  </b> {{author.birth_of_year}}</p>
+                        <p><b>Năm mất:  </b> {{author.death_of_year}}</p>
+                        <p><b>Số lượng tác phẩm: </b> {{author.quantity}}</p>
+                        <p><b>Quốc tịch:</b> {{author.country}}</p>
+                        <p><b>Link wiki: <a href="{{author.link_wiki}}">{{author.link_wiki}}</a></b></p>
+                        <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+                        
+                    </div>
+                    <div>
+                        <!-- <a class="btn btn-info btn-author-back" (click)="goList()" >Back</a> -->
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-9">
-            <div class="product-information" *ngIf="author">
-                <img src="images/product-details/new.jpg" class="newarrival" alt="" />
-                <h2>{{author.name}}</h2>
-                <p><b>Năm sinh:  </b> {{author.birth_of_year}}</p>
-                <p><b>Năm mất:  </b> {{author.death_of_year}}</p>
-                <p><b>Số lượng tác phẩm: </b> {{author.quantity}}</p>
-                <p><b>Quốc tịch:</b> {{author.country}}</p>
-                <p><b>Link wiki: <a href="{{author.link_wiki}}">{{author.link_wiki}}</a></b></p>
-                <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
-                
+            <!--/product-details-->
+            
+        
+            <!-- books of author -->
+            <!-- data -->
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3>Danh mục sách của tác giả</h3>
+                    </div>
+        
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Tên</th>
+                                    <th>Mã isbn</th>
+                                    <th>Ảnh</th>
+                                    <th>Tác giả</th>
+                                    <th>Thể loại</th>
+                                    <th>Nhà xuất bản</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of books ; index as i ">
+                                    <td>{{i+1}}</td>
+                                    <td><a (click) = "showBookDetail( item.id)"
+                                            routerLinkActive="active">{{item.name}}</a></td>
+                                    <td>{{item.isbn}}</td>
+                                    <td><img src="{{image_path}}{{item.image}}" alt="" height="32"></td>
+                                    <td>{{item.author_name}}</td>
+                                    <td>{{item.category_name}}</td>
+                                    <!-- <td>{{item['year_of_publication']}}</td> -->
+                                    <td>{{item.publisher_name}}</td>
+                                    <!-- <td>{{item['license']}}</td> -->
+                            </tbody>
+                        </table>
+        
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
             </div>
-            <div>
-                <a class="btn btn-info btn-author-back" (click)="goList()" >Back</a>
-            </div>
+        
         </div>
     </div>
-    <!--/product-details-->
-    
-
-    <!-- books of author -->
-    <!-- data -->
-    <div class="col-xs-12">
-        <div class="box">
-            <div class="box-header">
-                <h3>Danh mục sách của tác giả</h3>
-            </div>
-
-            <!-- /.box-header -->
-            <div class="box-body">
-                <table id="example2" class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Tên</th>
-                            <th>Mã isbn</th>
-                            <th>Ảnh</th>
-                            <th>Tác giả</th>
-                            <th>Thể loại</th>
-                            <th>Nhà xuất bản</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let item of books ; index as i ">
-                            <td>{{i+1}}</td>
-                            <td><a (click) = "showBookDetail( item.id)"
-                                    routerLinkActive="active">{{item.name}}</a></td>
-                            <td>{{item.isbn}}</td>
-                            <td><img src="{{image_path}}{{item.image}}" alt="" height="32"></td>
-                            <td>{{item.author_name}}</td>
-                            <td>{{item.category_name}}</td>
-                            <!-- <td>{{item['year_of_publication']}}</td> -->
-                            <td>{{item.publisher_name}}</td>
-                            <!-- <td>{{item['license']}}</td> -->
-                    </tbody>
-                </table>
-
-            </div>
-            <!-- /.box-body -->
-        </div>
-        <!-- /.box -->
-    </div>
+    <!-- /.row -->
+</section>
     <!-- /.col -->
     <!-- books of author -->

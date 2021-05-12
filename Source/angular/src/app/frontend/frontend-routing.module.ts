@@ -9,6 +9,11 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthorDetailComponent } from './components/author-detail/author-detail.component';
 import { CartListComponent } from './components/cart/cart-list/cart-list.component';
 import { CheckoutComponent } from './components/cart/checkout/checkout.component';
+import { CategoryListComponent } from './components/category-list/category-list.component';
+import { BookNewsComponent } from './components/book-news/book-news.component';
+import { BookRecommendComponent } from './components/book-recommend/book-recommend.component';
+import { BookBestsellerComponent } from './components/book-bestseller/book-bestseller.component';
+import { SearchBookComponent } from './components/search/search-book/search-book.component';
 
 const routes: Routes = [
   {
@@ -31,6 +36,7 @@ const routes: Routes = [
         path: 'book-list',
         component: BookListComponent
       },
+
       {
         path: 'author-detail/:id',
         component: AuthorDetailComponent
@@ -42,9 +48,32 @@ const routes: Routes = [
       {
         path: 'customer/:id/checkout',
         component: CheckoutComponent
+      },
+      
+      {
+        path: 'category-list/:id',
+        component: CategoryListComponent
+      },
+      
+      {
+        path: 'book-news',
+        component: BookNewsComponent
+      },
+
+      {
+        path: 'book-recommend',
+        component: BookRecommendComponent
+      },
+
+      {
+        path: 'book-best-seller',
+        component: BookBestsellerComponent
+      },
+
+      {
+        path: 'search-book/:search',
+        component: SearchBookComponent
       }
-
-
     ]
   },
 

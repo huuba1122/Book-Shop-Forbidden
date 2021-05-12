@@ -5,8 +5,8 @@
     <div class="col-md-12">
       <!-- general form elements disabled -->
       <div class="box box-warning">
-        <div class="box-header text-center" >
-          <h3 >Cập nhật Thông tin sách</h3>
+        <div class="box-header text-center">
+          <h3>Cập nhật Thông tin sách</h3>
         </div><!-- /.box-header -->
         <div class="box-body">
           <form role="form" [formGroup]="updateBookForm" (ngSubmit)="updateBook()">
@@ -69,12 +69,12 @@
               </div>
               <div class="col-md-6 form-group" style="margin-top: 15px;">
                 <div class="form-group" *ngIf="isShowOleImage">
-                    <img src="{{image_path}}{{book.image}}" alt="image" height="100px">
+                  <img src="{{image_path}}{{book.image}}" alt="image" height="100px">
                 </div>
                 <div class="form-group" *ngIf="imgSrc">
-                    <img [src]="imgSrc" height="100px">
+                  <img [src]="imgSrc" height="100px">
                 </div>
-            </div>
+              </div>
             </div>
             <!-- textarea -->
 
@@ -128,7 +128,7 @@
                 </div>
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" [checked] = "book.recommend" (change)="isRecommend($event)">
+                    <input type="checkbox" [checked]="book.recommend" (change)="isRecommend($event)">
                     Sách đề cử
                   </label>
                 </div>
@@ -159,8 +159,10 @@
               </div>
             </div>
 
+
+
             <!-- textarea -->
-            <div class="row">
+            <!-- <div class="row">
               <div class="form-group col-md-6">
                 <label>Nội dung</label>
                 <textarea class="form-control" formControlName="content" rows="3" placeholder="Enter ..."></textarea>
@@ -179,6 +181,35 @@
                   Tóm tắt không được để trống!
                 </div>
               </div>
+            </div> -->
+
+            <div class="row col-md-12">
+              <div class="form-group ">
+                <label>Mô tả</label>
+                <ckeditor data="<p>Editor' content</p>" name="content" [(ngModel)]="book.content"
+                  formControlName="content">
+                </ckeditor>
+                <div class="alert alert-danger"
+                  *ngIf="updateBookForm.controls.content.errors?.required && updateBookForm.controls.content?.touched">
+                  Nội dung không được để trống!
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row col-md-12">
+              <div class="form-group ">
+                <label>Mô tả</label>
+                <ckeditor data="<p>Editor' content</p>" name="description" [(ngModel)]="book.description"
+                  formControlName="description">
+                </ckeditor>
+                <div class="alert alert-danger"
+                  *ngIf="updateBookForm.controls.description.errors?.required && updateBookForm.controls.description?.touched">
+                  Tóm tắt không được để trống!
+                </div>
+              </div>
+
+
             </div>
             <!-- submit -->
 

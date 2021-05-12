@@ -11,60 +11,30 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  
-  bookNews: any = [];
   books: any = [];
-  image_path = environment.image_url;
-  bookRecommeds! : any[];
-  bookBestSeller!: any[];
-
   page = 1;
   count = 0;
-  pageSize = 3;
-  p: number = 1;
-  p1: number =1;
-  
-
+  pageSize = 9;
+  image_path = environment.image_url;
 
   constructor(
     private homeService: HomeService,
-    private cartService: CartService,
     private AuthFrontendService: AuthFrontendService,
-    private toastr: ToastrService,
-
+    private cartService: CartService,
+    private toastr : ToastrService
   ) { }
 
   ngOnInit(): void {
-    this.getBookRecommend();
-    this.getBookBestSeller();
-    this.getNewBooks();
-
+    this.getAllBook()
   }
 
-  getBookRecommend() {
-    let formData = new FormData();
-    formData.append('column', 'recommend');
-    this.homeService.homeGetTopicBooks(formData).subscribe(
-      (res) => {
-        this.bookRecommeds = res
-      }
-    )
-  }
 
-  getBookBestSeller() {
-    let formData = new FormData();
-    formData.append('column', 'best_seller');
-    this.homeService.homeGetTopicBooks(formData).subscribe(
+  getAllBook() {
+    this.homeService.homeGetAllBooks().subscribe(
       (res) => {
-        this.bookBestSeller = res;
-      }
-    )
-  }
-
-  getNewBooks(){
-    this.homeService.homeGetTenNewBooks().subscribe(
-      (res) => {
-        this.bookNews = res;
+        this.books = res;
+        // console.log(res)
+        this.count = this.books.length;
       }
     )
   }

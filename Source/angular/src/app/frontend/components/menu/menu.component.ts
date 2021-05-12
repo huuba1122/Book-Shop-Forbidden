@@ -78,4 +78,24 @@ export class MenuComponent implements OnInit {
     }
   }
 
+  goAuthorDetail(id: number) {
+    this.router.navigate(['author-detail/' + id]);
+
+  }
+
+  goCategoryList(id: number) {
+    this.router.navigate(['category-list/' + id]);
+  }
+
+
+
+  searchBooks(e: any) {
+    let data = e.target.value;
+    if (data) {
+      this.router.navigate(['search-book/' + data]);
+    }
+  }
+
+
+
 }

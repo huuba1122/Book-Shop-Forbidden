@@ -84,7 +84,10 @@ Route::prefix('home')->group(function () {
     Route::get('/category-all', [HomeController::class, 'getAllCategories']);
     Route::post('/search', [HomeController::class, 'search']);
     Route::get('/{id}/author-id',[HomeController::class, 'findByAuthorId']);
+    Route::get('/{id}/category-id',[HomeController::class, 'findCategoryById']);
     Route::get('/{id}/show-detail',[HomeController::class, 'showDetail']);
+    Route::get('/{id}/auhor-detail',[HomeController::class, 'findAuthorById']);
+
 
 });
 
