@@ -21,6 +21,7 @@ export class MenuComponent implements OnInit {
   books: any = [];
   count = 0;
   cartQuantity:any;
+  username = sessionStorage.getItem('customer_name');
   // image_path = environment.image_url;
 
 
@@ -96,6 +97,9 @@ export class MenuComponent implements OnInit {
     }
   }
 
-
+  cartHistory()
+  {
+    this.router.navigate(['cart/history']);
+  }
 
 }

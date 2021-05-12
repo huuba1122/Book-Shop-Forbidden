@@ -7,3 +7,21 @@ a{
 .search_box input{
     color: black;
 }
+.sub-menu{
+    background: #fff;
+    
+}
+
+.sub-menu li{
+    color: #696763;
+    font-size: 14px;
+}
+
+.navbar-nav li ul.sub-menu li a{
+    color: #696763;
+    font-size: 14px;
+}
+
+ul.sub-menu{
+    right: 0px !important;
+}

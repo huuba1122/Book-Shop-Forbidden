@@ -17,6 +17,7 @@ import { BookNewsComponent } from './components/book-news/book-news.component';
 import { BookRecommendComponent } from './components/book-recommend/book-recommend.component';
 import { BookBestsellerComponent } from './components/book-bestseller/book-bestseller.component';
 import { SearchBookComponent } from './components/search/search-book/search-book.component';
+import { HistoryComponent } from './components/cart/history/history.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { SearchBookComponent } from './components/search/search-book/search-book
     BookRecommendComponent,
     BookBestsellerComponent,
     SearchBookComponent,
+    HistoryComponent,
     
     
   ],

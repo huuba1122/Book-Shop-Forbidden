@@ -57,12 +57,13 @@ export class CheckoutComponent implements OnInit {
       (res) => {
         this.cartInfo = res;
         // console.log(this.cartInfo);
+        this.cartService.changeCartQuantity(res.totalQuantity);
       }
     );
   }
 
   checkout() {
-    console.log(this.des);
+    // console.log(this.des);
     let formData = new FormData();
     formData.append('des', this.des);
     this.cartService.checkout(formData).subscribe(
@@ -70,6 +71,7 @@ export class CheckoutComponent implements OnInit {
         console.log(res);
         if(res.status === 'success'){
           this.emptyCart();
+          this.cartService.changeCartQuantity(null);
           this.toastr.success('Hãy kiểm tra email của bạn để cập nhật thông tin!', 'Đặt hàng thành công');
           this.router.navigate(['']);
         }

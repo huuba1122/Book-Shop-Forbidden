@@ -289,12 +289,12 @@ a#scrollUp i{
 ul.sub-menu {
 	position: absolute;
 	top: 30px;
-	left: 0;
-	background: rgba(0, 0, 0, 0.6);
+	right: 0;
+	background: #fff;
 	list-style: none;
 	padding: 0;
 	margin: 0;
-	width: 220px;
+	width: 150px;
 	-webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
 	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
 	display: none;
@@ -303,7 +303,7 @@ ul.sub-menu {
 
 .dropdown ul.sub-menu li .active{
   color: #FDB45E;
-  padding-left: 0;
+  padding-right: 0;
 }
 
 

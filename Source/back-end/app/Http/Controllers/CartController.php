@@ -138,4 +138,10 @@ class CartController extends Controller
             'status' => 'success'
         ]);
     }
+
+    function getOrderUser()
+    {
+        $user = JWTAuth::parseToken()->authenticate();
+        
+    }
 }

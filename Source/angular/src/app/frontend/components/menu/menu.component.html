@@ -40,11 +40,20 @@
         <div class="col-sm-8">
           <div class="shop-menu pull-right">
             <ul class="nav navbar-nav">
-              <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+              <!-- <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
               <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-              <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+              <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li> -->
               <li><a (click) = "showCart()"><i class="fa fa-shopping-cart"></i> Cart  <span class="text-danger">{{cartQuantity ? cartQuantity : ''}}</span></a></li>
-              <li><a [routerLink]="['/login']"><i class="fa fa-lock"></i> Login</a></li>
+              <li *ngIf="username != null; else islogin" class="dropdown"><a ><i class="fa fa-user"></i>{{username}}<i class="fa fa-angle-down"></i></a>
+                <ul role="menu" class="sub-menu">
+                  <li><a >Thông tin</a></li>
+                  <li (click) = "cartHistory()"><a >Lịch sử đặt hàng</a></li>
+                  <li><a >Đăng xuất</a></li>
+                </ul>
+              </li>
+              <ng-template #islogin>
+                <li > <a [routerLink]="['/login']"><i class="fa fa-lock"></i> Login</a> </li>
+              </ng-template>
             </ul>
           </div>
         </div>
@@ -115,7 +124,7 @@
               <div id="sportswear" class="panel-collapse collapse">
                 <div class="panel-body" *ngFor="let item of categories">
                   <ul>
-                    <li><a [routerLink]="['../category-list', item.id]" >{{item.name}}</a></li>
+                    <li><a (click) = "goCategoryList(item.id)" >{{item.name}}</a></li>
                     
                   </ul>
                 </div>

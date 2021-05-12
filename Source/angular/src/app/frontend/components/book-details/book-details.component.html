@@ -23,10 +23,10 @@
                 <p>Hàng trong kho: <b> {{book.stock + ' quyển '}}</b></p>
                 <span>
                     <span>Giá Bán: {{book.price | number: '1.0'}} VND</span>
-                    <!-- <button type="button" class="btn btn-fefault cart">
+                    <button (click) = "addToCart(book.id)" type="button" class="btn btn-fefault cart">
                         <i class="fa fa-shopping-cart"></i>
                         Add to cart
-                    </button> -->
+                    </button>
                 </span>
                 <!-- <a href=""><img src="assets/frontend/images/product-details/share.png" class="share img-responsive"  alt="" /></a> -->
             </div>
