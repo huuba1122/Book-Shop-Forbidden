@@ -20,6 +20,7 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CKEditorModule } from 'ng2-ckeditor';
+import { OrderDetaillComponent } from './components/order-detaill/order-detaill.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { CKEditorModule } from 'ng2-ckeditor';
     AuthorEditComponent,
     AuthorDetailComponent,
     AdminLoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    OrderDetaillComponent
   ],
   imports: [
     CommonModule,

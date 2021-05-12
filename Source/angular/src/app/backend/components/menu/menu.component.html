@@ -72,20 +72,19 @@
                         <li><a [routerLink] = "['book-list']" ><i class="fa fa-circle-o"></i>Sách</a></li>
                         <li><a [routerLink] = "['author-list']" ><i class="fa fa-circle-o"></i>Tác giả</a></li>
                         <li><a [routerLink] = "['category-list']" ><i class="fa fa-circle-o"></i>Thể loại</a></li>
-                        <li><a ><i class="fa fa-circle-o"></i>Hóa đơn</a></li>
+                        <!-- <li><a ><i class="fa fa-circle-o"></i>Hóa đơn</a></li> -->
                     </ul>
                 </li>
 
-                <!-- manager users -->
-                <!-- <li class="treeview" [class]= "isDropSidebar ? 'active' : ''">
+                <li class="treeview" [class]= "isDropSidebar ? 'active' : ''">
                     <a (click) = "dropUserList()">
-                        <i class="fa fa-dashboard"></i> <span>Users Manager</span> <i
+                        <i class="fa fa-dashboard"></i> <span>Hóa đơn</span> <i
                             class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Users</a></li>
+                        <li><a [routerLink]="['order-detail']"><i class="fa fa-circle-o"></i>Chi tiết hóa đơn</a></li>
                     </ul>
-                </li> -->
+                </li>
             </ul>
         </section>
         <!-- /.sidebar -->

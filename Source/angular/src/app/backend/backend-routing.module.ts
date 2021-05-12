@@ -13,6 +13,7 @@ import { BookListComponent } from './components/book/book-list/book-list.compone
 import { CategoryListComponent } from './components/categories/category-list/category-list.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { OrderDetaillComponent } from './components/order-detaill/order-detaill.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,9 @@ const routes: Routes = [
       // categories
       {path: 'category-list', component: CategoryListComponent},
 
+      // orders
+
+      {path: 'order-detail/:id', component:OrderDetaillComponent},
       // authors
       {path: 'author-list', component: AuthorListComponent},
       {path: 'author-add', component: AuthorAddComponent},

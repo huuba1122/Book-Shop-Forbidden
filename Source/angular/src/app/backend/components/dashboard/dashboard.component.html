@@ -110,7 +110,7 @@
                             <tbody>
                                 <tr *ngFor="let order of orders">
                                     <td>{{order.user_name}}</td>
-                                    <td>{{order.ms}}</td>
+                                    <td><a [routerLink]="['order-detail/', order.id]">{{order.ms}}</a></td>
                                     <td>{{order.amount}}</td>
                                     <!-- <td><img src="{{image_path}}{{author.image}}" alt="" height="32" width="18"></td> -->
                                     <td>{{order.order_date}}</td>
