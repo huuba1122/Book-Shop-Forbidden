@@ -112,6 +112,7 @@ class CartController extends Controller
         $user = JWTAuth::parseToken()->authenticate();
         $carts = Cart::where('customer_id', $user->id)->get();
         $totalPrice = Cart::where('customer_id', $user->id)->sum('total_price');
+        $ms = $this->generateRandomString(5) . rand(1000,9999) . $user->id;
         DB::beginTransaction();
         try {
             $order = new Order();
@@ -120,6 +121,7 @@ class CartController extends Controller
             $order->status = 'Đang xử lý';
             $order->amount = $totalPrice;
             $order->des = $request->des;
+            $order->ms = $ms;
             $order->save();
             foreach ($carts as $item) {
                 $orderDetail = new Orderdetail();
@@ -137,5 +139,15 @@ class CartController extends Controller
         return response()->json([
             'status' => 'success'
         ]);
+    }
+
+    function generateRandomString($length = 5) {
+        $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 }

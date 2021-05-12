@@ -6,6 +6,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
@@ -66,8 +67,16 @@ Route::prefix('admin')->group(function () {
             Route::post('/{id}/update',[AuthorController::class, 'update']);
             Route::delete('/{id}/delete',[AuthorController::class, 'delete']);
             Route::post('/search',[AuthorController::class, 'search']);
-
         });
+
+        Route::prefix('order')-> group(function (){
+            Route::get('list', [OrderController::class, 'getAll']);
+            Route::get('count',[OrderController::class, 'countOrders']);
+
+//            Route::get('/{id}/show-order', [OrderController::class, 'showOrder']);
+        });
+
+
 
         Route::prefix('publisher')->group(function () {
             Route::get('list',[PublisherController::class, 'getAll']);
@@ -112,7 +121,6 @@ Route::prefix('customer')->group(function() {
             Route::post('cart-remove-item', [CartController::class, 'removeItem']);
             Route::get('{id}/cart-delete', [CartController::class, 'deleteCart']);
             Route::post('checkout', [CartController::class, 'checkout']);
-            
     });
 });
 
