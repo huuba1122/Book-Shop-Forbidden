@@ -12,7 +12,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class CartService {
   base_url = environment.base_url;
   private totalQuantity = new BehaviorSubject(null);
+  private userName = new BehaviorSubject(sessionStorage.getItem('customer_name'));
   data$ = this.totalQuantity.asObservable();
+  customerName$ = this.userName.asObservable();
 
   constructor(
     private router:Router,
@@ -21,6 +23,10 @@ export class CartService {
 
   changeCartQuantity(quantity: any) {
     this.totalQuantity.next(quantity)
+  }
+
+  changeCustomerName(name: any) {
+    this.userName.next(name)
   }
 
   addToCart(data: any): Observable<any> {
@@ -68,11 +74,24 @@ export class CartService {
     });
   }
 
+  // order
+  getOrderList(){
+    return this.http.get(this.base_url + '/customer/order-list', {
+      headers: this.getHeaders()
+    });
+  }
+
+  cancelOrder(id: any) : Observable<any>
+  {
+    return this.http.post(this.base_url + '/customer/order-cancel/' + id,'', {
+      headers: this.getHeaders()
+    });
+  }
+
   getHeaders() {
     return new HttpHeaders({
       'Authorization': "Bearer " + sessionStorage.getItem('token_customer')
     });
   }
-
 
 }

@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,9 @@ import { Observable } from 'rxjs';
 export class AuthFrontendService {
 
   base_url = environment.base_url;
+
+  // private userName = new BehaviorSubject(null);
+  // customerName$ = this.userName.asObservable();
   constructor(
     private http: HttpClient,
     private router: Router
@@ -22,7 +27,7 @@ export class AuthFrontendService {
 
   homeLogout() : Observable<any>
   {
-    return this.http.post(this.base_url + '/customer/logout', {
+    return this.http.post(this.base_url + '/customer/logout','', {
       headers: this.getHeaders()
     });
   }

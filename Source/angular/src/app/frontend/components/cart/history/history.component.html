@@ -1,0 +1,52 @@
+<div class="row col-sm-9">
+    <section id="cart_items">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb" style="border-bottom: 1px solid #ddd;
+            border-top: 1px solid #ddd;">
+              <li> <span style="color: #FE980F; font-size: 22px;">LỊCH SỬ ĐƠN HÀNG</span></li>
+            </ol>
+        </div>
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="cart_menu">
+                        <td class="description">Mã đơn hàng</td>
+                        <td class="description">Tổng tiền</td>
+                        <td class="description">Ghi chú</td>
+                        <td class="description">Ngày đặt</td>
+                        <td class="description">Trạng thái</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of orderList">
+                        <td class="cart_quantity">
+                            <a style="font-size: 16px;"><p>{{item.ms}}</p></a>
+                        </td>
+                        <td class="cart_quantity">
+                            
+                            <div class="cart_quantity_button">
+                                <p style="font-size: 16px;">{{item.amount |number}}</p>
+                                
+                            </div>
+                        </td>
+                        <td class="cart_price">
+                            <p>{{item.des}}</p>
+                        </td>
+                        <td class="cart_quantity">
+                            <p style="font-size: 16px;">{{item.order_date}}</p>
+                        </td>
+                        <td class="cart_total">
+                            <p class="cart_total_price" style="font-size: 16px;">{{item.status}}</p>
+                        </td>
+                        <td *ngIf="item.status == 'Đang xử lý'" class="cart_quantity">
+                            <a (click) = "cancelOrder(item.id)" style="font-size: 16px;" class="text-danger"><p>Hủy đơn</p></a>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+</section> 
+<!--/#cart_items-->
+</div>

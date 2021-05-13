@@ -9,7 +9,6 @@ use App\Models\Orderdetail;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use PHPUnit\TextUI\Exception;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class CartController extends Controller
@@ -140,9 +139,8 @@ class CartController extends Controller
             'status' => 'success'
         ]);
     }
-
-
-    function generateRandomString($length = 5)
+    
+    function generateRandomString($length = 5) 
     {
         $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);

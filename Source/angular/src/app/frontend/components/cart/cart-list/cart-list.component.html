@@ -34,8 +34,10 @@
 								<div class="cart_quantity_button">
 									
 									<input 
+									min="1"
+									style="width: 50px;"
                                     (change) = "updateQuantity($event, item.book_id)"
-                                    class="cart_quantity_input" type="text" 
+                                    class="cart_quantity_input" type="number" 
                                     name="quantity" value="{{item.quantity}}" autocomplete="off" size="2">
 									
 								</div>

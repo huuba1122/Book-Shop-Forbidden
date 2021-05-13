@@ -18,6 +18,11 @@ class OrderRepository
             ->get();
     }
 
+    function getOrdersByUserId($id)
+    {
+        return Order::where('user_id', $id)->get();
+    }
+
     function getDetailOdersById($id)
     {
         return DB::table('v_oders')

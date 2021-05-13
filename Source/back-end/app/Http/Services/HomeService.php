@@ -86,10 +86,28 @@ class HomeService
         $this->bookRepo->update($book);
     }
 
+    // order
+
     function getOrderDetail($id)
     {
         return $this->orderRepo->getDetailOdersById($id);
     }
 
+    function getOrderById($id)
+    {
+        return $this->orderRepo->findOrderById($id);
+    }
+
+    function cancelOrder($id)
+    {
+        $order = $this->orderRepo->findOrderById($id);
+        $order->status = 'Hủy đơn hàng';
+        $this->orderRepo->update($order);
+    }
+
+    function getOrdersByUserId($id)
+    {
+        return $this->orderRepo->getOrdersByUserId($id);
+    }
 
 }
