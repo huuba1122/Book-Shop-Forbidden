@@ -13,7 +13,7 @@ export class SearchBookComponent implements OnInit {
   books: any = [];
   page = 1;
   count = 0;
-  pageSize = 9;
+  pageSize = 6;
   image_path = environment.image_url;
   constructor( private homeSerivce: HomeService,
                private routerActive: ActivatedRoute,

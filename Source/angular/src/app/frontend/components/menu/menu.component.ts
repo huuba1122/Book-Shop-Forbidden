@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthorService } from 'src/app/services/admin/author.service';
-import { CategoryService } from 'src/app/services/admin/category.service';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { HomeService } from 'src/app/services/frontend/home.service';
 import { environment } from 'src/environments/environment.prod';
@@ -21,6 +20,8 @@ export class MenuComponent implements OnInit {
   books: any = [];
   count = 0;
   cartQuantity:any;
+  image_path = environment.image_url;
+
   username = sessionStorage.getItem('customer_name');
   // image_path = environment.image_url;
 
