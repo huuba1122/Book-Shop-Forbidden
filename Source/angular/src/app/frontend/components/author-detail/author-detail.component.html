@@ -37,7 +37,7 @@
                             <div class="single-products">
                                 <div class="productinfo text-center">
                                     <img src="{{image_path}}{{item.image}}" alt="" style="width: 100px; height: 148px;" />
-                                    <h4 style="color: #FE980F;">{{item.price}} VNG</h4>
+                                    <h4 style="color: #FE980F;">{{item.price  | number: '1.0'}} VND</h4>
                                     <p class="book-name"><a class="click" (click)="goBookDetail(item.id!)">{{item.name}}</a></p>
                                     <button (click) = "addToCart(item.id)" type="button" class="btn add-to-cart"><i
                                             class="fa fa-shopping-cart"></i>Add to cart</button>

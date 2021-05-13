@@ -1,0 +1,17 @@
+Kịch bản demo sản phẩm nhóm Forbidden:
+-Người dùng :
++ Người dùng khi vào trang web sẽ nhìn thấy giao diện danh mục sách 
++ Có thể xem được sách mới, sách đề cử, sách bán chạy.
++ Xem chi tiết 1 cuốn sách , khi ấn vào tác giả sẽ ra thông tin của tác giả và sách của tác giả đó.
++ Xem được các cuốn sách theo thể loại , tác giả.
++ Tìm kiếm tác giả theo tên sách , tên tác giả, tên thể loại.
++ Người dùng khi ấn thêm sách vào giỏ hàng thì sẽ bắt buộc phải đăng nhập sau khi đăng nhập thành công thì sẽ thêm sách vào được giỏ hàng và có thông báo thành công.
++ Trong giỏ hàng người dùng có thể cập nhập giỏ hàng, xóa sản phẩm khỏi giỏ hàng, làm trống giỏ hàng, mua thêm hàng , khi click vào thanh toán thì sẽ chuyển đến phần checkout ở đây người dùng có thể xem thông tin của mình, số lượng sách mình đã thêm vào giỏ hàng, tổng tiền cần thanh toán , hình thức thanh toán , hủy đơn hàng .
++Khi nhấn đặt mua thì sẽ thông báo khách hàng đặt hàng thành công.
+
+-Quản lý:
++Cần phải đăng nhập để vào admin. Sau khi đăng nhập thành công thì chuyển đến trang dashboad ở đây chúng ta có thể xem được số lượng sách, tác giả, thể loại, đơn hàng.
++Khi nhấn vào trang sách thì sẽ hiển thị danh mục sách và gồm các chức năng thêm,sửa,xóa, tìm kiếm sách theo tên sách, tên tác giả, tên thể loại, xem được chi tiết 1 cuốn sách.
++Khi nhấn vào trang thể loại  thì sẽ hiển thị danh mục thể loại và gồm các chức năng thêm,sửa,xóa, tìm kiếm thể loại theo tên.
++Khi nhấn vào trang tác giả   thì sẽ hiển thị danh mục tác giả  và gồm các chức năng thêm,sửa,xóa, tìm kiếm tác giả theo tên, xem được chi tiết về thông tin tác giả kèm các sách của tác giả đó.
+

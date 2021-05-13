@@ -61,7 +61,7 @@
             <!-- TABLE: LATEST ORDERS -->
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Sách mới</h3>
+                    <h3 class="box-title">SÁCH MỚI</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <div class="table-responsive">
@@ -76,9 +76,9 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let book of books">
+                                    <td>{{book.name}}</td>
                                     <td>{{book.id}}</td>
                                     <td><img src="{{image_path}}{{book.image}}" alt="" height="32" width="18"></td>
-                                    <td>{{book.name}}</td>
                                     <td>{{book.stock}}</td>
                                 </tr>
                             </tbody>
@@ -94,7 +94,7 @@
             <!-- PRODUCT LIST -->
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title"></h3>
+                    <h3 class="box-title">HÓA ĐƠN MỚI </h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <div class="table-responsive">

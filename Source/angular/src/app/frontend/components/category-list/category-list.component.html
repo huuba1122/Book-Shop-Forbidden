@@ -14,7 +14,7 @@
                         <div class="productinfo text-center">
                             <img src="{{image_path}}{{book.image}}" alt="" style="width: 100px; height: 148px;" />
                             <h4 style="color: #FE980F;">{{book.price  | number: '1.0'}} VND</h4>
-                            <p class="book-name"><a [routerLink]="['../book-detail', book.id]" routerLinkActive="active">{{book.name}}</a></p>
+                            <p class="book-name"><a (click)="goBookDetail(book.id)" >{{book.name}}</a></p>
                             <a (click) = "addToCart(book.id)" class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
                                 cart</a>
                         </div>

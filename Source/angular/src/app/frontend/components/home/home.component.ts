@@ -4,6 +4,7 @@ import { AuthFrontendService } from 'src/app/services/frontend/auth-frontend.ser
 import { HomeService } from 'src/app/services/frontend/home.service';
 import { environment } from 'src/environments/environment.prod';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,8 @@ export class HomeComponent implements OnInit {
     private homeService: HomeService,
     private AuthFrontendService: AuthFrontendService,
     private cartService: CartService,
-    private toastr : ToastrService
+    private toastr : ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -72,6 +74,11 @@ export class HomeComponent implements OnInit {
 
   onTableDataChange(e:any){
     this.page = e;
+  }
+
+  goBookDetail(id: any){
+    this.router.navigate(['book-detail', id])
+  
   }
 
 }

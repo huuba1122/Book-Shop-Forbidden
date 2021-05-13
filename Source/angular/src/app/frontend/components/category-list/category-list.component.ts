@@ -78,4 +78,10 @@ export class CategoryListComponent implements OnInit {
     );
   }
 
+
+  goBookDetail(id: any){
+    this.router.navigate(['book-detail', id])
+  
+  }
+
 }

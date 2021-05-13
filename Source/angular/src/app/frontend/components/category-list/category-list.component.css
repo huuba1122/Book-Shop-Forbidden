@@ -5,3 +5,7 @@
     color: #FFFFFF;
 
 }
+.book-name:hover{
+    cursor: pointer;
+    color: rgb(240, 16, 16);
+}
